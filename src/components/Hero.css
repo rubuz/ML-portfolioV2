@@ -1,0 +1,30 @@
+.hero__img {
+  background: url(../assets/portrait1.webp);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: inset 0 0 0 9px rgb(255 130 169 / 30%);
+  /* filter: grayscale(100%); */
+  width: 400px;
+  height: 400px;
+  order: 1;
+  justify-self: center;
+  animation: fluid__animation 8s ease-in-out infinite;
+}
+
+@keyframes fluid__animation {
+  0% {
+    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+    transform: translateY(0);
+  }
+
+  50% {
+    border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
+    transform: translateY(8%);
+  }
+
+  100% {
+    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+    transform: translateY(0);
+  }
+}
