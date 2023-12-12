@@ -1,5 +1,5 @@
 import "./App.css";
-import AboutCard from "./components/AboutCard";
+import AboutCards from "./components/AboutCards";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import TitleChanger from "./components/TitleChanger";
@@ -10,7 +10,7 @@ function App() {
       <Navbar />
       {/* <TitleChanger /> */}
       <Hero />
-      <AboutCard />
+      <AboutCards />
     </div>
   );
 }
