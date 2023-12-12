@@ -41,7 +41,7 @@ const TitleChanger = () => {
       () => {
         changeImage();
       },
-      currentImageIndex === 0 ? 1500 : 90
+      currentImageIndex === 0 ? 1500 : 120
     );
 
     // Clear timeout when component unmounts
