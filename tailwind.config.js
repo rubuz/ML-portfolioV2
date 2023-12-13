@@ -9,7 +9,7 @@ export default {
       colors: {
         pinky: "#ff5c8f",
         bluey: "#247ba0",
-        greny: "#70c1b3",
+        greeny: "#70c1b3",
         olivy: "#b2dbbf",
         yellowy: "#f3ffbd",
       },
