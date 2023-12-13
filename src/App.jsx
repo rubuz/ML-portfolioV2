@@ -11,6 +11,7 @@ function App() {
       {/* <TitleChanger /> */}
       <Hero />
       <AboutCards />
+      <div className="w-full h-[600px] bg-purple-800">TEST</div>
     </div>
   );
 }

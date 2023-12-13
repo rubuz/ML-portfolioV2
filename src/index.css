@@ -38,3 +38,7 @@
   transform-origin: left;
   transform: scaleX(1);
 }
+
+.cards:first-child {
+  margin-left: 5rem;
+}
