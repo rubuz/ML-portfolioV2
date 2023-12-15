@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import TitleChanger from "./components/TitleChanger";
 import { useScroll, useTransform, motion } from "framer-motion";
+import Projects from "./components/Projects";
 
 function App() {
   const targetRef = useRef(null);
@@ -41,6 +42,7 @@ function App() {
           </motion.div>
         </div>
       </section>
+      <Projects />
       <div className="w-full h-[1900px] bg-purple-800">TEST</div>{" "}
     </div>
   );

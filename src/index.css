@@ -42,3 +42,7 @@
 .cards:first-child {
   margin-left: 5rem;
 }
+
+.project-img:hover > .project-dot {
+  background-color: black;
+}
