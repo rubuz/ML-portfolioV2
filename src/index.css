@@ -43,6 +43,6 @@
   margin-left: 5rem;
 }
 
-.project-img:hover > .project-dot {
+.dot-container.hoverd .project-dot {
   background-color: black;
 }
