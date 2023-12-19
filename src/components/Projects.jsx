@@ -2,6 +2,8 @@ import React from "react";
 import Project1 from "../assets/project1.png";
 import Marquee from "react-fast-marquee";
 import MarqueeText from "./MarqueeText";
+import ProjectText from "./ProjectText";
+import Button from "./Button";
 
 const Projects = () => {
   const projectDot = document.querySelector(".dot-container");
@@ -18,13 +20,13 @@ const Projects = () => {
   };
 
   return (
-    <section className="w-full  bg-greeny rounded-t-[2rem]">
+    <section className="w-full bg-greeny rounded-t-[2rem] pb-4">
       <div>
         <Marquee autoFill speed={130}>
           <MarqueeText />
         </Marquee>
       </div>
-      <div className="w-[75%] mx-auto grid grid-cols-[60%_auto] gap-10">
+      <div className="w-[75%] mx-auto grid grid-cols-[55%_auto] gap-10 items-center">
         <div className="w-full bg-transparent rounded-[2rem] border-[3px] p-9 border-black flex flex-col justify-between gap-12">
           <div className="flex gap-2 dot-container">
             <div className="w-6 h-6 rounded-full border-[3px] border-black transition-all duration-500 project-dot"></div>
@@ -43,7 +45,19 @@ const Projects = () => {
             />
           </div>
         </div>
-        <div>BOX2</div>
+        <div className="h-[85%] flex flex-col justify-between">
+          <ProjectText group={"Web page"} title={"L&T Moto"} />
+          <ProjectText group={"Web page"} title={"ntRoot"} />
+          <ProjectText group={"Utility web app"} title={"Test drive survey"} />
+          <ProjectText group={"Utility web app"} title={"Travel report"} />
+          <div className="w-60">
+            <Button
+              text={"View all"}
+              bgColor={"bg-pinky"}
+              iconColor={"text-pinky"}
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

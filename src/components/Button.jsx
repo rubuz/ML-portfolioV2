@@ -1,14 +1,16 @@
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
 
-const Button = () => {
+const Button = ({ text, bgColor, iconColor }) => {
   return (
-    <div className="bg-pinky pl-16 pr-12 py-5 rounded-full text-lg flex items-center justify-center group relative">
+    <div
+      className={`${bgColor} pl-16 pr-12 py-5 rounded-full text-lg flex items-center justify-center group relative`}
+    >
       <a href="" className="h-10 flex items-center">
-        Say Hello
+        {text}
       </a>
       <div className="w-0 h-0 ml-4 flex items-center justify-center bg-black p-0 rounded-full rotate-[-180deg] group-hover:w-10 group-hover:h-10 group-hover:p-1 group-hover:rotate-[-45deg] transition-all duration-300">
-        <BsArrowRight className="text-2xl text-pinky" />
+        <BsArrowRight className={`text-2xl ${iconColor}`} />
       </div>
     </div>
   );
