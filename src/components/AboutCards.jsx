@@ -60,11 +60,12 @@ const AboutCards = () => {
     //   <div className="sticky top-0 h-[700px] items-center overflow-hidden flex">
     //     <motion.div style={{ x }} className="flex gap-6">
     <>
-      {cardsInfo.map((card) => (
+      {cardsInfo.map((card, index) => (
         <div
           className={`${card.color} py-16 px-12 w-[500px] h-[500px] shrink-0 flex flex-col rounded-[2rem] justify-between group overflow-hidden  hover:h-[532px] hover:-mt-8 transition-all duration-500 cards`}
+          key={index}
         >
-          <h2 className="text-6xl">{card.title}</h2>
+          <h2 className="text-6xl tracking-tight">{card.title}</h2>
           <div className="flex flex-row justify-between items-center shrink-0 translate-y-28 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
             <div className="w-24 h-24 bg-black rounded-full flex justify-center items-center">
               {card.icon}
@@ -75,7 +76,7 @@ const AboutCards = () => {
       ))}
 
       <div className="bg-olivy py-16 px-12 w-[500px] h-[500px] shrink-0 flex flex-col rounded-[2rem] justify-between group overflow-hidden relative hover:h-[532px] hover:-mt-8 transition-all duration-500">
-        <h2 className="text-6xl">More about me</h2>
+        <h2 className="text-6xl tracking-tight">More about me</h2>
         <div className="flex flex-row justify-between items-center shrink-0 translate-y-28 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
           <div className="w-24 h-24 bg-black rounded-full flex justify-center items-center">
             <FaRegRectangleList className="mt-2 text-olivy text-4xl animate-bounce" />
@@ -95,7 +96,7 @@ const AboutCards = () => {
       </div>
 
       <div className="bg-yellowy py-16 px-12 w-[500px] h-[500px] shrink-0 flex flex-col rounded-[2rem] justify-between group overflow-hidden relative hover:h-[532px] hover:-mt-8 transition-all duration-500">
-        <h2 className="text-6xl">Socials</h2>
+        <h2 className="text-6xl tracking-tight">Socials</h2>
         <div className="flex flex-row justify-between items-center shrink-0 translate-y-28 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
           <div className="w-24 h-24 bg-black rounded-full flex justify-center items-center">
             <FaCircleNodes className="mt-2 text-yellowy text-4xl animate-bounce" />

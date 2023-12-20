@@ -7,6 +7,7 @@ import Button from "./Button";
 
 const Projects = () => {
   const projectDot = document.querySelector(".dot-container");
+  const dots = document.querySelectorAll(".project-dot");
   const handleHover = () => {
     if (projectDot) {
       projectDot.classList.add("hoverd");
@@ -20,7 +21,10 @@ const Projects = () => {
   };
 
   return (
-    <section className="w-full bg-greeny rounded-t-[2rem] pb-32">
+    <section
+      id="work"
+      className="w-full bg-greeny rounded-t-[2rem] pb-[10.5rem]"
+    >
       <div>
         <Marquee autoFill speed={130}>
           <MarqueeText />
@@ -51,13 +55,19 @@ const Projects = () => {
           <ProjectText group={"Utility web app"} title={"Test drive survey"} />
           <ProjectText group={"Utility web app"} title={"Travel report"} />
           <div className="w-60">
-            <Button
-              text={"View all"}
-              bgColor={"bg-black"}
-              iconColor={"text-black"}
-              circleColor={"bg-greeny"}
-              textColor={"text-greeny"}
-            />
+            <a
+              href="https://github.com/rubuz"
+              target="_blank"
+              alt="Link to github repository"
+            >
+              <Button
+                text={"View all"}
+                bgColor={"bg-black"}
+                iconColor={"text-black"}
+                circleColor={"bg-greeny"}
+                textColor={"text-greeny"}
+              />
+            </a>
           </div>
         </div>
       </div>

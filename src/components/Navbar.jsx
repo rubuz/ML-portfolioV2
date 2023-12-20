@@ -7,19 +7,19 @@ const Navbar = () => {
       <div className="max-w-[1400px] w-1/4 ">
         <ul className="flex justify-around items-center h-14 gap-x-8">
           <li className="group nav-btn hover:bg-pinky transition-all duration-500 ease-in-out">
-            <a href="">home</a>
+            <a href="#">home</a>
             <FaArrowRight className="nav-icon" />
           </li>
           <li className="group nav-btn hover:bg-pinky transition-all duration-500 ease-in-out">
-            <a href="">about</a>
+            <a href="#about">about</a>
             <FaArrowRight className="nav-icon" />
           </li>
           <li className="group nav-btn hover:bg-pinky transition-all duration-500 ease-in-out">
-            <a href="">work</a>
+            <a href="#work">work</a>
             <FaArrowRight className="nav-icon" />
           </li>
           <li className="group nav-btn hover:bg-pinky transition-all duration-500 ease-in-out">
-            <a href="">contact</a>
+            <a href="#contact">contact</a>
             <FaArrowRight className="nav-icon" />
           </li>
         </ul>

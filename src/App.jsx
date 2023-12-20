@@ -1,12 +1,16 @@
 import { useRef } from "react";
+
 import "./App.css";
+import TextImg from "../src/assets/text2.webp";
+
 import AboutCards from "./components/AboutCards";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import TitleChanger from "./components/TitleChanger";
-import { useScroll, useTransform, motion } from "framer-motion";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
+import { useScroll, useTransform, motion } from "framer-motion";
+import Footer from "./components/Footer";
 
 function App() {
   const targetRef = useRef(null);
@@ -23,11 +27,7 @@ function App() {
     <div className="font-work">
       <Navbar />
       <TitleChanger />
-      <section
-        ection
-        ref={targetRef}
-        className="relative h-[190vh] flex flex-col"
-      >
+      <section ref={targetRef} className="relative h-[190vh] flex flex-col">
         <motion.div
           style={{
             scale: scaleProgress,
@@ -38,13 +38,19 @@ function App() {
           <Hero />
         </motion.div>
         <div className="sticky top-[30%]">
-          <motion.div style={{ x }} className="flex gap-8 mb-10">
+          <motion.div style={{ x }} className="flex gap-8 mb-10" id="about">
             <AboutCards />
           </motion.div>
         </div>
       </section>
       <Projects />
       <Contact />
+      <div className="w-1/2 mx-auto py-32">
+        <a href="#">
+          <img src={TextImg} alt="Img with text LOVENJAK" />
+        </a>
+      </div>
+      <Footer />
     </div>
   );
 }
