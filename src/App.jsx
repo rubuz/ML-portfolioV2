@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import TitleChanger from "./components/TitleChanger";
 import { useScroll, useTransform, motion } from "framer-motion";
 import Projects from "./components/Projects";
+import Contact from "./components/Contact";
 
 function App() {
   const targetRef = useRef(null);
@@ -43,7 +44,7 @@ function App() {
         </div>
       </section>
       <Projects />
-      <div className="w-full h-[1900px] bg-purple-800">TEST</div>{" "}
+      <Contact />
     </div>
   );
 }

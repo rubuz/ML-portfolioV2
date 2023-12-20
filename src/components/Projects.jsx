@@ -20,7 +20,7 @@ const Projects = () => {
   };
 
   return (
-    <section className="w-full bg-greeny rounded-t-[2rem] pb-4">
+    <section className="w-full bg-greeny rounded-t-[2rem] pb-32">
       <div>
         <Marquee autoFill speed={130}>
           <MarqueeText />
@@ -53,8 +53,10 @@ const Projects = () => {
           <div className="w-60">
             <Button
               text={"View all"}
-              bgColor={"bg-pinky"}
-              iconColor={"text-pinky"}
+              bgColor={"bg-black"}
+              iconColor={"text-black"}
+              circleColor={"bg-greeny"}
+              textColor={"text-greeny"}
             />
           </div>
         </div>

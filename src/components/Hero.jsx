@@ -16,7 +16,13 @@ const Hero = () => {
           </h2>
           <BsArrowRight className="absolute text-6xl rotate-[135deg] left-[-5rem] bottom-0" />
         </div>
-        <Button />
+        <Button
+          text={"Say Hello"}
+          bgColor={"bg-pinky"}
+          iconColor={"text-pinky"}
+          circleColor={"bg-black"}
+          textColor={"text-black"}
+        />
       </div>
     </div>
   );

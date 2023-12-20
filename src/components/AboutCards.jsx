@@ -19,7 +19,7 @@ const cardsInfo = [
   },
   {
     title: "Frontend Developer",
-    text: "Self-taught frontend web developer with expertise in HTML, CSS, JavaScript, and ReactJS. Passionate about creating dynamic and user-friendly experiences.",
+    text: "Self-taught frontend web developer with expertise in HTML, CSS, JavaScript, TailwindCSS and ReactJS. Passionate about creating dynamic and user-friendly experiences.",
     color: "bg-pinky",
     id: 2,
     icon: <FaCode className="mt-2 text-pinky text-4xl animate-bounce" />,
