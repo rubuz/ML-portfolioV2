@@ -1,8 +1,12 @@
 import React from "react";
 
-const ProjectText = ({ title, group }) => {
+const ProjectText = ({ title, group, onMouseEnter, onMouseLeave }) => {
   return (
-    <div className="group flex flex-col gap-4 cursor-pointer">
+    <div
+      className="group flex flex-col gap-4 cursor-pointer"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <p className="text-2xl">{group}</p>
       <h3 className="text-7xl font-medium tracking-tight">{title}</h3>
       <div className="w-full h-1 bg-black/30 relative">

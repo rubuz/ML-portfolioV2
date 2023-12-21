@@ -10,6 +10,9 @@ export const projectsInfo = [
     group: "Web page",
     title: "L&T Moto",
     url: "https://ltmoto.netlify.app/",
+    description:
+      "A landig page for small company that sells motorcycles. Page is written in ReactJS with TailwindCSS. Contact form uses PHP scripts on backend server.",
+    tech: "ReactJS, TailwindCSS, PHP",
   },
   {
     id: 2,
@@ -17,6 +20,9 @@ export const projectsInfo = [
     group: "Web page",
     title: "ntRoot",
     url: "https://eloquent-bonbon-b4a5f7.netlify.app",
+    description:
+      "A website for small IT bussnies. One of my first full multi-page web pages. It was fully build with vanilla HTML, CSS and JS.",
+    tech: "HTML, CSS, JS",
   },
   {
     id: 3,
@@ -24,6 +30,9 @@ export const projectsInfo = [
     group: "Utility web app",
     title: "Test drive survey",
     url: "https://64afd2688bb4cb0326df645e--splendorous-pithivier-d797a9.netlify.app/",
+    description:
+      "RV test drive survey is a React.js web app that simplifies the process of collecting feedback and complaints after test driving an RV. Users can enter data, submit complaints, and even upload pictures. The app generates a JSON file that is uploaded to the backend server for further analysis.",
+    tech: "ReactJS, CSS, React Router",
   },
   {
     id: 4,
@@ -31,5 +40,8 @@ export const projectsInfo = [
     group: "Utility web app",
     title: "Travel report",
     url: "https://clever-praline-9cfb49.netlify.app/",
+    description:
+      "Business Trip Report form, simplifying reporting process. Employees can conveniently input trip details once, store them in local storage, preview the report, and print it when ready for physical submission.",
+    tech: "ReactJS, TailwindCSS",
   },
 ];

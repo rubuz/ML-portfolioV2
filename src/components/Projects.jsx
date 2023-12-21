@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Project1 from "../assets/project1.png";
 import Marquee from "react-fast-marquee";
 import MarqueeText from "./MarqueeText";
@@ -10,6 +10,12 @@ import { projectsInfo } from "./projectsInfo";
 const Projects = () => {
   const projectDot = document.querySelector(".dot-container");
   const dots = document.querySelectorAll(".project-dot");
+  const [hoveredProject, setHoveredProject] = useState(projectsInfo[0]);
+
+  const handleHoverProject = (project) => {
+    setHoveredProject(project);
+  };
+
   const handleHover = () => {
     if (projectDot) {
       projectDot.classList.add("hoverd");
@@ -40,15 +46,23 @@ const Projects = () => {
             <div className="w-6 h-6 rounded-full border-[3px] border-black transition-all duration-500 project-dot"></div>
           </div>
           <div
-            className="w-full project-img cursor-pointer"
+            className="w-full project-img rounded-2xl hover:scale-[104%] transition-all duration-1000 relative overflow-hidden group"
             onMouseEnter={handleHover}
             onMouseLeave={handleMouseLeave}
           >
-            <img
-              src={Project1}
-              alt=""
-              className="object-contain rounded-2xl hover:scale-[104%] transition-all duration-1000"
-            />
+            <div>
+              <img
+                src={hoveredProject ? hoveredProject.image : ""}
+                alt=""
+                className="object-contain rounded-2xl  "
+              />
+            </div>
+            <div className="absolute top-0 right-0 z-10 w-full h-full bg-black/80 rounded-2xl translate-y-0 group-hover:translate-y-0 transition-all duration-500">
+              <div>
+                <p className="text-white">{hoveredProject.title}</p>
+                <p>{}</p>
+              </div>
+            </div>
           </div>
         </div>
         <div className="h-[85%] flex flex-col justify-between">
@@ -57,6 +71,9 @@ const Projects = () => {
               group={project.group}
               title={project.title}
               key={project.id}
+              onMouseEnter={() => {
+                handleHoverProject(project);
+              }}
             />
           ))}
           {/* <ProjectText group={"Web page"} title={"L&T Moto"} />
