@@ -38,7 +38,7 @@ const Contact = () => {
             </a>
           </div>
         </div>
-        <div className="py-16 px-12 rounded-[2rem] flex flex-col gap-10 justify-between bg-pinky group">
+        <div className="py-16 px-12 rounded-[2rem] flex flex-col gap-10 justify-between bg-bluey group">
           <div>
             <LiaAsteriskSolid className="w-20 h-20 group-hover:animate-spin-slow" />
           </div>

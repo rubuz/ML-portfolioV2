@@ -5,6 +5,8 @@ import MarqueeText from "./MarqueeText";
 import ProjectText from "./ProjectText";
 import Button from "./Button";
 
+import { projectsInfo } from "./projectsInfo";
+
 const Projects = () => {
   const projectDot = document.querySelector(".dot-container");
   const dots = document.querySelectorAll(".project-dot");
@@ -50,10 +52,17 @@ const Projects = () => {
           </div>
         </div>
         <div className="h-[85%] flex flex-col justify-between">
-          <ProjectText group={"Web page"} title={"L&T Moto"} />
+          {projectsInfo.map((project) => (
+            <ProjectText
+              group={project.group}
+              title={project.title}
+              key={project.id}
+            />
+          ))}
+          {/* <ProjectText group={"Web page"} title={"L&T Moto"} />
           <ProjectText group={"Web page"} title={"ntRoot"} />
           <ProjectText group={"Utility web app"} title={"Test drive survey"} />
-          <ProjectText group={"Utility web app"} title={"Travel report"} />
+          <ProjectText group={"Utility web app"} title={"Travel report"} /> */}
           <div className="w-60">
             <a
               href="https://github.com/rubuz"
