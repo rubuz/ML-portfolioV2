@@ -28,10 +28,23 @@ const Projects = () => {
     }
   };
 
+  const handleBGChange = () => {
+    switch (hoveredProject.id) {
+      case 1:
+        return "bg-greeny";
+      case 2:
+        return "bg-yellowy";
+      case 3:
+        return "bg-bluey";
+      case 4:
+        return "bg-pinky";
+    }
+  };
+
   return (
     <section
       id="work"
-      className="w-full bg-greeny rounded-t-[2rem] pb-[10.5rem]"
+      className={`w-full ${handleBGChange()} rounded-t-[2rem] pb-[10.5rem] transition-all duration-200`}
     >
       <div>
         <Marquee autoFill speed={130}>
