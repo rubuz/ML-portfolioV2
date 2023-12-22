@@ -47,6 +47,7 @@ const TitleChanger = () => {
     // Clear timeout when component unmounts
     return () => clearTimeout(timeout);
   }, [currentImageIndex, images]);
+
   return (
     <section className="max-w-[1400px] h-[230px] mx-auto flex justify-center items-center">
       <div className="h-max-[200px] w-2/3 flex justify-center items-center">

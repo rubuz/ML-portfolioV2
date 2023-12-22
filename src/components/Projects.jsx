@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import Project1 from "../assets/project1.png";
 import Marquee from "react-fast-marquee";
 import MarqueeText from "./MarqueeText";
 import ProjectText from "./ProjectText";
 import Button from "./Button";
+
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 import { projectsInfo } from "./projectsInfo";
 
@@ -31,20 +32,20 @@ const Projects = () => {
   const handleBGChange = () => {
     switch (hoveredProject.id) {
       case 1:
-        return "bg-greeny";
+        return "greeny";
       case 2:
-        return "bg-yellowy";
+        return "yellowy";
       case 3:
-        return "bg-bluey";
+        return "bluey";
       case 4:
-        return "bg-pinky";
+        return "olivy";
     }
   };
 
   return (
     <section
       id="work"
-      className={`w-full ${handleBGChange()} rounded-t-[2rem] pb-[10.5rem] transition-all duration-200`}
+      className={`w-full bg-${handleBGChange()} rounded-t-[2rem] pb-[10.5rem] transition-all duration-200`}
     >
       <div>
         <Marquee autoFill speed={130}>
@@ -83,9 +84,9 @@ const Projects = () => {
                 <a
                   href={hoveredProject.url}
                   target="_blank"
-                  className="text-2xl hover:underline hover:text-3xl transition-all duration-500"
+                  className={`text-2xl font-semibold hover:underline text-${handleBGChange()} transition-all duration-500 flex items-center gap-4`}
                 >
-                  DEMO
+                  DEMO <FaArrowLeftLong className="animate-bounce-left" />
                 </a>
               </div>
             </div>
@@ -116,8 +117,8 @@ const Projects = () => {
                 text={"View all"}
                 bgColor={"bg-black"}
                 iconColor={"text-black"}
-                circleColor={"bg-greeny"}
-                textColor={"text-greeny"}
+                circleColor={`bg-${handleBGChange()}`}
+                textColor={`text-${handleBGChange()}`}
               />
             </a>
           </div>
