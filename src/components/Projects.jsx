@@ -45,7 +45,7 @@ const Projects = () => {
   return (
     <section
       id="work"
-      className={`w-full bg-${handleBGChange()} rounded-t-[2rem] pb-[10.5rem] transition-all duration-200`}
+      className={`w-full bg-${handleBGChange()} rounded-t-[2rem] pb-[10.5rem] transition-all duration-300`}
     >
       <div>
         <Marquee autoFill speed={130}>
@@ -60,7 +60,7 @@ const Projects = () => {
             <div className="w-6 h-6 rounded-full border-[3px] border-black transition-all duration-500 project-dot"></div>
           </div>
           <div
-            className="w-full project-img rounded-2xl hover:scale-[104%] transition-all duration-1000 relative overflow-hidden group"
+            className="w-full project-img rounded-2xl hover:scale-[105%] transition-all duration-1000 relative overflow-hidden group"
             onMouseEnter={handleHover}
             onMouseLeave={handleMouseLeave}
           >

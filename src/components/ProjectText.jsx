@@ -3,7 +3,7 @@ import React from "react";
 const ProjectText = ({ title, group, onMouseEnter, onMouseLeave }) => {
   return (
     <div
-      className="group flex flex-col gap-4 cursor-pointer"
+      className="group flex flex-col gap-4"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >

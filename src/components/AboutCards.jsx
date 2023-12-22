@@ -12,7 +12,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 const cardsInfo = [
   {
     title: "IT Engineer",
-    text: "An experienced IT system administrator working in the world of IT for more than 7 years. Started to transition into a web-developer.",
+    text: "An experienced IT system administrator working in the world of IT for more than 7 years. Started a transition into a web-developer.",
     color: "bg-bluey",
     id: 1,
     icon: <FaLaptop className="mt-2 text-bluey text-4xl animate-bounce" />,

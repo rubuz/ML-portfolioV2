@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 import "./App.css";
-import TextImg from "../src/assets/text2.webp";
+import TextImg from "../src/assets/text1.webp";
 
 import AboutCards from "./components/AboutCards";
 import Hero from "./components/Hero";
@@ -9,8 +9,10 @@ import Navbar from "./components/Navbar";
 import TitleChanger from "./components/TitleChanger";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
-import { useScroll, useTransform, motion } from "framer-motion";
 import Footer from "./components/Footer";
+
+import { useScroll, useTransform, motion } from "framer-motion";
+import { Slide } from "react-awesome-reveal";
 
 function App() {
   const targetRef = useRef(null);
@@ -45,11 +47,11 @@ function App() {
       </section>
       <Projects />
       <Contact />
-      <div className="w-1/2 mx-auto py-32">
+      <Slide direction="up" triggerOnce="true" className="w-1/2 mx-auto py-32">
         <a href="#">
           <img src={TextImg} alt="Img with text LOVENJAK" />
         </a>
-      </div>
+      </Slide>
       <Footer />
     </div>
   );
