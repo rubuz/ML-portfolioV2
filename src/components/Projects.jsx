@@ -52,7 +52,7 @@ const Projects = () => {
           <MarqueeText />
         </Marquee>
       </div>
-      <div className="w-[75%] mx-auto grid grid-cols-[55%_auto] gap-10 items-center">
+      <div className="xl:w-[75%] mx-auto grid xl:grid-cols-[55%_auto] gap-10 items-center md:grid-cols-1 w-[85%]">
         <div className="w-full bg-transparent rounded-[2rem] border-[3px] p-9 border-black flex flex-col justify-between gap-12">
           <div className="flex gap-2 dot-container">
             <div className="w-6 h-6 rounded-full border-[3px] border-black transition-all duration-500 project-dot"></div>
@@ -92,7 +92,7 @@ const Projects = () => {
             </div>
           </div>
         </div>
-        <div className="h-[85%] flex flex-col justify-between">
+        <div className="h-[80%] flex flex-col justify-between xl:gap-5 gap-10">
           {projectsInfo.map((project) => (
             <ProjectText
               group={project.group}

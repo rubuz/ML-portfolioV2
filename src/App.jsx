@@ -49,7 +49,11 @@ function App() {
       </section>
       <Projects />
       <Contact />
-      <Slide direction="up" triggerOnce="true" className="w-1/2 mx-auto py-32">
+      <Slide
+        direction="up"
+        triggerOnce="true"
+        className="lg:w-1/2 w-2/3 mx-auto py-32"
+      >
         <a href="#">
           <img src={TextImg} alt="Img with text LOVENJAK" />
         </a>
