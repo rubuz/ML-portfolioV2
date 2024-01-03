@@ -37,13 +37,15 @@ function App() {
           }}
           className=" sticky top-[-20%] h-[55vh]"
         >
-          <Hero />
+          <Slide direction="left" triggerOnce="true">
+            <Hero />
+          </Slide>
         </motion.div>
-        <div className="sticky top-[30%]">
+        <Slide direction="up" triggerOnce="true" className="sticky top-[30%]">
           <motion.div style={{ x }} className="flex gap-8 mb-10" id="about">
             <AboutCards />
           </motion.div>
-        </div>
+        </Slide>
       </section>
       <Projects />
       <Contact />
