@@ -13,8 +13,11 @@ import Footer from "./components/Footer";
 
 import { useScroll, useTransform, motion } from "framer-motion";
 import { Slide } from "react-awesome-reveal";
+import { useMediaQuery } from "react-responsive";
 
 function App() {
+  const isDesktopOrLaptop = useMediaQuery({ query: "(min-width: 1024px)" });
+
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -29,24 +32,34 @@ function App() {
     <div className="font-work">
       <Navbar />
       <TitleChanger />
-      <section ref={targetRef} className="relative h-[190vh] flex flex-col">
-        <motion.div
-          style={{
-            scale: scaleProgress,
-            opacity: opacityProgress,
-          }}
-          className=" sticky top-[-20%] h-[55vh]"
-        >
-          <Slide direction="left" triggerOnce="true">
+      {isDesktopOrLaptop && (
+        <section ref={targetRef} className="relative h-[190vh] flex flex-col">
+          <motion.div
+            style={{
+              scale: scaleProgress,
+              opacity: opacityProgress,
+            }}
+            className=" sticky top-[-20%] h-[55vh]"
+          >
             <Hero />
-          </Slide>
-        </motion.div>
-        <Slide direction="up" triggerOnce="true" className="sticky top-[30%]">
-          <motion.div style={{ x }} className="flex gap-8 mb-10" id="about">
-            <AboutCards />
           </motion.div>
-        </Slide>
-      </section>
+          <Slide direction="up" triggerOnce="true" className="sticky top-[30%]">
+            <motion.div style={{ x }} className="flex gap-8 mb-10" id="about">
+              <AboutCards />
+            </motion.div>
+          </Slide>
+        </section>
+      )}
+
+      {!isDesktopOrLaptop && (
+        <section className="flex flex-col gap-10">
+          <Hero />
+
+          <div className="flex overflow-x-scroll gap-8 my-10">
+            <AboutCards />
+          </div>
+        </section>
+      )}
       <Projects />
       <Contact />
       <Slide
