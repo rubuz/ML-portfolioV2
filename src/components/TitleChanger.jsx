@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import { Slide } from "react-awesome-reveal";
+
 import Title1 from "../assets/text1.webp";
 import Title2 from "../assets/text2.webp";
 import Title3 from "../assets/text3.webp";
@@ -50,13 +52,17 @@ const TitleChanger = () => {
 
   return (
     <section className="max-w-[1400px] h-[230px] mx-auto flex justify-center items-center">
-      <div className="h-max-[200px] w-2/3 flex justify-center items-center">
+      <Slide
+        direction="down"
+        triggerOnce="true"
+        className="h-max-[200px] w-2/3 flex justify-center items-center"
+      >
         <img
           src={images[currentImageIndex]}
           alt="title-lovenjak"
           className="object-contain"
         />
-      </div>
+      </Slide>
     </section>
   );
 };

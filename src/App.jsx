@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 import "./App.css";
-import TextImg from "../src/assets/text2.webp";
+import TextImg from "../src/assets/text1.webp";
 
 import AboutCards from "./components/AboutCards";
 import Hero from "./components/Hero";
@@ -9,8 +9,10 @@ import Navbar from "./components/Navbar";
 import TitleChanger from "./components/TitleChanger";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
-import { useScroll, useTransform, motion } from "framer-motion";
 import Footer from "./components/Footer";
+
+import { useScroll, useTransform, motion } from "framer-motion";
+import { Slide } from "react-awesome-reveal";
 
 function App() {
   const targetRef = useRef(null);
@@ -35,21 +37,27 @@ function App() {
           }}
           className=" sticky top-[-20%] h-[55vh]"
         >
-          <Hero />
+          <Slide direction="left" triggerOnce="true">
+            <Hero />
+          </Slide>
         </motion.div>
-        <div className="sticky top-[30%]">
+        <Slide direction="up" triggerOnce="true" className="sticky top-[30%]">
           <motion.div style={{ x }} className="flex gap-8 mb-10" id="about">
             <AboutCards />
           </motion.div>
-        </div>
+        </Slide>
       </section>
       <Projects />
       <Contact />
-      <div className="w-1/2 mx-auto py-32">
+      <Slide
+        direction="up"
+        triggerOnce="true"
+        className="lg:w-1/2 w-2/3 mx-auto py-32"
+      >
         <a href="#">
           <img src={TextImg} alt="Img with text LOVENJAK" />
         </a>
-      </div>
+      </Slide>
       <Footer />
     </div>
   );

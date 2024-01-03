@@ -45,14 +45,14 @@ const Projects = () => {
   return (
     <section
       id="work"
-      className={`w-full bg-${handleBGChange()} rounded-t-[2rem] pb-[10.5rem] transition-all duration-200`}
+      className={`w-full bg-${handleBGChange()} rounded-t-[2rem] pb-[10.5rem] transition-all duration-300`}
     >
       <div>
         <Marquee autoFill speed={130}>
           <MarqueeText />
         </Marquee>
       </div>
-      <div className="w-[75%] mx-auto grid grid-cols-[55%_auto] gap-10 items-center">
+      <div className="xl:w-[75%] mx-auto grid xl:grid-cols-[55%_auto] gap-10 items-center md:grid-cols-1 w-[85%]">
         <div className="w-full bg-transparent rounded-[2rem] border-[3px] p-9 border-black flex flex-col justify-between gap-12">
           <div className="flex gap-2 dot-container">
             <div className="w-6 h-6 rounded-full border-[3px] border-black transition-all duration-500 project-dot"></div>
@@ -60,7 +60,7 @@ const Projects = () => {
             <div className="w-6 h-6 rounded-full border-[3px] border-black transition-all duration-500 project-dot"></div>
           </div>
           <div
-            className="w-full project-img rounded-2xl hover:scale-[104%] transition-all duration-1000 relative overflow-hidden group"
+            className="w-full project-img rounded-2xl hover:scale-[105%] transition-all duration-1000 relative overflow-hidden group"
             onMouseEnter={handleHover}
             onMouseLeave={handleMouseLeave}
           >
@@ -92,7 +92,7 @@ const Projects = () => {
             </div>
           </div>
         </div>
-        <div className="h-[85%] flex flex-col justify-between">
+        <div className="h-[80%] flex flex-col justify-between xl:gap-5 gap-10">
           {projectsInfo.map((project) => (
             <ProjectText
               group={project.group}
