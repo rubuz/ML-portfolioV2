@@ -5,7 +5,7 @@ import Button from "./Button";
 
 const Hero = () => {
   return (
-    <div className="mt-20 flex flex-row-reverse">
+    <div className="mt-20 flex lg:flex-row-reverse flex-col-reverse">
       <div className="mx-auto hero__img"></div>
       <div className="w-1/2 flex flex-col items-start justify-center gap-8">
         <button>theme</button>
