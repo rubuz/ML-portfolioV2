@@ -52,10 +52,10 @@ function App() {
       )}
 
       {!isDesktopOrLaptop && (
-        <section className="flex flex-col gap-10">
+        <section className="flex flex-col sm:gap-10 gap-4">
           <Hero />
 
-          <div className="flex overflow-x-scroll gap-8 my-10">
+          <div className="flex overflow-x-scroll gap-4 my-10">
             <AboutCards />
           </div>
         </section>

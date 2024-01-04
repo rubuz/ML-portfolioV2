@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Marquee from "react-fast-marquee";
 import MarqueeText from "./MarqueeText";
 import ProjectText from "./ProjectText";
@@ -86,6 +86,7 @@ const Projects = () => {
                 <a
                   href={hoveredProject.url}
                   target="_blank"
+                  rel="noreferrer"
                   className={`sm:text-2xl text-xl font-semibold hover:underline text-${handleBGChange()} transition-all duration-500 flex items-center gap-4`}
                 >
                   DEMO <FaArrowLeftLong className="animate-bounce-left" />
@@ -113,6 +114,7 @@ const Projects = () => {
             <a
               href="https://github.com/rubuz"
               target="_blank"
+              rel="noreferrer"
               alt="Link to github repository"
             >
               <Button
