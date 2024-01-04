@@ -4,9 +4,9 @@ import { Slide } from "react-awesome-reveal";
 
 const Navbar = () => {
   return (
-    <nav className="w-screen flex justify-center py-8">
+    <nav className="w-screen flex justify-center py-10">
       <div className="max-w-[1400px] w-1/4 ">
-        <ul className="flex justify-around items-center h-14 gap-x-8">
+        <ul className="flex justify-around items-center h-14 gap-x-8 text-lg">
           <Slide direction="down" triggerOnce="true">
             <li className="group nav-btn hover:bg-pinky transition-all duration-500 ease-in-out">
               <a href="#">home</a>
