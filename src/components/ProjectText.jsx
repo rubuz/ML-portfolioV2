@@ -8,7 +8,7 @@ const ProjectText = ({ title, group, onMouseEnter, onMouseLeave }) => {
       onMouseLeave={onMouseLeave}
     >
       <p className="text-2xl">{group}</p>
-      <h3 className="sm:text-7xl text-6xl font-medium tracking-tight">
+      <h3 className="sm:text-7xl text-5xl font-medium tracking-tight">
         {title}
       </h3>
       <div className="w-full h-1 bg-black/30 relative">

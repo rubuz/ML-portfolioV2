@@ -66,7 +66,7 @@ function App() {
       <Slide
         direction="up"
         triggerOnce="true"
-        className="lg:w-1/2 w-2/3 mx-auto py-32"
+        className="lg:w-1/2 w-2/3 mx-auto sm:py-32 py-14"
       >
         <a href="#">
           <img src={TextImg} alt="Img with text LOVENJAK" />

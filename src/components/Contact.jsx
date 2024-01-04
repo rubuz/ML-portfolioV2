@@ -8,10 +8,10 @@ const Contact = () => {
   return (
     <section className="rounded-t-[2rem] -mt-12 bg-white" id="contact">
       <Slide direction="right" triggerOnce="true">
-        <div className="lg:max-w-[75%] sm:max-w-[85%] max-w-[95%] mx-auto flex pt-32 gap-6 lg:flex-row flex-col">
-          <div className="lg:max-w-[70%] bg-yellowy py-16 px-12 rounded-[2rem] flex flex-col gap-10 justify-between contact__mailbox">
+        <div className="lg:max-w-[75%] sm:max-w-[85%] max-w-[95%] mx-auto flex sm:pt-32 pt-16 gap-6 lg:flex-row flex-col">
+          <div className="lg:max-w-[70%] bg-yellowy sm:py-16 sm:px-12 py-12 px-8 rounded-[2rem] flex flex-col gap-10 justify-between contact__mailbox">
             <div className="flex">
-              <MdAlternateEmail className="w-20 h-20 contact__mailbox-icon" />
+              <MdAlternateEmail className="sm:w-20 sm:h-20 w-14 h-14 contact__mailbox-icon" />
             </div>
             <h2 className="lg:text-6xl text-5xl tracking-tight">
               Send me an email
@@ -43,9 +43,9 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="py-16 px-12 rounded-[2rem] flex flex-col gap-10 justify-between bg-bluey group">
+          <div className="sm:py-16 sm:px-12 py-12 px-8 rounded-[2rem] flex flex-col gap-10 justify-between bg-bluey group">
             <div>
-              <LiaAsteriskSolid className="w-20 h-20 group-hover:animate-spin-slow" />
+              <LiaAsteriskSolid className="sm:w-20 sm:h-20 w-14 h-14 group-hover:animate-spin-slow" />
             </div>
             <h2 className="lg:text-6xl text-5xl tracking-tight">
               Contact me on socials
