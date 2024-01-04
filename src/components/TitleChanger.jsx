@@ -51,7 +51,7 @@ const TitleChanger = () => {
   }, [currentImageIndex, images]);
 
   return (
-    <section className="max-w-[1400px] h-[230px] w-full mx-auto flex justify-center items-center">
+    <section className="max-w-[1400px] h-[230px] w-full mx-auto flex justify-center items-center my-10">
       <Slide
         direction="down"
         triggerOnce="true"

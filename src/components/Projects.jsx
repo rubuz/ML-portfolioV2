@@ -47,12 +47,12 @@ const Projects = () => {
       id="work"
       className={`w-full bg-${handleBGChange()} rounded-t-[2rem] pb-[10.5rem] transition-all duration-300`}
     >
-      <div>
+      <div className="py-4">
         <Marquee autoFill speed={130}>
           <MarqueeText />
         </Marquee>
       </div>
-      <div className="xl:w-[75%] mx-auto grid xl:grid-cols-[55%_auto] gap-10 items-center md:grid-cols-1 w-[85%]">
+      <div className="xl:w-[75%] mx-auto grid xl:grid-cols-[55%_auto] sm:gap-10 gap-0 items-center md:grid-cols-1 sm:w-[85%] w-[95%] sm:mb-0 mb-20">
         <div className="w-full bg-transparent rounded-[2rem] border-[3px] p-9 border-black flex flex-col justify-between gap-12">
           <div className="flex gap-2 dot-container">
             <div className="w-6 h-6 rounded-full border-[3px] border-black transition-all duration-500 project-dot"></div>
@@ -73,11 +73,13 @@ const Projects = () => {
             </div>
             <div className="absolute top-0 right-0 z-10 w-full h-full bg-black/90 rounded-2xl p-9 flex items-end translate-y-full group-hover:translate-y-0 transition-all duration-500">
               <div className="flex flex-col gap-4 text-white">
-                <p className="text-6xl font-semibold">{hoveredProject.title}</p>
-                <p className="max-w-[65%] text-lg">
+                <p className="sm:text-6xl text-4xl font-semibold">
+                  {hoveredProject.title}
+                </p>
+                <p className="max-w-[65%] sm:text-lg">
                   {hoveredProject.description}
                 </p>
-                <div className="text-lg">
+                <div className="sm:text-lg">
                   <p className="font-medium">Tech stack:</p>
                   <p>{hoveredProject.tech}</p>
                 </div>

@@ -60,6 +60,7 @@ function App() {
           </div>
         </section>
       )}
+
       <Projects />
       <Contact />
       <Slide
