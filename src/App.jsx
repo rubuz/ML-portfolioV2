@@ -14,9 +14,11 @@ import Footer from "./components/Footer";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { Slide } from "react-awesome-reveal";
 import { useMediaQuery } from "react-responsive";
+import MobileNav from "./components/MobileNav";
 
 function App() {
   const isDesktopOrLaptop = useMediaQuery({ query: "(min-width: 1024px)" });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 900px)" });
 
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -30,7 +32,7 @@ function App() {
 
   return (
     <div className="font-work">
-      <Navbar />
+      {isTabletOrMobile ? <MobileNav /> : <Navbar />}
       <TitleChanger />
       {isDesktopOrLaptop && (
         <section ref={targetRef} className="relative h-[190vh] flex flex-col">

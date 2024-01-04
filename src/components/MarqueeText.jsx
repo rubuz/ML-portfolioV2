@@ -1,4 +1,3 @@
-import React from "react";
 import { LiaAsteriskSolid } from "react-icons/lia";
 
 const MarqueeText = () => {

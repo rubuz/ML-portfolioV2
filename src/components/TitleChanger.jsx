@@ -51,11 +51,11 @@ const TitleChanger = () => {
   }, [currentImageIndex, images]);
 
   return (
-    <section className="max-w-[1400px] sm:h-[230px] h-[50px] w-full mx-auto flex justify-center items-center sm:my-10">
+    <section className="max-w-[1400px] sm:h-[230px] h-[50px] w-full mx-auto flex justify-center items-center sm:my-10 max-sm:mt-8">
       <Slide
         direction="down"
         triggerOnce="true"
-        className="h-max-[200px] w-[90%] flex justify-center items-center"
+        className="h-max-[200px] w-[95%] flex justify-center items-center"
       >
         <img
           src={images[currentImageIndex]}

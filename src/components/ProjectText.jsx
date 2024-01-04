@@ -1,5 +1,3 @@
-import React from "react";
-
 const ProjectText = ({ title, group, onMouseEnter, onMouseLeave }) => {
   return (
     <div
