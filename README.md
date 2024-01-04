@@ -1,8 +1,4 @@
-# React + Vite
+# Project Title
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the second version of my portfolio. It is a responsive web application built with React and TailwindCSS. It features a dynamic navbar, a title changer, hero section, about cards, projects, and a contact section. The layout adapts to both desktop and mobile views and it has smooth animations for a better user experience.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
