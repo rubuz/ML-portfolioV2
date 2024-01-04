@@ -4,7 +4,6 @@ import MobileNavMenuBtn from "./MobileNavMenuBtn";
 const MobileNav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  console.log(isMenuOpen);
 
   const handleOpenMenu = () => {
     if (isMenuOpen) setIsMenuOpen(false);
@@ -24,27 +23,29 @@ const MobileNav = () => {
   }, []);
 
   return (
-    <div>
-      {isMenuOpen && (
-        <div className="fixed top-0 left-0 w-full h-screen bg-black/40 flex flex-col items-center justify-center text-white z-10">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
-        </div>
-      )}
+    <div className="sticky top-0 z-10">
+      <div
+        className={`fixed top-0 left-0 ${
+          isMenuOpen ? "translate-y-0" : "-translate-y-full"
+        } transition duration-300 w-full h-screen bg-blue-800 flex flex-col items-center justify-center text-white`}
+      >
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
       <nav
-        className={`w-full flex justify-between px-3 items-center sticky top-0 bg-white z-10 transition-all duration-300 ${
+        className={`w-full flex justify-between px-3 items-center bg-white z-30 transition-all duration-300 ${
           isScrolled ? "border-b-2 border-black py-2" : "py-6"
         }`}
       >
-        <div className="text-2xl tracking-tighter font-bold">
+        <div className="text-2xl tracking-tighter font-bold z-30">
           <a className="text-black" href="#">
             <span className="text-pinky">M</span>L
           </a>
         </div>
-        <div>
+        <div className="z-30">
           <MobileNavMenuBtn open={handleOpenMenu} />
-        </div>{" "}
+        </div>
       </nav>
     </div>
   );
