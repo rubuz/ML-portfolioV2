@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "./Button";
 import { MdAlternateEmail } from "react-icons/md";
 import { LiaAsteriskSolid } from "react-icons/lia";
@@ -18,8 +17,8 @@ const Contact = () => {
             </h2>
             <p className="text-lg leading-5 lg:max-w-[60%] max-w-[80%]">
               Feel free to drop me a message anytime! Whether you have a project
-              in mind, a question, or just want to say hello, I'm just an email
-              away. Reach out to me at{" "}
+              in mind, a question, or just want to say hello, I&apos;m just an
+              email away. Reach out to me at
               <span className="font-medium">
                 <a
                   href="mailto:matjaz.lovenjak@gmail.com"
@@ -28,7 +27,7 @@ const Contact = () => {
                   matjaz.lovenjak@gmail.com
                 </a>
               </span>{" "}
-              and let's start the conversation!
+              and let&apos;s start the conversation!
             </p>
             <div className="2xl:max-w-[30%] xl:max-w-[50%] sm:max-w-[50%] max-w-[70%]">
               <a href="mailto:matjaz.lovenjak@gmail.com">
@@ -45,7 +44,7 @@ const Contact = () => {
 
           <div className="sm:py-16 sm:px-12 py-12 px-8 rounded-[2rem] flex flex-col gap-10 justify-between bg-bluey group">
             <div>
-              <LiaAsteriskSolid className="sm:w-20 sm:h-20 w-14 h-14 group-hover:animate-spin-slow" />
+              <LiaAsteriskSolid className="sm:w-20 sm:h-20 w-14 h-14 sm:group-hover:animate-spin-slow max-sm:animate-spin-slow" />
             </div>
             <h2 className="lg:text-6xl text-5xl tracking-tight">
               Contact me on socials
@@ -55,6 +54,7 @@ const Contact = () => {
                 href="https://www.linkedin.com/in/matjaz-lovenjak/"
                 className="text-2xl mt-2 hover__link w-max font-semibold"
                 target="_blank"
+                rel="noreferrer"
                 aria-label="Link to my LinkedIn profile"
               >
                 linkedin
@@ -63,6 +63,7 @@ const Contact = () => {
                 href="https://www.facebook.com/matjaz.lovenjak"
                 className="text-2xl mt-2 hover__link w-max font-semibold"
                 target="_blank"
+                rel="noreferrer"
                 aria-label="Link to my Facebook profile"
               >
                 facebook
@@ -71,6 +72,7 @@ const Contact = () => {
                 href="https://www.instagram.com/rubuz88/"
                 className="text-2xl mt-2 hover__link w-max font-semibold"
                 target="_blank"
+                rel="noreferrer"
                 aria-label="Link to my Instagram profile"
               >
                 instagram

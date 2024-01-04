@@ -10,7 +10,7 @@ import { projectsInfo } from "./projectsInfo";
 
 const Projects = () => {
   const projectDot = document.querySelector(".dot-container");
-  const dots = document.querySelectorAll(".project-dot");
+  // const dots = document.querySelectorAll(".project-dot");
   const [hoveredProject, setHoveredProject] = useState(projectsInfo[0]);
 
   const handleHoverProject = (project) => {
