@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { Slide } from "react-awesome-reveal";
 
@@ -16,20 +16,23 @@ import Title11 from "../assets/text11.webp";
 import Title12 from "../assets/text12.webp";
 
 const TitleChanger = () => {
-  const images = [
-    Title1,
-    Title2,
-    Title3,
-    Title4,
-    Title5,
-    Title6,
-    Title7,
-    Title8,
-    Title9,
-    Title10,
-    Title11,
-    Title12,
-  ];
+  const images = useMemo(
+    () => [
+      Title1,
+      Title2,
+      Title3,
+      Title4,
+      Title5,
+      Title6,
+      Title7,
+      Title8,
+      Title9,
+      Title10,
+      Title11,
+      Title12,
+    ],
+    []
+  );
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   useEffect(() => {

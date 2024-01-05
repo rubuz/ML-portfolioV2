@@ -28,12 +28,13 @@ const MobileNav = () => {
   return (
     <div className="sticky top-0 z-10">
       <div
+        onClick={handleOpenMenu}
         className={`fixed top-0 left-0 ${
           isMenuOpen ? "translate-y-0" : "-translate-y-full"
-        } transition duration-500 w-full h-screen bg-blue-800 flex flex-col items-end px-3 pt-24 text-white`}
+        } transition duration-500 w-full h-screen bg-black flex flex-col items-end px-3 pt-24 text-white`}
       >
         <ul className="flex flex-col gap-10">
-          <Fade direction="down" delay="0" key={Math.random()}>
+          <Fade direction="down" delay="0" duration="700" key={Math.random()}>
             <li>
               <a
                 href="#"
@@ -44,7 +45,7 @@ const MobileNav = () => {
               </a>
             </li>
           </Fade>
-          <Fade direction="down" delay="20" key={Math.random()}>
+          <Fade direction="down" delay="20" duration="700" key={Math.random()}>
             <li>
               <a
                 href="#about"
@@ -55,7 +56,7 @@ const MobileNav = () => {
               </a>
             </li>
           </Fade>
-          <Fade direction="down" delay="40" key={Math.random()}>
+          <Fade direction="down" delay="40" duration="700" key={Math.random()}>
             <li>
               <a
                 href="#work"
@@ -66,7 +67,7 @@ const MobileNav = () => {
               </a>
             </li>
           </Fade>
-          <Fade direction="down" delay="60" key={Math.random()}>
+          <Fade direction="down" delay="60" duration="700" key={Math.random()}>
             <li>
               <a
                 href="#contact"
@@ -85,12 +86,17 @@ const MobileNav = () => {
         }`}
       >
         <div className="text-2xl tracking-tighter font-bold z-30">
-          <a className="text-black" href="#">
+          <a
+            className={`${
+              isMenuOpen ? "text-white" : "text-black"
+            } transition-colors duration-500 delay-50`}
+            href="#"
+          >
             <span className="text-pinky">M</span>L
           </a>
         </div>
         <div className="z-30">
-          <MobileNavMenuBtn open={handleOpenMenu} />
+          <MobileNavMenuBtn open={handleOpenMenu} openState={isMenuOpen} />
         </div>
       </nav>
     </div>

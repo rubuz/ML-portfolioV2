@@ -13,6 +13,12 @@ label span {
   transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
+.checked span {
+  background: #fff;
+  transition: 0.5s;
+  transition-delay: 50ms;
+}
+
 span:nth-of-type(1) {
   width: 50%;
 }

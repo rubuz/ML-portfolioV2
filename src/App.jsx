@@ -57,7 +57,7 @@ function App() {
         <section className="flex flex-col sm:gap-10 gap-4">
           <Hero />
 
-          <div className="flex overflow-x-scroll gap-4 my-10">
+          <div className="flex overflow-x-scroll gap-4 my-10" id="about">
             <AboutCards />
           </div>
         </section>
