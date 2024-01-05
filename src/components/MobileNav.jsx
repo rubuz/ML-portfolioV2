@@ -34,7 +34,7 @@ const MobileNav = () => {
         } transition duration-500 w-full h-screen bg-black flex flex-col items-end px-3 pt-24 text-white`}
       >
         <ul className="flex flex-col gap-10">
-          <Fade direction="down" delay="0" duration="700" key={Math.random()}>
+          <Fade direction="down" delay="0" duration="700">
             <li>
               <a
                 href="#"
@@ -45,7 +45,7 @@ const MobileNav = () => {
               </a>
             </li>
           </Fade>
-          <Fade direction="down" delay="20" duration="700" key={Math.random()}>
+          <Fade direction="down" delay="20" duration="700">
             <li>
               <a
                 href="#about"
@@ -56,7 +56,7 @@ const MobileNav = () => {
               </a>
             </li>
           </Fade>
-          <Fade direction="down" delay="40" duration="700" key={Math.random()}>
+          <Fade direction="down" delay="40" duration="700">
             <li>
               <a
                 href="#work"
@@ -67,7 +67,7 @@ const MobileNav = () => {
               </a>
             </li>
           </Fade>
-          <Fade direction="down" delay="60" duration="700" key={Math.random()}>
+          <Fade direction="down" delay="60" duration="700">
             <li>
               <a
                 href="#contact"

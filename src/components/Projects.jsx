@@ -71,7 +71,7 @@ const Projects = () => {
                 className="object-contain rounded-2xl  "
               />
             </div>
-            <div className="absolute top-0 right-0 z-10 w-full h-full bg-black/90 rounded-2xl sm:p-9 p-4 flex items-end translate-y-full group-hover:translate-y-0 transition-all duration-500">
+            <div className="absolute top-0 right-0 z-10 w-full h-full bg-black/90 rounded-2xl sm:p-9 p-4 flex items-end translate-y-full group-hover:translate-y-0 transition-all duration-300">
               <div className="flex flex-col gap-4 text-white">
                 <p className="sm:text-6xl text-3xl font-semibold">
                   {hoveredProject.title}
