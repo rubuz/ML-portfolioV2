@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
+
 import MobileNavMenuBtn from "./MobileNavMenuBtn";
+import { BsArrowRight } from "react-icons/bs";
+import { Fade } from "react-awesome-reveal";
 
 const MobileNav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,11 +30,54 @@ const MobileNav = () => {
       <div
         className={`fixed top-0 left-0 ${
           isMenuOpen ? "translate-y-0" : "-translate-y-full"
-        } transition duration-300 w-full h-screen bg-blue-800 flex flex-col items-center justify-center text-white`}
+        } transition duration-500 w-full h-screen bg-blue-800 flex flex-col items-end px-3 pt-24 text-white`}
       >
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
+        <ul className="flex flex-col gap-10">
+          <Fade direction="down" delay="0" key={Math.random()}>
+            <li>
+              <a
+                href="#"
+                className="flex items-center gap-3 text-3xl justify-end"
+              >
+                home
+                <BsArrowRight className="rotate-[-45deg]" />
+              </a>
+            </li>
+          </Fade>
+          <Fade direction="down" delay="20" key={Math.random()}>
+            <li>
+              <a
+                href="#about"
+                className="flex items-center gap-3 text-3xl justify-end"
+              >
+                about
+                <BsArrowRight className="rotate-[-45deg]" />
+              </a>
+            </li>
+          </Fade>
+          <Fade direction="down" delay="40" key={Math.random()}>
+            <li>
+              <a
+                href="#work"
+                className="flex items-center gap-3 text-3xl justify-end"
+              >
+                work
+                <BsArrowRight className="rotate-[-45deg]" />
+              </a>
+            </li>
+          </Fade>
+          <Fade direction="down" delay="60" key={Math.random()}>
+            <li>
+              <a
+                href="#contact"
+                className="flex items-center gap-3 text-3xl justify-end"
+              >
+                contact
+                <BsArrowRight className="rotate-[-45deg]" />
+              </a>
+            </li>
+          </Fade>
+        </ul>
       </div>
       <nav
         className={`w-full flex justify-between px-3 items-center bg-white z-30 transition-all duration-300 ${
