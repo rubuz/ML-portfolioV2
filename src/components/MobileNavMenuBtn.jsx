@@ -1,4 +1,4 @@
-import "./MobileNavMenuBtn.css";
+import "./mobileNavMenuBtn.css";
 
 import PropTypes from "prop-types";
 
