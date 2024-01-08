@@ -5,7 +5,10 @@ import { Slide } from "react-awesome-reveal";
 
 const Contact = () => {
   return (
-    <section className="rounded-t-[2rem] -mt-12 bg-white" id="contact">
+    <section
+      className="rounded-t-[2rem] -mt-12 bg-white dark:bg-black/90"
+      id="contact"
+    >
       <Slide direction="right" triggerOnce="true">
         <div className="lg:max-w-[75%] sm:max-w-[85%] max-w-[95%] mx-auto flex sm:pt-32 pt-16 gap-6 lg:flex-row flex-col">
           <div className="lg:max-w-[70%] bg-yellowy sm:py-16 sm:px-12 py-12 px-8 rounded-[2rem] flex flex-col gap-10 justify-between contact__mailbox">

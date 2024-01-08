@@ -31,7 +31,7 @@ function App() {
   const opacityProgress = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0, 0]);
 
   return (
-    <div className="font-work">
+    <div className="font-work ">
       {isTabletOrMobile ? <MobileNav /> : <Navbar />}
       <TitleChanger />
       {isDesktopOrLaptop && (
@@ -71,7 +71,11 @@ function App() {
         className="lg:w-1/2 w-2/3 mx-auto sm:py-32 py-14"
       >
         <a href="#">
-          <img src={TextImg} alt="Img with text LOVENJAK" />
+          <img
+            src={TextImg}
+            className="white-pic"
+            alt="Img with text LOVENJAK"
+          />
         </a>
       </Slide>
       <Footer />

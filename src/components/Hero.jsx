@@ -3,10 +3,19 @@ import { IoMdMoon, IoMdSunny } from "react-icons/io";
 import "./Hero.css";
 import Button from "./Button";
 import { Switch } from "@headlessui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Hero = () => {
-  const [enabled, setEnabled] = useState(false);
+  const [theme, setTheme] = useState(false);
+  console.log(theme);
+
+  useEffect(() => {
+    if (theme) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
 
   return (
     <div className="mt-20 sm:max-w-[70%] max-w-[95%] mx-auto flex lg:flex-row-reverse flex-col-reverse justify-center items-center sm:gap-20 gap-10 lg:gap-10">
@@ -14,19 +23,19 @@ const Hero = () => {
       <div className="lg:w-1/2 w-4/5 flex flex-col items-start gap-8 mx-auto">
         <div>
           <Switch
-            checked={enabled}
-            onChange={setEnabled}
-            className={`${enabled ? "bg-bluey" : "bg-greeny"}
-          relative inline-flex items-center h-[38px] w-[74px] shrink-0 cursor-pointer rounded-full border-2 border-black transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white/75`}
+            checked={theme}
+            onChange={setTheme}
+            className={`${theme ? "bg-bluey" : "bg-greeny"}
+          relative inline-flex items-center h-[38px] w-[74px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white/75`}
           >
             <span className="sr-only">Dark mode</span>
             <IoMdMoon className="absolute h-[30px] w-[30px] left-0.5 text-white" />
             <span
               aria-hidden="true"
-              className={`${enabled ? "translate-x-9" : "translate-x-0"}
+              className={`${theme ? "translate-x-9" : "translate-x-0"}
             pointer-events-none inline-block h-[34px] max-w-[34px] z-10 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
             />
-            <IoMdSunny className="absolute h-[30px] w-[30px] right-0.5 text-white" />
+            <IoMdSunny className="absolute h-[30px] w-[30px] right-0.5 text-black" />
           </Switch>
         </div>
         <div className="relative">

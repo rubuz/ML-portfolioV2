@@ -63,7 +63,7 @@ const TitleChanger = () => {
         <img
           src={images[currentImageIndex]}
           alt="title-lovenjak"
-          className="object-contain"
+          className="object-contain white-pic"
         />
       </Slide>
     </section>
