@@ -6,7 +6,7 @@ import { Slide } from "react-awesome-reveal";
 const Contact = () => {
   return (
     <section
-      className="rounded-t-[2rem] -mt-12 bg-white dark:bg-black/90"
+      className="rounded-t-[2rem] -mt-12 bg-white dark:bg-black"
       id="contact"
     >
       <Slide direction="right" triggerOnce="true">

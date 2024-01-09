@@ -7,7 +7,14 @@ import { useEffect, useState } from "react";
 
 const Hero = () => {
   const [theme, setTheme] = useState(false);
-  console.log(theme);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setTheme(true);
+    } else {
+      setTheme(false);
+    }
+  }, []);
 
   useEffect(() => {
     if (theme) {
@@ -33,13 +40,13 @@ const Hero = () => {
             <span
               aria-hidden="true"
               className={`${theme ? "translate-x-9" : "translate-x-0"}
-            pointer-events-none inline-block h-[34px] max-w-[34px] z-10 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+            pointer-events-none inline-block h-[34px] max-w-[34px] z-[5] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
             />
             <IoMdSunny className="absolute h-[30px] w-[30px] right-0.5 text-black" />
           </Switch>
         </div>
-        <div className="relative">
-          <h2 className="lg:text-3xl sm:text-4xl text-xl">
+        <div className="relative dark:text-white">
+          <h2 className="lg:text-3xl sm:text-4xl text-xl ">
             Self-taught web developer with a passion for front-end based in
             Brežice, Slovenia
           </h2>

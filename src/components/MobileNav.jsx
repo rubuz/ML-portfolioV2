@@ -31,7 +31,7 @@ const MobileNav = () => {
         onClick={handleOpenMenu}
         className={`fixed top-0 left-0 ${
           isMenuOpen ? "translate-y-0" : "-translate-y-full"
-        } transition duration-500 w-full h-screen bg-black flex flex-col items-end px-3 pt-24 text-white`}
+        } transition duration-500 w-full h-screen bg-black dark:bg-white flex flex-col items-end px-3 pt-24 text-white dark:text-black`}
       >
         <ul className="flex flex-col gap-10">
           <Fade direction="down" delay="0" duration="700">
@@ -81,14 +81,16 @@ const MobileNav = () => {
         </ul>
       </div>
       <nav
-        className={`w-full flex justify-between px-3 items-center bg-white z-30 transition-all duration-300 ${
-          isScrolled ? "border-b-2 border-black py-2" : "py-6"
+        className={`w-full flex justify-between px-3 items-center bg-white dark:bg-black z-30 transition-all duration-300 ${
+          isScrolled ? "border-b-2 border-black dark:border-white py-2" : "py-6"
         }`}
       >
         <div className="text-2xl tracking-tighter font-bold z-30">
           <a
             className={`${
-              isMenuOpen ? "text-white" : "text-black"
+              isMenuOpen
+                ? "text-white dark:text-black"
+                : "text-black dark:text-white"
             } transition-colors duration-500 delay-50`}
             href="#"
           >
