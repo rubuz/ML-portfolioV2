@@ -13,10 +13,18 @@ label span {
   transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
+.dark label span {
+  background: #fff;
+}
+
 .checked span {
   background: #fff;
   transition: 0.5s;
   transition-delay: 50ms;
+}
+
+.dark .checked span {
+  background: #000;
 }
 
 span:nth-of-type(1) {
