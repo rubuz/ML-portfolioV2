@@ -32,17 +32,17 @@ const Hero = () => {
           <Switch
             checked={theme}
             onChange={setTheme}
-            className={`${theme ? "bg-bluey" : "bg-greeny"}
-          relative inline-flex items-center h-[38px] w-[74px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white/75`}
+            className={`${theme ? "bg-white" : "bg-black"}
+          relative inline-flex items-center h-[26px] w-[53px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white/75`}
           >
             <span className="sr-only">Dark mode</span>
-            <IoMdMoon className="absolute h-[30px] w-[30px] left-0.5 text-white" />
+            <IoMdMoon className="absolute h-[20px] w-[20px] left-0.5 text-black" />
             <span
               aria-hidden="true"
-              className={`${theme ? "translate-x-9" : "translate-x-0"}
-            pointer-events-none inline-block h-[34px] max-w-[34px] z-[5] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+              className={`${theme ? "translate-x-7" : "translate-x-0"}
+            pointer-events-none inline-block h-[22px] max-w-[22px] z-[5] transform rounded-full bg-white dark:bg-black shadow-lg ring-0 transition duration-500 ease-in-out`}
             />
-            <IoMdSunny className="absolute h-[30px] w-[30px] right-0.5 text-black" />
+            <IoMdSunny className="absolute h-[20px] w-[20px] right-0.5 text-white" />
           </Switch>
         </div>
         <div className="relative dark:text-white">
