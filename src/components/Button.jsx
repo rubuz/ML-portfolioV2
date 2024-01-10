@@ -1,4 +1,3 @@
-import React from "react";
 import { BsArrowRight } from "react-icons/bs";
 
 const Button = ({ text, textColor, bgColor, iconColor, circleColor }) => {

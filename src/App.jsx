@@ -23,7 +23,7 @@ function App() {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    offset: ["0.5 0.9", "1.5 1"],
+    offset: ["0.6 0.9", "1.5 1"],
   });
 
   const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
@@ -57,7 +57,7 @@ function App() {
         <section className="flex flex-col sm:gap-10 gap-4">
           <Hero />
 
-          <div className="flex overflow-x-scroll gap-4 my-10" id="about">
+          <div className="flex overflow-x-scroll gap-3 my-10" id="about">
             <AboutCards />
           </div>
         </section>

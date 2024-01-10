@@ -54,16 +54,16 @@ const TitleChanger = () => {
   }, [currentImageIndex, images]);
 
   return (
-    <section className="max-w-[1400px] sm:h-[230px] h-[50px] w-full mx-auto flex justify-center items-center sm:my-10 max-sm:mt-8">
+    <section className="max-w-[1400px] sm:h-[200px] h-[50px] w-full mx-auto block justify-center items-center sm:my-10 max-sm:mt-8 relative">
       <Slide
         direction="down"
         triggerOnce="true"
-        className="h-max-[200px] w-[95%] flex justify-center items-center"
+        className="w-[95%] flex justify-center items-center mx-auto"
       >
         <img
           src={images[currentImageIndex]}
           alt="title-lovenjak"
-          className="object-contain white-pic"
+          className="object-contain white-pic max-h-[200px]"
         />
       </Slide>
     </section>
