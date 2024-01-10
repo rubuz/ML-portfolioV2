@@ -10,7 +10,7 @@ const Contact = () => {
       id="contact"
     >
       <Slide direction="right" triggerOnce="true">
-        <div className="lg:max-w-[75%] sm:max-w-[85%] max-w-[95%] mx-auto flex sm:pt-32 pt-16 gap-6 lg:flex-row flex-col">
+        <div className="lg:max-w-[75%] sm:max-w-[85%] max-w-[95%] mx-auto flex sm:pt-32 pt-16 sm:gap-6 gap-3 lg:flex-row flex-col">
           <div className="lg:max-w-[70%] bg-yellowy sm:py-16 sm:px-12 py-12 px-8 rounded-[2rem] flex flex-col gap-10 justify-between contact__mailbox">
             <div className="flex">
               <MdAlternateEmail className="sm:w-20 sm:h-20 w-14 h-14 contact__mailbox-icon" />
@@ -32,10 +32,7 @@ const Contact = () => {
               </span>{" "}
               and let&apos;s start the conversation!
             </p>
-            <a
-              href="mailto:matjaz.lovenjak@gmail.com"
-              className="sm:w-fit max-sm:max-w-[70%]"
-            >
+            <a href="mailto:matjaz.lovenjak@gmail.com" className="w-fit">
               <Button
                 text={"Send email"}
                 bgColor={"bg-black"}

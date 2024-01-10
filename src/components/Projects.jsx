@@ -52,7 +52,7 @@ const Projects = () => {
           <MarqueeText />
         </Marquee>
       </div>
-      <div className="xl:w-[75%] mx-auto grid xl:grid-cols-[55%_auto] sm:gap-10 gap-0 items-center md:grid-cols-1 sm:w-[85%] w-[95%] sm:mb-0 mb-2">
+      <div className="xl:w-[75%] mx-auto grid xl:grid-cols-[55%_auto] sm:gap-10 gap-0 items-center md:grid-cols-1 sm:w-[85%] w-[95%] sm:mb-0">
         <div className="w-full bg-transparent rounded-[2rem] border-[3px] sm:p-9 p-4 border-black flex flex-col justify-between sm:gap-12 gap-4">
           <div className="flex gap-2 dot-container">
             <div className="sm:w-6 sm:h-6 w-5 h-5 rounded-full border-[3px] border-black transition-all duration-500 project-dot"></div>
@@ -110,7 +110,7 @@ const Projects = () => {
           <ProjectText group={"Web page"} title={"ntRoot"} />
           <ProjectText group={"Utility web app"} title={"Test drive survey"} />
           <ProjectText group={"Utility web app"} title={"Travel report"} /> */}
-          <div className="w-60">
+          <div className="w-fit">
             <a
               href="https://github.com/rubuz"
               target="_blank"
