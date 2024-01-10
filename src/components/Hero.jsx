@@ -27,7 +27,7 @@ const Hero = () => {
   return (
     <div className="mt-20 sm:max-w-[70%] max-w-[95%] mx-auto flex lg:flex-row-reverse flex-col-reverse justify-center items-center sm:gap-20 gap-10 lg:gap-10">
       <div className="mx-auto max-w-[90%] hero__img"></div>
-      <div className="lg:w-1/2 w-[95%] flex flex-col items-start gap-8">
+      <div className="lg:w-1/2 max-sm:min-w-[95%] flex flex-col items-start gap-8">
         <div>
           <Switch
             checked={theme}
