@@ -10,7 +10,6 @@ const MobileNavMenuBtn = ({ open, openState }) => {
   return (
     <div onClick={handleClick}>
       <label htmlFor="check" className={openState ? "checked" : ""}>
-        {/* <input type="checkbox" id="check" checked={isChecked} /> */}
         <span></span>
         <span></span>
         <span></span>

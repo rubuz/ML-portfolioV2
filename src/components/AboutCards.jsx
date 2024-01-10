@@ -35,34 +35,10 @@ const cardsInfo = [
       <FaRegEye className="mt-2 text-greeny sm:text-4xl text-2xl animate-bounce" />
     ),
   },
-  // {
-  //   title: "Keen eye",
-  //   text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremqu maxime officia porro.",
-  //   color: "bg-pinky",
-  //   id: 2,
-  //   icon: <FaRegEye className="mt-2 text-pinky text-4xl animate-bounce" />,
-  // },
-  // {
-  //   title: "Keen eye",
-  //   text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremqu maxime officia porro.",
-  //   color: "bg-pinky",
-  //   id: 2,
-  //   icon: <FaRegEye className="mt-2 text-pinky text-4xl animate-bounce" />,
-  // },
 ];
 
 const AboutCards = () => {
-  // const targetRef = useRef(null);
-  // const { scrollYProgress } = useScroll({
-  //   target: targetRef,
-  // });
-
-  // const x = useTransform(scrollYProgress, [0, 1], ["1%", "-75%"]);
-
   return (
-    // <section ref={targetRef} className="relative h-[200vh]">
-    //   <div className="sticky top-0 h-[700px] items-center overflow-hidden flex">
-    //     <motion.div style={{ x }} className="flex gap-6">
     <>
       {cardsInfo.map((card, index) => (
         <div

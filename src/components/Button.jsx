@@ -1,5 +1,7 @@
 import { BsArrowRight } from "react-icons/bs";
 
+import PropTypes from "prop-types";
+
 const Button = ({ text, textColor, bgColor, iconColor, circleColor }) => {
   return (
     <div
@@ -13,6 +15,14 @@ const Button = ({ text, textColor, bgColor, iconColor, circleColor }) => {
       </div>
     </div>
   );
+};
+
+Button.propTypes = {
+  text: PropTypes.string.isRequired,
+  textColor: PropTypes.string.isRequired,
+  bgColor: PropTypes.string.isRequired,
+  iconColor: PropTypes.string.isRequired,
+  circleColor: PropTypes.string.isRequired,
 };
 
 export default Button;

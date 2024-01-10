@@ -106,10 +106,6 @@ const Projects = () => {
               }}
             />
           ))}
-          {/* <ProjectText group={"Web page"} title={"L&T Moto"} />
-          <ProjectText group={"Web page"} title={"ntRoot"} />
-          <ProjectText group={"Utility web app"} title={"Test drive survey"} />
-          <ProjectText group={"Utility web app"} title={"Travel report"} /> */}
           <div className="w-fit">
             <a
               href="https://github.com/rubuz"

@@ -4,7 +4,6 @@
   background-position: center;
   background-size: cover;
   box-shadow: inset 0 0 0 9px rgb(255 130 169 / 30%);
-  /* filter: grayscale(100%); */
   width: clamp(200px, 90vw, 400px);
   aspect-ratio: 1/1;
   order: 1;
