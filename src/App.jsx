@@ -54,7 +54,7 @@ function App() {
   const opacityProgress = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0, 0]);
 
   return (
-    <div className="font-work sm:cursor-none">
+    <div className="font-work lg:cursor-none">
       {isTabletOrMobile ? <MobileNav /> : <Navbar />}
       <TitleChanger />
       {isDesktopOrLaptop && (
@@ -106,7 +106,7 @@ function App() {
         variants={variants}
         animate="default"
         transition={{ duration: 0.01 }}
-        className="h-4 w-4 rounded-full bg-black opacity-70 dark:bg-white dark:opacity-80 fixed top-0 left-0 z-[60] border-white dark:border-black border-[1px] pointer-events-none max-sm:hidden"
+        className="h-4 w-4 rounded-full bg-black opacity-70 dark:bg-white dark:opacity-80 fixed top-0 left-0 z-[60] border-white dark:border-black border-[1px] pointer-events-none max-lg:hidden"
       />
     </div>
   );
