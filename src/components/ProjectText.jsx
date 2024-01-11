@@ -2,7 +2,10 @@ import PropTypes from "prop-types";
 
 const ProjectText = ({ title, group, onMouseEnter }) => {
   return (
-    <div className="group flex flex-col gap-4" onMouseEnter={onMouseEnter}>
+    <div
+      className="group flex flex-col gap-4 select-none"
+      onMouseEnter={onMouseEnter}
+    >
       <p className="text-2xl">{group}</p>
       <h3 className="sm:text-7xl text-4xl font-medium tracking-tight">
         {title}

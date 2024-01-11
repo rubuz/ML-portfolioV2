@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import "./App.css";
 import TextImg from "../src/assets/text1.webp";
@@ -20,6 +20,29 @@ function App() {
   const isDesktopOrLaptop = useMediaQuery({ query: "(min-width: 1024px)" });
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 900px)" });
 
+  // Cursor effect
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const onMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", onMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", onMouseMove);
+    };
+  }, []);
+
+  const variants = {
+    default: {
+      x: mousePosition.x - 8,
+      y: mousePosition.y - 8,
+    },
+  };
+
+  // Scroll animations
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -31,7 +54,7 @@ function App() {
   const opacityProgress = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0, 0]);
 
   return (
-    <div className="font-work ">
+    <div className="font-work cursor-none">
       {isTabletOrMobile ? <MobileNav /> : <Navbar />}
       <TitleChanger />
       {isDesktopOrLaptop && (
@@ -79,6 +102,12 @@ function App() {
         </a>
       </Slide>
       <Footer />
+      <motion.div
+        variants={variants}
+        animate="default"
+        transition={{ duration: 0.01 }}
+        className="h-4 w-4 rounded-full bg-black opacity-70 dark:bg-white dark:opacity-80 fixed top-0 left-0 z-[60] border-white dark:border-black border-[1px] pointer-events-none"
+      />
     </div>
   );
 }
