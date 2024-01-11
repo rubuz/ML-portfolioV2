@@ -8,8 +8,8 @@ export const projectsInfo = [
     id: 1,
     image: Project1,
     group: "Web page",
-    title: "L&T Moto",
-    url: "https://ltmoto.netlify.app/",
+    title: "Moto Lander",
+    url: "https://guileless-chimera-bc6b53.netlify.app/",
     description:
       "A landig page for small company that sells motorcycles. Page is written in ReactJS with TailwindCSS. Contact form uses PHP scripts on backend server.",
     tech: "ReactJS, TailwindCSS, PHP",
