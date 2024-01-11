@@ -33,7 +33,7 @@ const Hero = () => {
             checked={theme}
             onChange={setTheme}
             className={`${theme ? "bg-white" : "bg-black"}
-          relative inline-flex items-center h-[26px] w-[53px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white/75`}
+          relative inline-flex items-center h-[26px] w-[53px] shrink-0 cursor-none rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white/75`}
           >
             <span className="sr-only">Dark mode</span>
             <IoMdMoon className="absolute h-[20px] w-[20px] left-0.5 text-black" />

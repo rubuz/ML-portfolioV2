@@ -18,10 +18,10 @@ const Contact = () => {
             <h2 className="lg:text-6xl text-5xl tracking-tight">
               Send me an email
             </h2>
-            <p className="text-lg leading-5 lg:max-w-[60%] max-w-[80%]">
+            <p className="text-lg leading-5 lg:max-w-[65%] max-w-[80%]">
               Feel free to drop me a message anytime! Whether you have a project
               in mind, a question, or just want to say hello, I&apos;m just an
-              email away. Reach out to me at
+              email away. Reach out to me at{" "}
               <span className="font-medium">
                 <a
                   href="mailto:matjaz.lovenjak@gmail.com"
