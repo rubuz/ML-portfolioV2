@@ -81,7 +81,7 @@ const MobileNav = () => {
         </ul>
       </div>
       <nav
-        className={`w-full flex justify-between px-3 items-center bg-white dark:bg-black z-30 transition-all duration-200 ${
+        className={`w-full flex justify-between px-3 items-center bg-white dark:bg-black z-30 transition-all duration-300 ${
           isScrolled
             ? "border-b-2 border-black dark:border-transparent py-2"
             : "py-6"
