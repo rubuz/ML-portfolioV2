@@ -55,8 +55,10 @@ function App() {
 
   //load screen
   useEffect(() => {
-    const preloader = document.getElementById("preloader");
-    preloader.classList.add("slide-up");
+    setTimeout(() => {
+      const preloader = document.getElementById("preloader");
+      preloader.classList.add("slide-up");
+    }, 1300);
   }, []);
 
   return (
