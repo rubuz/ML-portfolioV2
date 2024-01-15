@@ -53,6 +53,14 @@ function App() {
   const scaleProgress = useTransform(scrollYProgress, [0, 0.4, 1], [1, 1, 0]);
   const opacityProgress = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0, 0]);
 
+  //load screen
+  useEffect(() => {
+    setTimeout(() => {
+      const preloader = document.getElementById("preloader");
+      preloader.classList.add("slide-up");
+    }, 1300);
+  }, []);
+
   return (
     <div className="font-work lg:cursor-none">
       {isTabletOrMobile ? <MobileNav /> : <Navbar />}
