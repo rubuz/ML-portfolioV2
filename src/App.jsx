@@ -66,7 +66,7 @@ function App() {
       {isTabletOrMobile ? <MobileNav /> : <Navbar />}
       <TitleChanger />
       {isDesktopOrLaptop && (
-        <section ref={targetRef} className="relative h-[190vh] flex flex-col">
+        <section ref={targetRef} className="relative flex h-[190vh] flex-col">
           <motion.div
             style={{
               scale: scaleProgress,
@@ -77,7 +77,7 @@ function App() {
             <Hero />
           </motion.div>
           <Slide direction="up" triggerOnce="true" className="sticky top-[30%]">
-            <motion.div style={{ x }} className="flex gap-8 mb-10" id="about">
+            <motion.div style={{ x }} className="mb-10 flex gap-8" id="about">
               <AboutCards />
             </motion.div>
           </Slide>
@@ -85,10 +85,10 @@ function App() {
       )}
 
       {!isDesktopOrLaptop && (
-        <section className="flex flex-col sm:gap-10 gap-4">
+        <section className="flex flex-col gap-4 sm:gap-10">
           <Hero />
 
-          <div className="flex overflow-x-scroll gap-3 my-10" id="about">
+          <div className="my-10 flex gap-3 overflow-x-scroll" id="about">
             <AboutCards />
           </div>
         </section>
@@ -99,7 +99,7 @@ function App() {
       <Slide
         direction="up"
         triggerOnce="true"
-        className="lg:w-1/2 w-2/3 mx-auto sm:py-32 py-14"
+        className="mx-auto w-2/3 py-14 sm:py-32 lg:w-1/2"
       >
         <a href="#">
           <img
@@ -114,7 +114,7 @@ function App() {
         variants={variants}
         animate="default"
         transition={{ duration: 0.01 }}
-        className="h-4 w-4 rounded-full bg-black opacity-70 dark:bg-white dark:opacity-80 fixed top-0 left-0 z-[60] border-white dark:border-black border-[1px] pointer-events-none max-lg:hidden"
+        className="pointer-events-none fixed left-0 top-0 z-[60] h-4 w-4 rounded-full border-[1px] border-white bg-black opacity-70 dark:border-black dark:bg-white dark:opacity-80 max-lg:hidden"
       />
     </div>
   );

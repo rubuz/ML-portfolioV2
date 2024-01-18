@@ -52,15 +52,15 @@ const Projects = () => {
           <MarqueeText />
         </Marquee>
       </div>
-      <div className="xl:w-[75%] mx-auto grid xl:grid-cols-[55%_auto] sm:gap-10 gap-0 items-center md:grid-cols-1 sm:w-[85%] w-[95%] sm:mb-0">
-        <div className="w-full bg-transparent rounded-[2rem] border-[3px] sm:p-9 p-4 border-black flex flex-col justify-between sm:gap-12 gap-4">
-          <div className="flex gap-2 dot-container">
-            <div className="sm:w-6 sm:h-6 w-5 h-5 rounded-full border-[3px] border-black transition-all duration-500 project-dot"></div>
-            <div className="sm:w-6 sm:h-6 w-5 h-5 rounded-full border-[3px] border-black transition-all duration-500 project-dot"></div>
-            <div className="sm:w-6 sm:h-6 w-5 h-5 rounded-full border-[3px] border-black transition-all duration-500 project-dot"></div>
+      <div className="mx-auto grid w-[95%] items-center gap-0 sm:mb-0 sm:w-[85%] sm:gap-10 md:grid-cols-1 xl:w-[75%] xl:grid-cols-[55%_auto]">
+        <div className="flex w-full flex-col justify-between gap-4 rounded-[2rem] border-[3px] border-black bg-transparent p-4 sm:gap-12 sm:p-9">
+          <div className="dot-container flex gap-2">
+            <div className="project-dot h-5 w-5 rounded-full border-[3px] border-black transition-all duration-500 sm:h-6 sm:w-6"></div>
+            <div className="project-dot h-5 w-5 rounded-full border-[3px] border-black transition-all duration-500 sm:h-6 sm:w-6"></div>
+            <div className="project-dot h-5 w-5 rounded-full border-[3px] border-black transition-all duration-500 sm:h-6 sm:w-6"></div>
           </div>
           <div
-            className="w-full project-img rounded-2xl hover:scale-[105%] transition-all duration-1000 relative overflow-hidden group"
+            className="project-img group relative w-full overflow-hidden rounded-2xl transition-all duration-1000 hover:scale-[105%]"
             onMouseEnter={handleHover}
             onMouseLeave={handleMouseLeave}
           >
@@ -68,18 +68,18 @@ const Projects = () => {
               <img
                 src={hoveredProject ? hoveredProject.image : ""}
                 alt=""
-                className="object-contain rounded-2xl  "
+                className="rounded-2xl object-contain  "
               />
             </div>
-            <div className="absolute top-0 right-0 z-10 w-full h-full bg-black/90 rounded-2xl sm:p-9 p-4 flex items-end translate-y-full group-hover:translate-y-0 transition-all duration-300">
+            <div className="absolute right-0 top-0 z-10 flex h-full w-full translate-y-full items-end rounded-2xl bg-black/90 p-4 transition-all duration-300 group-hover:translate-y-0 sm:p-9">
               <div className="flex flex-col gap-4 text-white">
-                <p className="sm:text-6xl text-3xl font-semibold">
+                <p className="text-3xl font-semibold sm:text-6xl">
                   {hoveredProject.title}
                 </p>
-                <p className="sm:max-w-[65%] sm:text-lg text-sm">
+                <p className="text-sm sm:max-w-[65%] sm:text-lg">
                   {hoveredProject.description}
                 </p>
-                <div className="sm:text-lg text-sm">
+                <div className="text-sm sm:text-lg">
                   <p className="font-medium">Tech stack:</p>
                   <p>{hoveredProject.tech}</p>
                 </div>
@@ -87,7 +87,7 @@ const Projects = () => {
                   href={hoveredProject.url}
                   target="_blank"
                   rel="noreferrer"
-                  className={`sm:text-2xl text-xl font-semibold hover:underline text-${handleBGChange()} transition-all duration-500 flex items-center gap-4`}
+                  className={`text-xl font-semibold hover:underline sm:text-2xl text-${handleBGChange()} flex items-center gap-4 transition-all duration-500`}
                 >
                   DEMO <FaArrowLeftLong className="animate-bounce-left" />
                 </a>
@@ -95,7 +95,7 @@ const Projects = () => {
             </div>
           </div>
         </div>
-        <div className="h-[80%] flex flex-col justify-between gap-5">
+        <div className="flex h-[80%] flex-col justify-between gap-5">
           {projectsInfo.map((project) => (
             <ProjectText
               group={project.group}

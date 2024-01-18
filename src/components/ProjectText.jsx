@@ -3,15 +3,15 @@ import PropTypes from "prop-types";
 const ProjectText = ({ title, group, onMouseEnter }) => {
   return (
     <div
-      className="group flex flex-col gap-4 select-none"
+      className="group flex select-none flex-col gap-4"
       onMouseEnter={onMouseEnter}
     >
       <p className="text-2xl">{group}</p>
-      <h3 className="sm:text-7xl text-4xl font-medium tracking-tight">
+      <h3 className="text-4xl font-medium tracking-tight sm:text-7xl">
         {title}
       </h3>
-      <div className="w-full h-1 bg-black/30 relative">
-        <div className="w-0 h-1 bg-black group-hover:w-full transition-all duration-500 "></div>
+      <div className="relative h-1 w-full bg-black/30">
+        <div className="h-1 w-0 bg-black transition-all duration-500 group-hover:w-full "></div>
       </div>
     </div>
   );

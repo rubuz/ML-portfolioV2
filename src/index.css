@@ -6,11 +6,11 @@
 
 @layer components {
   .nav-btn {
-    @apply bg-transparent rounded-full px-8 py-2 flex items-center justify-center;
+    @apply flex items-center justify-center rounded-full bg-transparent px-8 py-2;
   }
 
   .nav-icon {
-    @apply w-0 scale-0 h-3 group-hover:scale-100 duration-500 group-hover:w-3 group-hover:translate-x-3;
+    @apply h-3 w-0 scale-0 duration-500 group-hover:w-3 group-hover:translate-x-3 group-hover:scale-100;
   }
 }
 

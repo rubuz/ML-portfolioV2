@@ -3,7 +3,7 @@ import { LiaAsteriskSolid } from "react-icons/lia";
 const MarqueeText = () => {
   return (
     <div className="flex">
-      <h1 className="sm:my-8 my-2 xl:text-[10rem] md:text-9xl sm:text-8xl text-5xl flex items-center tracking-tighter ml-8">
+      <h1 className="my-2 ml-8 flex items-center text-5xl tracking-tighter sm:my-8 sm:text-8xl md:text-9xl xl:text-[10rem]">
         my projects
         <LiaAsteriskSolid className="ml-8 animate-spin-slow" />
       </h1>

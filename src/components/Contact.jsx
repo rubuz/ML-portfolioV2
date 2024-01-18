@@ -6,19 +6,19 @@ import { Slide } from "react-awesome-reveal";
 const Contact = () => {
   return (
     <section
-      className="rounded-t-[2rem] -mt-12 bg-white dark:bg-black"
+      className="-mt-12 rounded-t-[2rem] bg-white dark:bg-black"
       id="contact"
     >
       <Slide direction="right" triggerOnce="true">
-        <div className="lg:max-w-[75%] sm:max-w-[85%] max-w-[95%] mx-auto flex sm:pt-32 pt-16 sm:gap-6 gap-3 lg:flex-row flex-col">
-          <div className="lg:max-w-[70%] bg-yellowy sm:py-16 sm:px-12 py-12 px-8 rounded-[2rem] flex flex-col gap-10 justify-between contact__mailbox">
+        <div className="mx-auto flex max-w-[95%] flex-col gap-3 pt-16 sm:max-w-[85%] sm:gap-6 sm:pt-32 lg:max-w-[75%] lg:flex-row">
+          <div className="contact__mailbox flex flex-col justify-between gap-10 rounded-[2rem] bg-yellowy px-8 py-12 sm:px-12 sm:py-16 lg:max-w-[70%]">
             <div className="flex">
-              <MdAlternateEmail className="sm:w-20 sm:h-20 w-14 h-14 contact__mailbox-icon" />
+              <MdAlternateEmail className="contact__mailbox-icon h-14 w-14 sm:h-20 sm:w-20" />
             </div>
-            <h2 className="lg:text-6xl text-5xl tracking-tight">
+            <h2 className="text-5xl tracking-tight lg:text-6xl">
               Send me an email
             </h2>
-            <p className="text-lg leading-5 lg:max-w-[65%] max-w-[80%]">
+            <p className="max-w-[80%] text-lg leading-5 lg:max-w-[65%]">
               Feel free to drop me a message anytime! Whether you have a project
               in mind, a question, or just want to say hello, I&apos;m just an
               email away. Reach out to me at{" "}
@@ -43,17 +43,17 @@ const Contact = () => {
             </a>
           </div>
 
-          <div className="sm:py-16 sm:px-12 py-12 px-8 rounded-[2rem] flex flex-col gap-10 justify-between bg-bluey group">
+          <div className="group flex flex-col justify-between gap-10 rounded-[2rem] bg-bluey px-8 py-12 sm:px-12 sm:py-16">
             <div>
-              <LiaAsteriskSolid className="sm:w-20 sm:h-20 w-14 h-14 sm:group-hover:animate-spin-slow max-sm:animate-spin-slow" />
+              <LiaAsteriskSolid className="h-14 w-14 max-sm:animate-spin-slow sm:h-20 sm:w-20 sm:group-hover:animate-spin-slow" />
             </div>
-            <h2 className="lg:text-6xl text-5xl tracking-tight">
+            <h2 className="text-5xl tracking-tight lg:text-6xl">
               Contact me on socials
             </h2>
-            <div className="w-[60%] text-lg leading-5 flex flex-col">
+            <div className="flex w-[60%] flex-col text-lg leading-5">
               <a
                 href="https://www.linkedin.com/in/matjaz-lovenjak/"
-                className="text-2xl mt-2 hover__link w-max font-semibold"
+                className="hover__link mt-2 w-max text-2xl font-semibold"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Link to my LinkedIn profile"
@@ -62,7 +62,7 @@ const Contact = () => {
               </a>
               <a
                 href="https://www.facebook.com/matjaz.lovenjak"
-                className="text-2xl mt-2 hover__link w-max font-semibold"
+                className="hover__link mt-2 w-max text-2xl font-semibold"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Link to my Facebook profile"
@@ -71,7 +71,7 @@ const Contact = () => {
               </a>
               <a
                 href="https://www.instagram.com/rubuz88/"
-                className="text-2xl mt-2 hover__link w-max font-semibold"
+                className="hover__link mt-2 w-max text-2xl font-semibold"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Link to my Instagram profile"

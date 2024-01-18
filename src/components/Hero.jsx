@@ -25,32 +25,32 @@ const Hero = () => {
   }, [theme]);
 
   return (
-    <div className="mt-20 sm:max-w-[70%] max-w-[95%] mx-auto flex lg:flex-row-reverse flex-col-reverse justify-center items-center sm:gap-20 gap-10 lg:gap-10">
-      <div className="mx-auto max-w-[90%] hero__img"></div>
-      <div className="lg:w-1/2 max-sm:min-w-[95%] flex flex-col items-start gap-8">
+    <div className="mx-auto mt-20 flex max-w-[95%] flex-col-reverse items-center justify-center gap-10 sm:max-w-[70%] sm:gap-20 lg:flex-row-reverse lg:gap-10">
+      <div className="hero__img mx-auto max-w-[90%]"></div>
+      <div className="flex flex-col items-start gap-8 max-sm:min-w-[95%] lg:w-1/2">
         <div>
           <Switch
             checked={theme}
             onChange={setTheme}
             className={`${theme ? "bg-white" : "bg-black"}
-          relative inline-flex items-center h-[26px] w-[53px] shrink-0 cursor-none rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white/75`}
+          relative inline-flex h-[26px] w-[53px] shrink-0 cursor-none items-center rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white/75`}
           >
             <span className="sr-only">Dark mode</span>
-            <IoMdMoon className="absolute h-[20px] w-[20px] left-0.5 text-black" />
+            <IoMdMoon className="absolute left-0.5 h-[20px] w-[20px] text-black" />
             <span
               aria-hidden="true"
               className={`${theme ? "translate-x-7" : "translate-x-0"}
-            pointer-events-none inline-block h-[22px] max-w-[22px] z-[5] transform rounded-full bg-white dark:bg-black shadow-lg ring-0 transition duration-500 ease-in-out`}
+            pointer-events-none z-[5] inline-block h-[22px] max-w-[22px] transform rounded-full bg-white shadow-lg ring-0 transition duration-500 ease-in-out dark:bg-black`}
             />
-            <IoMdSunny className="absolute h-[20px] w-[20px] right-0.5 text-white" />
+            <IoMdSunny className="absolute right-0.5 h-[20px] w-[20px] text-white" />
           </Switch>
         </div>
         <div className="relative dark:text-white">
-          <h2 className="lg:text-3xl sm:text-4xl text-xl ">
+          <h2 className="text-xl sm:text-4xl lg:text-3xl ">
             Self-taught web developer with a passion for front-end based in
             Brežice, Slovenia
           </h2>
-          <BsArrowRight className="absolute sm:text-6xl text-4xl rotate-[135deg] sm:left-[-5rem] -left-10 bottom-0 max-sm:hidden" />
+          <BsArrowRight className="absolute -left-10 bottom-0 rotate-[135deg] text-4xl max-sm:hidden sm:left-[-5rem] sm:text-6xl" />
         </div>
         <a href="#contact">
           <Button
