@@ -16,23 +16,20 @@ import Title11 from "../assets/text11.webp";
 import Title12 from "../assets/text12.webp";
 
 const TitleChanger = () => {
-  const images = useMemo(
-    () => [
-      Title1,
-      Title2,
-      Title3,
-      Title4,
-      Title5,
-      Title6,
-      Title7,
-      Title8,
-      Title9,
-      Title10,
-      Title11,
-      Title12,
-    ],
-    []
-  );
+  const images = [
+    Title1,
+    Title2,
+    Title3,
+    Title4,
+    Title5,
+    Title6,
+    Title7,
+    Title8,
+    Title9,
+    Title10,
+    Title11,
+    Title12,
+  ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   useEffect(() => {
@@ -46,7 +43,7 @@ const TitleChanger = () => {
       () => {
         changeImage();
       },
-      currentImageIndex === 0 ? 1500 : 120
+      currentImageIndex === 0 ? 1500 : 120,
     );
 
     // Clear timeout when component unmounts
@@ -54,16 +51,16 @@ const TitleChanger = () => {
   }, [currentImageIndex, images]);
 
   return (
-    <section className="max-w-[1400px] sm:h-[200px] h-[50px] w-full mx-auto block justify-center items-center sm:my-10 max-sm:mt-8 max-sm:-mb-8 relative">
+    <section className="relative mx-auto block h-[50px] w-full max-w-[1400px] items-center justify-center max-sm:-mb-8 max-sm:mt-8 sm:my-10 sm:h-[200px]">
       <Slide
         direction="down"
         triggerOnce="true"
-        className="w-[95%] block justify-center items-center mx-auto"
+        className="mx-auto block w-[95%] items-center justify-center"
       >
         <img
           src={images[currentImageIndex]}
           alt="title-lovenjak"
-          className="object-contain white-pic max-h-[200px] mx-auto"
+          className="white-pic mx-auto max-h-[200px] object-contain"
         />
       </Slide>
     </section>

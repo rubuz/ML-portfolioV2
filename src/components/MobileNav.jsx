@@ -29,16 +29,16 @@ const MobileNav = () => {
     <div className="sticky top-0 z-10">
       <div
         onClick={handleOpenMenu}
-        className={`fixed top-0 left-0 ${
+        className={`fixed left-0 top-0 ${
           isMenuOpen ? "translate-y-0" : "-translate-y-full"
-        } transition duration-500 w-full h-screen bg-black dark:bg-white flex flex-col items-end px-3 pt-24 text-white dark:text-black`}
+        } flex h-screen w-full flex-col items-end bg-black px-3 pt-24 text-white transition duration-500 dark:bg-white dark:text-black`}
       >
         <ul className="flex flex-col gap-10">
           <Fade direction="down" delay="0" duration="700">
             <li>
               <a
                 href="#"
-                className="flex items-center gap-3 text-3xl justify-end"
+                className="flex items-center justify-end gap-3 text-3xl"
               >
                 home
                 <BsArrowRight className="rotate-[-45deg]" />
@@ -49,7 +49,7 @@ const MobileNav = () => {
             <li>
               <a
                 href="#about"
-                className="flex items-center gap-3 text-3xl justify-end"
+                className="flex items-center justify-end gap-3 text-3xl"
               >
                 about
                 <BsArrowRight className="rotate-[-45deg]" />
@@ -60,7 +60,7 @@ const MobileNav = () => {
             <li>
               <a
                 href="#work"
-                className="flex items-center gap-3 text-3xl justify-end"
+                className="flex items-center justify-end gap-3 text-3xl"
               >
                 work
                 <BsArrowRight className="rotate-[-45deg]" />
@@ -71,7 +71,7 @@ const MobileNav = () => {
             <li>
               <a
                 href="#contact"
-                className="flex items-center gap-3 text-3xl justify-end"
+                className="flex items-center justify-end gap-3 text-3xl"
               >
                 contact
                 <BsArrowRight className="rotate-[-45deg]" />
@@ -81,19 +81,19 @@ const MobileNav = () => {
         </ul>
       </div>
       <nav
-        className={`w-full flex justify-between px-3 items-center bg-white dark:bg-black z-30 transition-all duration-300 ${
+        className={`z-30 flex w-full items-center justify-between bg-white px-3 transition-all duration-300 dark:bg-black ${
           isScrolled
-            ? "border-b-2 border-black dark:border-transparent py-2"
+            ? "border-b-2 border-black py-2 dark:border-transparent"
             : "py-6"
         }`}
       >
-        <div className="text-2xl tracking-tighter font-bold z-30">
+        <div className="z-30 text-2xl font-bold tracking-tighter">
           <a
             className={`${
               isMenuOpen
                 ? "text-white dark:text-black"
                 : "text-black dark:text-white"
-            } transition-colors duration-500 delay-50`}
+            } delay-50 transition-colors duration-500`}
             href="#"
           >
             <span className="text-pinky">M</span>L
