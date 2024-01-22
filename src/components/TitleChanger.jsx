@@ -31,6 +31,32 @@ const TitleChanger = () => {
     Title12,
   ];
 
+  // const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  // useEffect(() => {
+  //   let timeout;
+
+  //   const changeImage = () => {
+  //     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+  //   };
+
+  //   timeout = setTimeout(
+  //     () => {
+  //       changeImage();
+  //     },
+  //     currentImageIndex === 0 ? 1500 : 120,
+  //   );
+
+  //   // Clear timeout when component unmounts
+  //   return () => clearTimeout(timeout);
+  // }, [currentImageIndex, images]);
+
+  // Preload images
+  useEffect(() => {
+    images.forEach((image) => {
+      new Image().src = image;
+    });
+  }, []);
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   useEffect(() => {
     let timeout;
