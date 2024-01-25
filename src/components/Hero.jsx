@@ -28,12 +28,7 @@ const Hero = () => {
   return (
     <div className="mx-auto mt-20 flex max-w-[95%] flex-col-reverse items-center justify-center gap-10 sm:max-w-[70%] sm:gap-20 lg:flex-row-reverse lg:gap-10">
       <div className="hero mx-auto max-w-[90%]">
-        <img
-          src={Portrait}
-          alt="My portrait picture"
-          className="hero__img"
-          loading="lazy"
-        />
+        <img src={Portrait} alt="My portrait picture" className="hero__img" />
       </div>
       <div className="flex flex-col items-start gap-8 max-sm:min-w-[95%] lg:w-1/2">
         <div>
