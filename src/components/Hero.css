@@ -1,4 +1,4 @@
-.hero__img {
+/* .hero__img {
   background: url(../assets/portrait1.webp);
   background-repeat: no-repeat;
   background-position: center;
@@ -9,6 +9,24 @@
   order: 1;
   justify-self: center;
   animation: fluid__animation 8s ease-in-out infinite;
+} */
+
+.hero {
+  position: relative;
+  width: clamp(200px, 90vw, 400px);
+  aspect-ratio: 1/1;
+  order: 1;
+  justify-self: center;
+  overflow: hidden;
+  animation: fluid__animation 8s ease-in-out infinite;
+  box-shadow: inset 0 0 0 9px rgb(255 130 169 / 30%);
+}
+
+.hero__img {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
 }
 
 @keyframes fluid__animation {
