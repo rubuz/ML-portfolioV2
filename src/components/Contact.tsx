@@ -9,7 +9,7 @@ const Contact = () => {
       className="-mt-12 rounded-t-[2rem] bg-white dark:bg-black"
       id="contact"
     >
-      <Slide direction="right" triggerOnce="true">
+      <Slide direction="right" triggerOnce>
         <div className="mx-auto flex max-w-[95%] flex-col gap-3 pt-16 sm:max-w-[85%] sm:gap-6 sm:pt-32 lg:max-w-[75%] lg:flex-row">
           <div className="contact__mailbox flex flex-col justify-between gap-10 rounded-[2rem] bg-yellowy px-8 py-12 sm:px-12 sm:py-16 lg:max-w-[70%]">
             <div className="flex">

@@ -1,8 +1,20 @@
 import { BsArrowRight } from "react-icons/bs";
 
-import PropTypes from "prop-types";
+type ButtonProps = {
+  text: string;
+  textColor: string;
+  bgColor: string;
+  iconColor: string;
+  circleColor: string;
+};
 
-const Button = ({ text, textColor, bgColor, iconColor, circleColor }) => {
+const Button = ({
+  text,
+  textColor,
+  bgColor,
+  iconColor,
+  circleColor,
+}: ButtonProps) => {
   return (
     <div
       className={`${bgColor} group relative flex items-center justify-center rounded-full py-2 pl-10 pr-8 text-lg sm:py-5 sm:pl-16 sm:pr-12`}
@@ -15,14 +27,6 @@ const Button = ({ text, textColor, bgColor, iconColor, circleColor }) => {
       </div>
     </div>
   );
-};
-
-Button.propTypes = {
-  text: PropTypes.string.isRequired,
-  textColor: PropTypes.string.isRequired,
-  bgColor: PropTypes.string.isRequired,
-  iconColor: PropTypes.string.isRequired,
-  circleColor: PropTypes.string.isRequired,
 };
 
 export default Button;

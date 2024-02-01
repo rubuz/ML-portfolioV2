@@ -1,8 +1,11 @@
 import "./mobileNavMenuBtn.css";
 
-import PropTypes from "prop-types";
+type MobileNavMenuBtnProps = {
+  open: () => void;
+  openState: boolean;
+};
 
-const MobileNavMenuBtn = ({ open, openState }) => {
+const MobileNavMenuBtn = ({ open, openState }: MobileNavMenuBtnProps) => {
   const handleClick = () => {
     open();
   };
@@ -16,11 +19,6 @@ const MobileNavMenuBtn = ({ open, openState }) => {
       </label>
     </div>
   );
-};
-
-MobileNavMenuBtn.propTypes = {
-  open: PropTypes.func.isRequired,
-  openState: PropTypes.bool.isRequired,
 };
 
 export default MobileNavMenuBtn;

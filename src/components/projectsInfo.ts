@@ -3,7 +3,17 @@ import Project2 from "../assets/project2.webp";
 import Project3 from "../assets/project3.webp";
 import Project4 from "../assets/project4.webp";
 
-export const projectsInfo = [
+type ProjectInfo = {
+  id: number;
+  image: string;
+  group: string;
+  title: string;
+  url: string;
+  description: string;
+  tech: string;
+};
+
+export const projectsInfo: ProjectInfo[] = [
   {
     id: 1,
     image: Project1,
