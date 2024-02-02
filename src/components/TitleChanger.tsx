@@ -79,7 +79,7 @@ const TitleChanger = () => {
     <section className="relative mx-auto block h-[50px] w-full max-w-[1400px] items-center justify-center max-sm:-mb-8 max-sm:mt-8 sm:my-10 sm:h-[200px]">
       <Slide
         direction="down"
-        triggerOnce={true}
+        triggerOnce
         className="mx-auto block w-[95%] items-center justify-center"
       >
         <img
