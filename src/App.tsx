@@ -78,7 +78,7 @@ function App() {
           >
             <Hero />
           </motion.div>
-          <Slide direction="up" triggerOnce={true} className="sticky top-[30%]">
+          <Slide direction="up" triggerOnce className="sticky top-[30%]">
             <motion.div style={{ x }} className="mb-10 flex gap-8" id="about">
               <AboutCards />
             </motion.div>
