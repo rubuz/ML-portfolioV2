@@ -24,7 +24,7 @@ function App() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const onMouseMove = (e) => {
+    const onMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
@@ -57,7 +57,9 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       const preloader = document.getElementById("preloader");
-      preloader.classList.add("slide-up");
+      if (preloader) {
+        preloader.classList.add("slide-up");
+      }
     }, 1300);
   }, []);
 
@@ -76,7 +78,7 @@ function App() {
           >
             <Hero />
           </motion.div>
-          <Slide direction="up" triggerOnce="true" className="sticky top-[30%]">
+          <Slide direction="up" triggerOnce={true} className="sticky top-[30%]">
             <motion.div style={{ x }} className="mb-10 flex gap-8" id="about">
               <AboutCards />
             </motion.div>
@@ -98,7 +100,7 @@ function App() {
       <Contact />
       <Slide
         direction="up"
-        triggerOnce="true"
+        triggerOnce
         className="mx-auto w-2/3 py-14 sm:py-32 lg:w-1/2"
       >
         <a href="#">

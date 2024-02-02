@@ -8,13 +8,24 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 
 import { projectsInfo } from "./projectsInfo";
 
+type ProjectsInfo = {
+  id: number;
+  image: string;
+  group: string;
+  title: string;
+  url: string;
+  description: string;
+  tech: string;
+};
+
 const Projects = () => {
   const projectDot = document.querySelector(".dot-container");
-  // const dots = document.querySelectorAll(".project-dot");
-  const [hoveredProject, setHoveredProject] = useState(projectsInfo[0]);
+  const [hoveredProject, setHoveredProject] = useState<ProjectsInfo>(
+    projectsInfo[0],
+  );
 
-  const handleHoverProject = (project) => {
-    setHoveredProject(project);
+  const handleHoverProject = (project: ProjectsInfo) => {
+    setHoveredProject(project as ProjectsInfo);
   };
 
   const handleHover = () => {
@@ -107,12 +118,7 @@ const Projects = () => {
             />
           ))}
           <div className="w-fit">
-            <a
-              href="https://github.com/rubuz"
-              target="_blank"
-              rel="noreferrer"
-              alt="Link to github repository"
-            >
+            <a href="https://github.com/rubuz" target="_blank" rel="noreferrer">
               <Button
                 text={"View all"}
                 bgColor={"bg-black"}

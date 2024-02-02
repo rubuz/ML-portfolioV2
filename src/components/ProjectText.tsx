@@ -1,6 +1,10 @@
-import PropTypes from "prop-types";
+type ProjectTextProps = {
+  title: string;
+  group: string;
+  onMouseEnter: () => void;
+};
 
-const ProjectText = ({ title, group, onMouseEnter }) => {
+const ProjectText = ({ title, group, onMouseEnter }: ProjectTextProps) => {
   return (
     <div
       className="group flex select-none flex-col gap-4"
@@ -15,12 +19,6 @@ const ProjectText = ({ title, group, onMouseEnter }) => {
       </div>
     </div>
   );
-};
-
-ProjectText.propTypes = {
-  title: PropTypes.string.isRequired,
-  group: PropTypes.string.isRequired,
-  onMouseEnter: PropTypes.func.isRequired,
 };
 
 export default ProjectText;
