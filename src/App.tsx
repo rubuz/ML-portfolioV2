@@ -16,7 +16,11 @@ import { Slide } from "react-awesome-reveal";
 import { useMediaQuery } from "react-responsive";
 import MobileNav from "./components/MobileNav";
 
+import * as Sentry from "@sentry/react";
+
 function App() {
+  return <button onClick={() => methodDoesNotExist()}>Break the world</button>;
+
   const isDesktopOrLaptop = useMediaQuery({ query: "(min-width: 1024px)" });
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 900px)" });
 
@@ -122,4 +126,4 @@ function App() {
   );
 }
 
-export default App;
+export default Sentry.withProfiler(App);
