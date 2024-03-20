@@ -15,6 +15,9 @@ import { useScroll, useTransform, motion } from "framer-motion";
 import { Slide } from "react-awesome-reveal";
 import { useMediaQuery } from "react-responsive";
 import MobileNav from "./components/MobileNav";
+import ReactGA from "react-ga4";
+
+ReactGA.initialize(import.meta.env.VITE_GA_ID as string);
 
 function App() {
   const isDesktopOrLaptop = useMediaQuery({ query: "(min-width: 1024px)" });
