@@ -13,6 +13,7 @@
     "@emotion/react": "^11.11.1",
     "@headlessui/react": "^1.7.17",
     "@vercel/analytics": "^1.2.2",
+    "@vercel/speed-insights": "^1.0.10",
     "framer-motion": "^10.16.16",
     "react": "^18.2.0",
     "react-awesome-reveal": "^4.2.7",

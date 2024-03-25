@@ -17,6 +17,7 @@ import { useMediaQuery } from "react-responsive";
 import MobileNav from "./components/MobileNav";
 import ReactGA from "react-ga4";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 ReactGA.initialize(import.meta.env.VITE_GA_ID as string);
 
@@ -68,62 +69,65 @@ function App() {
   }, []);
 
   return (
-    <div className="font-work lg:cursor-none">
-      {isTabletOrMobile ? <MobileNav /> : <Navbar />}
-      <TitleChanger />
-      {isDesktopOrLaptop && (
-        <section ref={targetRef} className="relative flex h-[190vh] flex-col">
-          <motion.div
-            style={{
-              scale: scaleProgress,
-              opacity: opacityProgress,
-            }}
-            className=" sticky top-[-20%] h-[55vh]"
-          >
-            <Hero />
-          </motion.div>
-          <Slide direction="up" triggerOnce className="sticky top-[30%]">
-            <motion.div style={{ x }} className="mb-10 flex gap-8" id="about">
-              <AboutCards />
+    <>
+      <div className="font-work lg:cursor-none">
+        {isTabletOrMobile ? <MobileNav /> : <Navbar />}
+        <TitleChanger />
+        {isDesktopOrLaptop && (
+          <section ref={targetRef} className="relative flex h-[190vh] flex-col">
+            <motion.div
+              style={{
+                scale: scaleProgress,
+                opacity: opacityProgress,
+              }}
+              className=" sticky top-[-20%] h-[55vh]"
+            >
+              <Hero />
             </motion.div>
-          </Slide>
-        </section>
-      )}
+            <Slide direction="up" triggerOnce className="sticky top-[30%]">
+              <motion.div style={{ x }} className="mb-10 flex gap-8" id="about">
+                <AboutCards />
+              </motion.div>
+            </Slide>
+          </section>
+        )}
 
-      {!isDesktopOrLaptop && (
-        <section className="flex flex-col gap-4 sm:gap-10">
-          <Hero />
+        {!isDesktopOrLaptop && (
+          <section className="flex flex-col gap-4 sm:gap-10">
+            <Hero />
 
-          <div className="my-10 flex gap-3 overflow-x-scroll" id="about">
-            <AboutCards />
-          </div>
-        </section>
-      )}
+            <div className="my-10 flex gap-3 overflow-x-scroll" id="about">
+              <AboutCards />
+            </div>
+          </section>
+        )}
 
-      <Projects />
-      <Contact />
-      <Slide
-        direction="up"
-        triggerOnce
-        className="mx-auto w-2/3 py-14 sm:py-32 lg:w-1/2"
-      >
-        <a href="#">
-          <img
-            src={TextImg}
-            className="white-pic"
-            alt="Img with text LOVENJAK"
-          />
-        </a>
-      </Slide>
-      <Footer />
-      <motion.div
-        variants={variants}
-        animate="default"
-        transition={{ duration: 0.01 }}
-        className="pointer-events-none fixed left-0 top-0 z-[60] h-4 w-4 rounded-full border-[1px] border-white bg-black opacity-70 dark:border-black dark:bg-white dark:opacity-80 max-lg:hidden"
-      />
+        <Projects />
+        <Contact />
+        <Slide
+          direction="up"
+          triggerOnce
+          className="mx-auto w-2/3 py-14 sm:py-32 lg:w-1/2"
+        >
+          <a href="#">
+            <img
+              src={TextImg}
+              className="white-pic"
+              alt="Img with text LOVENJAK"
+            />
+          </a>
+        </Slide>
+        <Footer />
+        <motion.div
+          variants={variants}
+          animate="default"
+          transition={{ duration: 0.01 }}
+          className="pointer-events-none fixed left-0 top-0 z-[60] h-4 w-4 rounded-full border-[1px] border-white bg-black opacity-70 dark:border-black dark:bg-white dark:opacity-80 max-lg:hidden"
+        />
+      </div>
       <Analytics />
-    </div>
+      <SpeedInsights />
+    </>
   );
 }
 
