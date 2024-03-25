@@ -9,10 +9,10 @@ Introducing to my portfolio! Discover a showcase of my latest projects, demonstr
 
 ## Features
 
-1.  **Project Showcase:**
-2.  **Social Links:** 
-3.  **Contact Link:**
-4.  **Downloadable CV:** 
+1.  **Project Showcase**
+2.  **Social Links** 
+3.  **Contact Link**
+4.  **Downloadable CV** 
 
 ## How it works
 
