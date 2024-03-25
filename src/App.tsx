@@ -16,6 +16,7 @@ import { Slide } from "react-awesome-reveal";
 import { useMediaQuery } from "react-responsive";
 import MobileNav from "./components/MobileNav";
 import ReactGA from "react-ga4";
+import { Analytics } from "@vercel/analytics/react";
 
 ReactGA.initialize(import.meta.env.VITE_GA_ID as string);
 
@@ -121,6 +122,7 @@ function App() {
         transition={{ duration: 0.01 }}
         className="pointer-events-none fixed left-0 top-0 z-[60] h-4 w-4 rounded-full border-[1px] border-white bg-black opacity-70 dark:border-black dark:bg-white dark:opacity-80 max-lg:hidden"
       />
+      <Analytics />
     </div>
   );
 }
