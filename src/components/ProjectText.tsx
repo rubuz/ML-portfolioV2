@@ -11,7 +11,7 @@ const ProjectText = ({ title, group, onMouseEnter }: ProjectTextProps) => {
       onMouseEnter={onMouseEnter}
     >
       <p className="text-2xl">{group}</p>
-      <h3 className="text-4xl font-medium tracking-tight sm:text-7xl">
+      <h3 className="text-4xl font-medium tracking-tight sm:text-6xl">
         {title}
       </h3>
       <div className="relative h-1 w-full bg-black/30">
