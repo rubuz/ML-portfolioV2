@@ -18,7 +18,7 @@ export const projectsInfo: ProjectInfo[] = [
   {
     id: 1,
     image: Project5,
-    group: "Utility web app",
+    group: "Utility Andorid app",
     title: "Production Counter",
     url: "/",
     description:
