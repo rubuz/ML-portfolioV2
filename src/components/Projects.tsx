@@ -10,12 +10,13 @@ import { projectsInfo } from "./projectsInfo";
 
 type ProjectsInfo = {
   id: number;
-  image: string;
+  image?: string;
   group: string;
   title: string;
   url: string;
   description: string;
   tech: string;
+  video?: string;
 };
 
 const Projects = () => {
@@ -76,11 +77,22 @@ const Projects = () => {
             onMouseLeave={handleMouseLeave}
           >
             <div>
-              <img
-                src={hoveredProject ? hoveredProject.image : ""}
-                alt=""
-                className="rounded-2xl object-contain  "
-              />
+              {hoveredProject.video ? (
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  className="rounded-2xl object-contain"
+                >
+                  <source src={hoveredProject.video} type="video/webm" />
+                </video>
+              ) : (
+                <img
+                  src={hoveredProject ? hoveredProject.image : ""}
+                  alt=""
+                  className="rounded-2xl object-contain"
+                />
+              )}
             </div>
             <div className="absolute right-0 top-0 z-10 flex h-full w-full translate-y-full items-end rounded-2xl bg-black/90 p-4 transition-all duration-300 group-hover:translate-y-0 sm:p-9">
               <div className="flex flex-col gap-4 text-white">
