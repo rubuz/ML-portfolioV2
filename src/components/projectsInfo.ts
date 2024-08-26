@@ -20,7 +20,7 @@ export const projectsInfo: ProjectInfo[] = [
   {
     id: 1,
     video: Project6,
-    group: "Utility web app",
+    group: "Utility Andorid app",
     title: "InventuraOS",
     url: "/",
     description:
@@ -30,7 +30,7 @@ export const projectsInfo: ProjectInfo[] = [
   {
     id: 2,
     image: Project5,
-    group: "Utility Andorid app",
+    group: "Utility web app",
     title: "Production Counter",
     url: "/",
     description:
@@ -42,7 +42,7 @@ export const projectsInfo: ProjectInfo[] = [
     image: Project1,
     group: "Web page",
     title: "Moto Lander",
-    url: "https://guileless-chimera-bc6b53.netlify.app/",
+    url: "https://ltmoto.si/",
     description:
       "A landig page for small company that sells motorcycles. Page is written in ReactJS with TailwindCSS. Contact form uses PHP scripts on backend server.",
     tech: "ReactJS, TailwindCSS, PHP",

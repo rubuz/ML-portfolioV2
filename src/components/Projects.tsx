@@ -78,18 +78,20 @@ const Projects = () => {
           >
             <div>
               {hoveredProject.video ? (
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  className="rounded-2xl object-contain"
-                >
-                  <source src={hoveredProject.video} type="video/webm" />
-                </video>
+                <div>
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    className="rounded-2xl object-contain"
+                  >
+                    <source src={hoveredProject.video} type="video/webm" />
+                  </video>
+                </div>
               ) : (
                 <img
                   src={hoveredProject ? hoveredProject.image : ""}
-                  alt=""
+                  alt="screenshot of project"
                   className="rounded-2xl object-contain"
                 />
               )}
