@@ -114,7 +114,7 @@ const Projects = () => {
                   rel="noreferrer"
                   className={`text-xl font-semibold hover:underline sm:text-2xl text-${handleBGChange()} flex items-center gap-4 transition-all duration-500 ${hoveredProject.url === "/" ? "hidden" : "visible"}`}
                 >
-                  DEMO <FaArrowLeftLong className="animate-bounce-left" />
+                  LINK <FaArrowLeftLong className="animate-bounce-left" />
                 </a>
               </div>
             </div>

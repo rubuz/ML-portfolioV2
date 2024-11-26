@@ -4,6 +4,7 @@ import Project3 from "../assets/project3.webp";
 import Project4 from "../assets/project4.webp";
 import Project5 from "../assets/project5.webp";
 import Project6 from "../assets/project6.webm";
+import Project7 from "../assets/project7.webp";
 
 type ProjectInfo = {
   id: number;
@@ -39,6 +40,16 @@ export const projectsInfo: ProjectInfo[] = [
   },
   {
     id: 3,
+    image: Project7,
+    group: "Web page",
+    title: "cEnergija",
+    url: "https://cenergija.vercel.app/",
+    description:
+      "Webpage that visualizes electrical energy price changes in 2024. A dynamic doughnut chart shows price variations by date and time, helping users identify cost-effective periods.",
+    tech: "ReactJS, TailwindCSS, Typescript, DaisyUI",
+  },
+  {
+    id: 4,
     image: Project1,
     group: "Web page",
     title: "Moto Lander",
@@ -57,16 +68,16 @@ export const projectsInfo: ProjectInfo[] = [
   //     "A website for small IT bussnies. One of my first full multi-page web pages. It was fully build with vanilla HTML, CSS and JS.",
   //   tech: "HTML, CSS, JS",
   // },
-  {
-    id: 4,
-    image: Project3,
-    group: "Utility web app",
-    title: "Test drive survey",
-    url: "https://64afd2688bb4cb0326df645e--splendorous-pithivier-d797a9.netlify.app/",
-    description:
-      "RV test drive survey is a React.js web app that simplifies the process of collecting feedback and complaints after test driving an RV. Users can enter data, submit complaints, and even upload pictures. The app generates a JSON file that is uploaded to the backend server for further analysis.",
-    tech: "ReactJS, CSS, React Router",
-  },
+  // {
+  //   id: 4,
+  //   image: Project3,
+  //   group: "Utility web app",
+  //   title: "Test drive survey",
+  //   url: "https://64afd2688bb4cb0326df645e--splendorous-pithivier-d797a9.netlify.app/",
+  //   description:
+  //     "RV test drive survey is a React.js web app that simplifies the process of collecting feedback and complaints after test driving an RV. Users can enter data, submit complaints, and even upload pictures. The app generates a JSON file that is uploaded to the backend server for further analysis.",
+  //   tech: "ReactJS, CSS, React Router",
+  // },
   // {
   //   id: 4,
   //   image: Project4,
