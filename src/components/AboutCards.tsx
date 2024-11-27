@@ -9,15 +9,6 @@ import CV from "../assets/CV.pdf";
 
 const cardsInfo = [
   {
-    title: "IT Engineer",
-    text: "An experienced IT system administrator working in the world of IT for more than 7 years. Started a transition into a web-developer.",
-    color: "bg-bluey",
-    id: 1,
-    icon: (
-      <FaLaptop className="mt-2 animate-bounce text-2xl text-bluey sm:text-4xl" />
-    ),
-  },
-  {
     title: "Frontend Developer",
     text: "Self-taught frontend web developer with expertise in HTML, CSS, JavaScript, TailwindCSS and ReactJS. Passionate about creating dynamic and user-friendly experiences.",
     color: "bg-pinky",
@@ -30,9 +21,18 @@ const cardsInfo = [
     title: "Keen eye",
     text: "I have a sharp eye for visual perfection, quickly spotting imperfections. My intuitive sense for good UI and UX enables me to create polished and user-friendly designs.",
     color: "bg-greeny",
-    id: 2,
+    id: 3,
     icon: (
       <FaRegEye className="mt-2 animate-bounce text-2xl text-greeny sm:text-4xl" />
+    ),
+  },
+  {
+    title: "IT Engineer",
+    text: "An experienced IT system administrator with over 7 years in the IT field, successfully transitioned to a web developer role, now specializing in front-end development.",
+    color: "bg-bluey",
+    id: 1,
+    icon: (
+      <FaLaptop className="mt-2 animate-bounce text-2xl text-bluey sm:text-4xl" />
     ),
   },
 ];
