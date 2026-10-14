@@ -1,23 +1,35 @@
 type ProjectTextProps = {
   title: string;
   group: string;
-  onMouseEnter: () => void;
+  isActive: boolean;
+  onSelect: () => void;
 };
 
-const ProjectText = ({ title, group, onMouseEnter }: ProjectTextProps) => {
+const ProjectText = ({
+  title,
+  group,
+  isActive,
+  onSelect,
+}: ProjectTextProps) => {
   return (
-    <div
-      className="group flex select-none flex-col gap-4"
-      onMouseEnter={onMouseEnter}
+    <button
+      type="button"
+      className="group flex select-none flex-col gap-2 text-left sm:gap-4 lg:cursor-none"
+      onMouseEnter={onSelect}
+      onFocus={onSelect}
+      onClick={onSelect}
+      aria-pressed={isActive}
     >
-      <p className="text-2xl">{group}</p>
-      <h3 className="text-4xl font-medium tracking-tight sm:text-6xl">
+      <p className="text-lg sm:text-2xl">{group}</p>
+      <h3 className="text-3xl font-medium tracking-tight sm:text-6xl">
         {title}
       </h3>
       <div className="relative h-1 w-full bg-black/30">
-        <div className="h-1 w-0 bg-black transition-all duration-500 group-hover:w-full "></div>
+        <div
+          className={`h-1 bg-black transition-all duration-500 group-hover:w-full ${isActive ? "w-full" : "w-0"}`}
+        ></div>
       </div>
-    </div>
+    </button>
   );
 };
 

@@ -18,7 +18,7 @@ const MobileNav = () => {
       setIsScrolled(window.scrollY > 0);
     };
 
-    document.addEventListener("scroll", checkScroll);
+    window.addEventListener("scroll", checkScroll);
 
     return () => {
       window.removeEventListener("scroll", checkScroll);

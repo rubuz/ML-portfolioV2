@@ -2,6 +2,7 @@ import Button from "./Button";
 import { MdAlternateEmail } from "react-icons/md";
 import { LiaAsteriskSolid } from "react-icons/lia";
 import { Slide } from "react-awesome-reveal";
+import { socials } from "./socials";
 
 const Contact = () => {
   return (
@@ -51,33 +52,18 @@ const Contact = () => {
               Contact me on socials
             </h2>
             <div className="flex w-[60%] flex-col text-lg leading-5">
-              <a
-                href="https://www.linkedin.com/in/matjaz-lovenjak/"
-                className="hover__link mt-2 w-max text-2xl font-semibold"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Link to my LinkedIn profile"
-              >
-                linkedin
-              </a>
-              <a
-                href="https://www.facebook.com/matjaz.lovenjak"
-                className="hover__link mt-2 w-max text-2xl font-semibold"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Link to my Facebook profile"
-              >
-                facebook
-              </a>
-              <a
-                href="https://www.instagram.com/rubuz88/"
-                className="hover__link mt-2 w-max text-2xl font-semibold"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Link to my Instagram profile"
-              >
-                instagram
-              </a>
+              {socials.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  className="hover__link mt-2 w-max text-2xl font-semibold"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Link to my ${social.label} profile`}
+                >
+                  {social.name}
+                </a>
+              ))}
             </div>
           </div>
         </div>

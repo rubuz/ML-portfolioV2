@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import "./App.css";
-import TextImg from "../src/assets/text1.webp";
+import TextImg from "./assets/text1.webp";
 
 import AboutCards from "./components/AboutCards";
 import Hero from "./components/Hero";
@@ -19,11 +19,40 @@ import ReactGA from "react-ga4";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
-ReactGA.initialize(import.meta.env.VITE_GA_ID as string);
+// Without the ID (e.g. local dev without .env) initialize() throws and the app never mounts
+const gaId = import.meta.env.VITE_GA_ID;
+if (gaId) {
+  ReactGA.initialize(gaId);
+}
+
+const getInitialTheme = () => {
+  try {
+    const saved = localStorage.getItem("theme");
+    if (saved) return saved === "dark";
+  } catch {
+    // Storage blocked, fall back to the system preference
+  }
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+};
 
 function App() {
   const isDesktopOrLaptop = useMediaQuery({ query: "(min-width: 1024px)" });
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 900px)" });
+
+  const [isDark, setIsDark] = useState(getInitialTheme);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", isDark);
+  }, [isDark]);
+
+  const handleThemeChange = (dark: boolean) => {
+    setIsDark(dark);
+    try {
+      localStorage.setItem("theme", dark ? "dark" : "light");
+    } catch {
+      // Storage blocked, the theme just won't be remembered
+    }
+  };
 
   // Cursor effect
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -47,16 +76,57 @@ function App() {
     },
   };
 
-  // Scroll animations
-  const targetRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["0.6 0.9", "1.5 1"],
+  // Scroll animations (desktop). All values are measured against the section's
+  // top, so they keep working no matter how many cards there are.
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+  const [cardsLayout, setCardsLayout] = useState({ overflow: 0, height: 0 });
+  const cardsOverflow = useRef(0);
+  const { scrollY } = useScroll();
+
+  useEffect(() => {
+    if (!isDesktopOrLaptop) return;
+    const measure = () => {
+      if (!cardsRef.current) return;
+      const overflow = Math.max(
+        0,
+        cardsRef.current.scrollWidth - window.innerWidth + 80,
+      );
+      cardsOverflow.current = overflow;
+      // + 40px for the row's mb-10
+      setCardsLayout({ overflow, height: cardsRef.current.offsetHeight + 40 });
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [isDesktopOrLaptop]);
+
+  // Scroll distance (in viewport heights) since the section reached the top
+  const scrolledIntoSection = (y: number) => {
+    if (!sectionRef.current) return 0;
+    const sectionTop = sectionRef.current.getBoundingClientRect().top + y;
+    return (y - sectionTop) / window.innerHeight;
+  };
+
+  // The cards row sticks at top 30% once the 55vh hero is 25vh past the top,
+  // then moves sideways 1px per 1px scrolled until the last card is in view
+  const x = useTransform(scrollY, (y) => {
+    const scrolled = (scrolledIntoSection(y) - 0.25) * window.innerHeight;
+    return -Math.min(Math.max(scrolled, 0), cardsOverflow.current);
+  });
+  const scaleProgress = useTransform(scrollY, (y) => {
+    const v = scrolledIntoSection(y);
+    return Math.min(Math.max((1.85 - v) / (1.85 - 0.88), 0), 1);
+  });
+  const opacityProgress = useTransform(scrollY, (y) => {
+    const v = scrolledIntoSection(y);
+    return Math.min(Math.max((1.37 - v) / (1.37 - 0.24), 0), 1);
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
-  const scaleProgress = useTransform(scrollYProgress, [0, 0.4, 1], [1, 1, 0]);
-  const opacityProgress = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0, 0]);
+  // Hero (55vh) + the sticky cards row + the sideways distance + a short pause at the end
+  const sectionHeight = cardsLayout.height
+    ? `calc(55vh + ${cardsLayout.height + cardsLayout.overflow + 200}px)`
+    : "190vh";
 
   //load screen
   useEffect(() => {
@@ -74,7 +144,11 @@ function App() {
         {isTabletOrMobile ? <MobileNav /> : <Navbar />}
         <TitleChanger />
         {isDesktopOrLaptop && (
-          <section ref={targetRef} className="relative flex h-[190vh] flex-col">
+          <section
+            ref={sectionRef}
+            style={{ height: sectionHeight }}
+            className="relative flex flex-col"
+          >
             <motion.div
               style={{
                 scale: scaleProgress,
@@ -82,19 +156,24 @@ function App() {
               }}
               className=" sticky top-[-20%] h-[55vh]"
             >
-              <Hero />
+              <Hero isDark={isDark} onThemeChange={handleThemeChange} />
             </motion.div>
-            <Slide direction="up" triggerOnce className="sticky top-[30%]">
-              <motion.div style={{ x }} className="mb-10 flex gap-8" id="about">
-                <AboutCards />
-              </motion.div>
-            </Slide>
+            <div className="sticky top-[30%]">
+              <Slide direction="up" triggerOnce>
+                <motion.div style={{ x }} className="mb-10" id="about">
+                  {/* Slide overrides its child's ref, so measure this inner row */}
+                  <div ref={cardsRef} className="flex gap-8">
+                    <AboutCards />
+                  </div>
+                </motion.div>
+              </Slide>
+            </div>
           </section>
         )}
 
         {!isDesktopOrLaptop && (
           <section className="flex flex-col gap-4 sm:gap-10">
-            <Hero />
+            <Hero isDark={isDark} onThemeChange={handleThemeChange} />
 
             <div className="my-10 flex gap-3 overflow-x-scroll" id="about">
               <AboutCards />
@@ -113,7 +192,7 @@ function App() {
             <img
               src={TextImg}
               className="white-pic"
-              alt="Img with text LOVENJAK"
+              alt="LOVENJAK, back to top"
             />
           </a>
         </Slide>

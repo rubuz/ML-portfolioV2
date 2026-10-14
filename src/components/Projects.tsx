@@ -4,131 +4,129 @@ import MarqueeText from "./MarqueeText";
 import ProjectText from "./ProjectText";
 import Button from "./Button";
 
-import { FaArrowLeftLong } from "react-icons/fa6";
+import { FaArrowLeftLong, FaLock } from "react-icons/fa6";
 
-import { projectsInfo } from "./projectsInfo";
-
-type ProjectsInfo = {
-  id: number;
-  image?: string;
-  group: string;
-  title: string;
-  url: string;
-  description: string;
-  tech: string;
-  video?: string;
-};
+import { colorClasses, projectsInfo, ProjectInfo } from "./projectsInfo";
 
 const Projects = () => {
-  const projectDot = document.querySelector(".dot-container");
-  const [hoveredProject, setHoveredProject] = useState<ProjectsInfo>(
+  const [activeProject, setActiveProject] = useState<ProjectInfo>(
     projectsInfo[0],
   );
+  const [isMediaHovered, setIsMediaHovered] = useState(false);
+  // Hover opens the details on desktop; on touch screens and keyboard they open with this toggle
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
 
-  const handleHoverProject = (project: ProjectsInfo) => {
-    setHoveredProject(project as ProjectsInfo);
-  };
+  const colors = colorClasses[activeProject.color];
 
-  const handleHover = () => {
-    if (projectDot) {
-      projectDot.classList.add("hoverd");
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (projectDot) {
-      projectDot.classList.remove("hoverd");
-    }
-  };
-
-  const handleBGChange = () => {
-    switch (hoveredProject.id) {
-      case 1:
-        return "greeny";
-      case 2:
-        return "yellowy";
-      case 3:
-        return "bluey";
-      case 4:
-        return "olivy";
-    }
+  const selectProject = (project: ProjectInfo) => {
+    if (project.id === activeProject.id) return;
+    setActiveProject(project);
+    setIsDetailsOpen(false);
   };
 
   return (
     <section
       id="work"
-      className={`w-full bg-${handleBGChange()} rounded-t-[2rem] pb-[10.5rem] transition-all duration-300`}
+      className={`w-full ${colors.bg} rounded-t-[2rem] pb-[10.5rem] transition-all duration-300`}
     >
-      <div className="py-4">
+      <h2 className="sr-only">My projects</h2>
+      <div className="py-4" aria-hidden="true">
         <Marquee autoFill speed={130}>
           <MarqueeText />
         </Marquee>
       </div>
       <div className="mx-auto grid w-[95%] items-center gap-0 sm:mb-0 sm:w-[85%] sm:gap-10 md:grid-cols-1 xl:w-[75%] xl:grid-cols-[55%_auto]">
         <div className="flex w-full flex-col justify-between gap-4 rounded-[2rem] border-[3px] border-black bg-transparent p-4 sm:gap-12 sm:p-9">
-          <div className="dot-container flex gap-2">
-            <div className="project-dot h-5 w-5 rounded-full border-[3px] border-black transition-all duration-500 sm:h-6 sm:w-6"></div>
-            <div className="project-dot h-5 w-5 rounded-full border-[3px] border-black transition-all duration-500 sm:h-6 sm:w-6"></div>
-            <div className="project-dot h-5 w-5 rounded-full border-[3px] border-black transition-all duration-500 sm:h-6 sm:w-6"></div>
+          <div className="flex gap-2" aria-hidden="true">
+            {[0, 1, 2].map((dot) => (
+              <div
+                key={dot}
+                className={`h-5 w-5 rounded-full border-[3px] border-black transition-all duration-500 sm:h-6 sm:w-6 ${isMediaHovered ? "bg-black" : ""}`}
+              ></div>
+            ))}
           </div>
           <div
-            className="project-img group relative w-full overflow-hidden rounded-2xl transition-all duration-1000 hover:scale-[105%]"
-            onMouseEnter={handleHover}
-            onMouseLeave={handleMouseLeave}
+            className="group relative w-full overflow-hidden rounded-2xl transition-all duration-1000 lg:hover:scale-[105%]"
+            onMouseEnter={() => setIsMediaHovered(true)}
+            onMouseLeave={() => setIsMediaHovered(false)}
           >
-            <div>
-              {hoveredProject.video ? (
-                <div>
-                  <video
-                    autoPlay
-                    loop
-                    muted
-                    className="rounded-2xl object-contain"
-                  >
-                    <source src={hoveredProject.video} type="video/webm" />
-                  </video>
-                </div>
-              ) : (
-                <img
-                  src={hoveredProject ? hoveredProject.image : ""}
-                  alt="screenshot of project"
-                  className="rounded-2xl object-contain"
-                />
-              )}
-            </div>
-            <div className="absolute right-0 top-0 z-10 flex h-full w-full translate-y-full items-end rounded-2xl bg-black/90 p-4 transition-all duration-300 group-hover:translate-y-0 sm:p-9">
-              <div className="flex flex-col gap-4 text-white">
-                <p className="text-3xl font-semibold sm:text-6xl">
-                  {hoveredProject.title}
+            {activeProject.video ? (
+              <video
+                key={activeProject.video}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full rounded-2xl object-contain"
+              >
+                <source src={activeProject.video} type="video/webm" />
+              </video>
+            ) : activeProject.image ? (
+              <img
+                src={activeProject.image}
+                alt={`Screenshot of ${activeProject.title}`}
+                className="w-full rounded-2xl object-contain"
+              />
+            ) : (
+              <div className="flex aspect-video w-full flex-col items-center justify-center gap-4 rounded-2xl bg-black/10 p-6 text-center">
+                <FaLock className="text-3xl sm:text-5xl" />
+                <p className="text-3xl font-semibold tracking-tight sm:text-5xl">
+                  {activeProject.title}
+                </p>
+              </div>
+            )}
+            <div
+              className={`absolute right-0 top-0 z-10 flex h-full w-full items-end overflow-y-auto rounded-2xl bg-black/90 p-4 transition-all duration-300 sm:p-9 lg:group-focus-within:translate-y-0 lg:group-hover:translate-y-0 ${isDetailsOpen ? "translate-y-0" : "translate-y-full"}`}
+            >
+              <div className="flex flex-col gap-2 text-white sm:gap-4">
+                <p className="text-2xl font-semibold sm:text-6xl">
+                  {activeProject.title}
                 </p>
                 <p className="text-sm sm:max-w-[65%] sm:text-lg">
-                  {hoveredProject.description}
+                  {activeProject.description}
                 </p>
                 <div className="text-sm sm:text-lg">
                   <p className="font-medium">Tech stack:</p>
-                  <p>{hoveredProject.tech}</p>
+                  <p>{activeProject.tech}</p>
                 </div>
-                <a
-                  href={hoveredProject.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`text-xl font-semibold hover:underline sm:text-2xl text-${handleBGChange()} flex items-center gap-4 transition-all duration-500 ${hoveredProject.url === "/" ? "hidden" : "visible"}`}
-                >
-                  LINK <FaArrowLeftLong className="animate-bounce-left" />
-                </a>
+                {activeProject.url ? (
+                  <a
+                    href={activeProject.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`flex items-center gap-4 text-xl font-semibold transition-all duration-500 hover:underline sm:text-2xl ${colors.text}`}
+                  >
+                    LINK <FaArrowLeftLong className="animate-bounce-left" />
+                  </a>
+                ) : (
+                  activeProject.internal && (
+                    <p
+                      className={`text-sm font-medium sm:text-lg ${colors.text}`}
+                    >
+                      Internal project · Adria Mobil (Trigano Group)
+                    </p>
+                  )
+                )}
               </div>
             </div>
+            <button
+              type="button"
+              onClick={() => setIsDetailsOpen((open) => !open)}
+              aria-expanded={isDetailsOpen}
+              className="absolute bottom-3 right-3 z-20 rounded-full bg-black px-4 py-2 text-sm font-medium text-white lg:opacity-0 lg:focus-visible:opacity-100"
+            >
+              {isDetailsOpen ? "Close" : "Details"}
+            </button>
           </div>
         </div>
-        <div className="flex h-[80%] flex-col justify-between gap-5">
+        <div className="flex flex-col justify-between gap-5 max-sm:mt-6">
           {projectsInfo.map((project) => (
             <ProjectText
               group={project.group}
               title={project.title}
               key={project.id}
-              onMouseEnter={() => {
-                handleHoverProject(project);
-              }}
+              isActive={project.id === activeProject.id}
+              onSelect={() => selectProject(project)}
             />
           ))}
           <div className="w-fit">
@@ -137,8 +135,8 @@ const Projects = () => {
                 text={"View all"}
                 bgColor={"bg-black"}
                 iconColor={"text-black"}
-                circleColor={`bg-${handleBGChange()}`}
-                textColor={`text-${handleBGChange()}`}
+                circleColor={colors.bg}
+                textColor={colors.text}
               />
             </a>
           </div>
