@@ -10,7 +10,6 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
-import { useScroll, useTransform, motion } from "framer-motion";
 import { Slide } from "react-awesome-reveal";
 import { useMediaQuery } from "./hooks/useMediaQuery";
 import MobileNav from "./components/MobileNav";
@@ -60,7 +59,6 @@ function App() {
   const cardsRef = useRef<HTMLDivElement>(null);
   const [cardsLayout, setCardsLayout] = useState({ overflow: 0, height: 0 });
   const cardsOverflow = useRef(0);
-  const { scrollY } = useScroll();
 
   useEffect(() => {
     if (!isDesktopOrLaptop) return;
@@ -79,27 +77,52 @@ function App() {
     return () => window.removeEventListener("resize", measure);
   }, [isDesktopOrLaptop]);
 
-  // Scroll distance (in viewport heights) since the section reached the top
-  const scrolledIntoSection = (y: number) => {
-    if (!sectionRef.current) return 0;
-    const sectionTop = sectionRef.current.getBoundingClientRect().top + y;
-    return (y - sectionTop) / window.innerHeight;
-  };
+  // Scroll-linked styles are written straight to the DOM once per frame,
+  // so scrolling never re-renders React
+  const heroRef = useRef<HTMLDivElement>(null);
 
-  // The cards row sticks at top 30% once the 55vh hero is 25vh past the top,
-  // then moves sideways 1px per 1px scrolled until the last card is in view
-  const x = useTransform(scrollY, (y) => {
-    const scrolled = (scrolledIntoSection(y) - 0.25) * window.innerHeight;
-    return -Math.min(Math.max(scrolled, 0), cardsOverflow.current);
-  });
-  const scaleProgress = useTransform(scrollY, (y) => {
-    const v = scrolledIntoSection(y);
-    return Math.min(Math.max((1.85 - v) / (1.85 - 0.88), 0), 1);
-  });
-  const opacityProgress = useTransform(scrollY, (y) => {
-    const v = scrolledIntoSection(y);
-    return Math.min(Math.max((1.37 - v) / (1.37 - 0.24), 0), 1);
-  });
+  useEffect(() => {
+    if (!isDesktopOrLaptop) return;
+    let frame = 0;
+    const clamp01 = (n: number) => Math.min(Math.max(n, 0), 1);
+
+    const update = () => {
+      frame = 0;
+      if (!sectionRef.current) return;
+      const vh = window.innerHeight;
+      // Viewport heights scrolled since the section's top reached the top of the screen
+      const scrolled = -sectionRef.current.getBoundingClientRect().top / vh;
+
+      if (heroRef.current) {
+        heroRef.current.style.transform = `scale(${clamp01((1.85 - scrolled) / (1.85 - 0.88))})`;
+        heroRef.current.style.opacity = String(
+          clamp01((1.37 - scrolled) / (1.37 - 0.24)),
+        );
+      }
+      // The cards row sticks at top 30% once the 55vh hero is 25vh past the top,
+      // then moves sideways 1px per 1px scrolled until the last card is in view
+      if (cardsRef.current) {
+        const shift = Math.min(
+          Math.max((scrolled - 0.25) * vh, 0),
+          cardsOverflow.current,
+        );
+        cardsRef.current.style.transform = `translateX(${-shift}px)`;
+      }
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [isDesktopOrLaptop, cardsLayout]);
 
   // Hero (55vh) + the sticky cards row + the sideways distance + a short pause at the end
   const sectionHeight = cardsLayout.height
@@ -140,23 +163,17 @@ function App() {
             style={{ height: sectionHeight }}
             className="relative flex flex-col"
           >
-            <motion.div
-              style={{
-                scale: scaleProgress,
-                opacity: opacityProgress,
-              }}
-              className=" sticky top-[-20%] h-[55vh]"
-            >
+            <div ref={heroRef} className="sticky top-[-20%] h-[55vh]">
               <Hero isDark={isDark} onThemeChange={handleThemeChange} />
-            </motion.div>
+            </div>
             <div className="sticky top-[30%]">
               <Slide direction="up" triggerOnce>
-                <motion.div style={{ x }} className="mb-10" id="about">
-                  {/* Slide overrides its child's ref, so measure this inner row */}
+                <div className="mb-10" id="about">
+                  {/* Slide overrides its child's ref, so measure and move this inner row */}
                   <div ref={cardsRef} className="flex gap-8">
                     <AboutCards />
                   </div>
-                </motion.div>
+                </div>
               </Slide>
             </div>
           </section>

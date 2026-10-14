@@ -5,7 +5,7 @@ import ProjectText from "./ProjectText";
 import Button from "./Button";
 
 import { FaArrowLeftLong, FaLock } from "react-icons/fa6";
-import { useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 
 import { colorClasses, projectsInfo, ProjectInfo } from "./projectsInfo";
 

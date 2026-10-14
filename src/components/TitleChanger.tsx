@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Slide } from "react-awesome-reveal";
-import { useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 
 import Title1 from "../assets/text1.webp";
 import Title2 from "../assets/text2.webp";
