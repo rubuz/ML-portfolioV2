@@ -27,7 +27,7 @@ const Projects = () => {
   return (
     <section
       id="work"
-      className={`w-full ${colors.bg} rounded-t-[2rem] pb-[10.5rem] transition-all duration-300`}
+      className={`w-full ${colors.bg} rounded-t-4xl pb-42 transition-all duration-300`}
     >
       <h2 className="sr-only">My projects</h2>
       <div className="py-4" aria-hidden="true">
@@ -36,7 +36,7 @@ const Projects = () => {
         </Marquee>
       </div>
       <div className="mx-auto grid w-[95%] items-center gap-0 sm:mb-0 sm:w-[85%] sm:gap-10 md:grid-cols-1 xl:w-[75%] xl:grid-cols-[55%_auto]">
-        <div className="flex w-full flex-col justify-between gap-4 rounded-[2rem] border-[3px] border-black bg-transparent p-4 sm:gap-12 sm:p-9">
+        <div className="flex w-full flex-col justify-between gap-4 rounded-4xl border-[3px] border-black bg-transparent p-4 sm:gap-12 sm:p-9">
           <div className="flex gap-2" aria-hidden="true">
             {[0, 1, 2].map((dot) => (
               <div
@@ -81,7 +81,7 @@ const Projects = () => {
               </div>
             )}
             <div
-              className={`absolute right-0 top-0 z-10 flex h-full w-full flex-col overflow-y-auto rounded-2xl bg-black/90 p-4 pb-16 transition-all duration-300 sm:p-9 sm:pb-20 lg:pb-9 lg:group-focus-within:translate-y-0 lg:group-hover:translate-y-0 ${isDetailsOpen ? "translate-y-0" : "translate-y-full"}`}
+              className={`absolute top-0 right-0 z-10 flex h-full w-full flex-col overflow-y-auto rounded-2xl bg-black/90 p-4 pb-16 transition-all duration-300 sm:p-9 sm:pb-20 lg:pb-9 lg:group-focus-within:translate-y-0 lg:group-hover:translate-y-0 ${isDetailsOpen ? "translate-y-0" : "translate-y-full"}`}
             >
               <div className="mt-auto flex flex-col gap-2 text-white sm:gap-4">
                 <p className="text-2xl font-semibold sm:text-6xl">
@@ -118,7 +118,7 @@ const Projects = () => {
               type="button"
               onClick={() => setIsDetailsOpen((open) => !open)}
               aria-expanded={isDetailsOpen}
-              className="absolute bottom-3 right-3 z-20 rounded-full bg-black px-4 py-2 text-sm font-medium text-white lg:opacity-0 lg:focus-visible:opacity-100"
+              className="absolute right-3 bottom-3 z-20 rounded-full bg-black px-4 py-2 text-sm font-medium text-white lg:opacity-0 lg:focus-visible:opacity-100"
             >
               {isDetailsOpen ? "Close" : "Details"}
             </button>

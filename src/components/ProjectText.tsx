@@ -14,7 +14,7 @@ const ProjectText = ({
   return (
     <button
       type="button"
-      className="group flex select-none flex-col gap-2 text-left sm:gap-4"
+      className="group flex flex-col gap-2 text-left select-none sm:gap-4"
       onMouseEnter={onSelect}
       onFocus={onSelect}
       onClick={onSelect}

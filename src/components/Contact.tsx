@@ -7,12 +7,12 @@ import { socials } from "./socials";
 const Contact = () => {
   return (
     <section
-      className="-mt-12 rounded-t-[2rem] bg-white dark:bg-black"
+      className="-mt-12 rounded-t-4xl bg-white dark:bg-black"
       id="contact"
     >
       <Slide direction="right" triggerOnce>
         <div className="mx-auto flex max-w-[95%] flex-col gap-3 pt-16 sm:max-w-[85%] sm:gap-6 sm:pt-32 lg:max-w-[75%] lg:flex-row">
-          <div className="contact__mailbox flex flex-col justify-between gap-10 rounded-[2rem] bg-yellowy px-8 py-12 sm:px-12 sm:py-16 lg:max-w-[70%]">
+          <div className="contact__mailbox flex flex-col justify-between gap-10 rounded-4xl bg-yellowy px-8 py-12 sm:px-12 sm:py-16 lg:max-w-[70%]">
             <div className="flex">
               <MdAlternateEmail className="contact__mailbox-icon h-14 w-14 sm:h-20 sm:w-20" />
             </div>
@@ -44,7 +44,7 @@ const Contact = () => {
             </a>
           </div>
 
-          <div className="group flex flex-col justify-between gap-10 rounded-[2rem] bg-bluey px-8 py-12 sm:px-12 sm:py-16">
+          <div className="group flex flex-col justify-between gap-10 rounded-4xl bg-bluey px-8 py-12 sm:px-12 sm:py-16">
             <div>
               <LiaAsteriskSolid className="h-14 w-14 max-sm:animate-spin-slow sm:h-20 sm:w-20 sm:group-hover:animate-spin-slow" />
             </div>

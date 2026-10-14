@@ -38,7 +38,7 @@ const MobileNav = () => {
       <div
         id="mobile-menu"
         onClick={() => setIsMenuOpen(false)}
-        className={`fixed left-0 top-0 ${
+        className={`fixed top-0 left-0 ${
           isMenuOpen ? "visible translate-y-0" : "invisible -translate-y-full"
         } flex h-screen w-full flex-col items-end bg-black px-3 pt-24 text-white transition-all duration-500 dark:bg-white dark:text-black`}
       >
@@ -56,10 +56,7 @@ const MobileNav = () => {
                   className="flex items-center justify-end gap-3 text-3xl"
                 >
                   {link.label}
-                  <BsArrowRight
-                    className="rotate-[-45deg]"
-                    aria-hidden="true"
-                  />
+                  <BsArrowRight className="-rotate-45" aria-hidden="true" />
                 </a>
               </li>
             </Fade>
@@ -79,7 +76,7 @@ const MobileNav = () => {
               isMenuOpen
                 ? "text-white dark:text-black"
                 : "text-black dark:text-white"
-            } delay-50 transition-colors duration-500`}
+            } transition-colors delay-50 duration-500`}
             href="#"
             aria-label="Lovenjak, back to top"
           >

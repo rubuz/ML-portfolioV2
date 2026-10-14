@@ -13,7 +13,7 @@ const Navbar = () => {
             triggerOnce
             delay={130 + index * 15}
           >
-            <li className="nav-btn group transition-all duration-500 ease-in-out hover:bg-pinky">
+            <li className="group nav-btn transition-all duration-500 ease-in-out hover:bg-pinky">
               <a href={link.href}>{link.label}</a>
               <FaArrowRight className="nav-icon" aria-hidden="true" />
             </li>

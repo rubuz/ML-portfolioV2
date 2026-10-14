@@ -26,7 +26,7 @@ const CustomCursor = () => {
       ref={dotRef}
       aria-hidden="true"
       style={{ transform: "translate3d(-100px, -100px, 0)" }}
-      className="custom-cursor-dot pointer-events-none fixed left-0 top-0 z-[60] h-4 w-4 rounded-full border-[1px] border-white bg-black opacity-70 dark:border-black dark:bg-white dark:opacity-80"
+      className="custom-cursor-dot pointer-events-none fixed top-0 left-0 z-60 h-4 w-4 rounded-full border border-white bg-black opacity-70 dark:border-black dark:bg-white dark:opacity-80"
     />
   );
 };

@@ -26,8 +26,7 @@ const Hero = ({ isDark, onThemeChange }: HeroProps) => {
             role="switch"
             aria-checked={isDark}
             onClick={() => onThemeChange(!isDark)}
-            className={`${isDark ? "bg-white" : "bg-black"}
-          relative inline-flex h-[26px] w-[53px] shrink-0 items-center rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white/75`}
+            className={`${isDark ? "bg-white" : "bg-black"} relative inline-flex h-[26px] w-[53px] shrink-0 items-center rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-hidden focus-visible:ring-2 focus-visible:ring-white/75`}
           >
             <span className="sr-only">Dark mode</span>
             <IoMdMoon
@@ -36,8 +35,7 @@ const Hero = ({ isDark, onThemeChange }: HeroProps) => {
             />
             <span
               aria-hidden="true"
-              className={`${isDark ? "translate-x-7" : "translate-x-0"}
-            pointer-events-none z-[5] inline-block h-[22px] max-w-[22px] transform rounded-full bg-white shadow-lg ring-0 transition duration-500 ease-in-out dark:bg-black`}
+              className={`${isDark ? "translate-x-7" : "translate-x-0"} pointer-events-none z-5 inline-block h-[22px] max-w-[22px] transform rounded-full bg-white shadow-lg ring-0 transition duration-500 ease-in-out dark:bg-black`}
             />
             <IoMdSunny
               aria-hidden="true"
@@ -51,7 +49,7 @@ const Hero = ({ isDark, onThemeChange }: HeroProps) => {
             Senior Software Developer building enterprise web and mobile apps,
             based in Brežice, Slovenia
           </h1>
-          <BsArrowRight className="absolute -left-10 bottom-0 rotate-[135deg] text-4xl max-sm:hidden sm:left-[-5rem] sm:text-6xl" />
+          <BsArrowRight className="absolute bottom-0 -left-10 rotate-135 text-4xl max-sm:hidden sm:-left-20 sm:text-6xl" />
         </div>
         <a href="#contact">
           <Button

@@ -55,7 +55,7 @@ const TitleChanger = () => {
   }, [currentImageIndex, reduceMotion]);
 
   return (
-    <section className="relative mx-auto block h-[50px] w-full max-w-[1400px] items-center justify-center max-sm:-mb-8 max-sm:mt-8 sm:my-10 sm:h-[200px]">
+    <section className="relative mx-auto block h-[50px] w-full max-w-[1400px] items-center justify-center max-sm:mt-8 max-sm:-mb-8 sm:my-10 sm:h-[200px]">
       <Slide
         direction="down"
         triggerOnce

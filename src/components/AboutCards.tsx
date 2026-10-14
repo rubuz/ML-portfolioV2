@@ -25,7 +25,7 @@ type CardProps = {
 const Card = ({ title, bgColor, iconColor, Icon, children }: CardProps) => {
   return (
     <div
-      className={`${bgColor} cards group flex h-[320px] w-[320px] shrink-0 flex-col justify-between overflow-hidden rounded-[2rem] px-6 py-8 transition-all duration-500 sm:h-[500px] sm:w-[500px] sm:px-12 sm:py-16 lg:hover:-mt-8 lg:hover:h-[532px]`}
+      className={`${bgColor} cards group flex h-[320px] w-[320px] shrink-0 flex-col justify-between overflow-hidden rounded-4xl px-6 py-8 transition-all duration-500 sm:h-[500px] sm:w-[500px] sm:px-12 sm:py-16 lg:hover:-mt-8 lg:hover:h-[532px]`}
     >
       <h2 className="text-3xl tracking-tight sm:text-6xl">{title}</h2>
       <div className="flex shrink-0 flex-row items-end justify-between transition-all duration-500 group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 sm:items-center lg:translate-y-28 lg:opacity-0">

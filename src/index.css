@@ -1,15 +1,81 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer components {
-  .nav-btn {
-    @apply flex items-center justify-center rounded-full bg-transparent px-8 py-2;
-  }
+@custom-variant dark (&:is(.dark *));
 
-  .nav-icon {
-    @apply h-3 w-0 scale-0 duration-500 group-hover:w-3 group-hover:translate-x-3 group-hover:scale-100;
+@theme {
+  --font-work: Work Sans, sans-serif;
+
+  --color-pinky: #ff5c8f;
+  --color-bluey: #247ba0;
+  --color-greeny: #70c1b3;
+  --color-olivy: #b2dbbf;
+  --color-yellowy: #f3ffbd;
+
+  --animate-spin-slow: spin-slow 9s linear infinite;
+  --animate-bounce-left: bounce-left 1s infinite;
+  --animate-marquee: marquee 30s linear infinite;
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
+  @keyframes spin-slow {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+  @keyframes bounce-left {
+    0%,
+    100% {
+      transform: translateX(-25%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: translateX(0);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+/* Tailwind v4 dropped the pointer cursor on buttons; keep v3 behaviour */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@utility nav-btn {
+  @apply flex items-center justify-center rounded-full bg-transparent px-8 py-2;
+}
+
+@utility nav-icon {
+  @apply h-3 w-0 scale-0 duration-500 group-hover:w-3 group-hover:translate-x-3 group-hover:scale-100;
 }
 
 html {
