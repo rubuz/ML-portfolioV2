@@ -1,3 +1,5 @@
+import AfterSalesPortal from "../assets/after-sales-portal.webp";
+import SupplierPortal from "../assets/supplier-portal.webp";
 import Project1 from "../assets/project1.webp";
 import Project5 from "../assets/project5.webp";
 import Project6 from "../assets/project6.mp4";
@@ -36,6 +38,7 @@ export type ProjectInfo = {
 export const projectsInfo: ProjectInfo[] = [
   {
     id: 1,
+    image: AfterSalesPortal,
     group: "Enterprise web app",
     title: "After-Sales Portal",
     description:
@@ -46,6 +49,7 @@ export const projectsInfo: ProjectInfo[] = [
   },
   {
     id: 2,
+    image: SupplierPortal,
     group: "Enterprise web app",
     title: "Supplier Portal",
     description:

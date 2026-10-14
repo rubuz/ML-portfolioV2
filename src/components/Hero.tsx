@@ -1,7 +1,7 @@
 import { BsArrowRight } from "react-icons/bs";
 import { IoMdMoon, IoMdSunny } from "react-icons/io";
 import "./Hero.css";
-import Portrait from "../assets/portrait1.webp";
+import Portrait from "../assets/portrait.webp";
 import Button from "./Button";
 
 type HeroProps = {
