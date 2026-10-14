@@ -17,8 +17,14 @@ export default {
       animation: {
         "spin-slow": "spin-slow 9s linear infinite",
         "bounce-left": "bounce-left 1s infinite",
+        // Duration is set from JS in Marquee.tsx to match the content width
+        marquee: "marquee 30s linear infinite",
       },
       keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
         "spin-slow": {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(-360deg)" },

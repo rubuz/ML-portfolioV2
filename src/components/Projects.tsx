@@ -1,11 +1,10 @@
 import { useState } from "react";
-import Marquee from "react-fast-marquee";
+import Marquee from "./Marquee";
 import MarqueeText from "./MarqueeText";
 import ProjectText from "./ProjectText";
 import Button from "./Button";
 
 import { FaArrowLeftLong, FaLock } from "react-icons/fa6";
-import { useReducedMotion } from "../hooks/useReducedMotion";
 
 import { colorClasses, projectsInfo, ProjectInfo } from "./projectsInfo";
 
@@ -16,8 +15,6 @@ const Projects = () => {
   const [isMediaHovered, setIsMediaHovered] = useState(false);
   // Hover opens the details on desktop; on touch screens and keyboard they open with this toggle
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
-
-  const reduceMotion = useReducedMotion();
 
   const colors = colorClasses[activeProject.color];
 
@@ -34,7 +31,7 @@ const Projects = () => {
     >
       <h2 className="sr-only">My projects</h2>
       <div className="py-4" aria-hidden="true">
-        <Marquee autoFill speed={130} play={!reduceMotion}>
+        <Marquee speed={130}>
           <MarqueeText />
         </Marquee>
       </div>
