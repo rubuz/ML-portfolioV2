@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -20,8 +18,21 @@ html {
   overflow-x: hidden;
 }
 
-a {
-  cursor: none;
+/* Custom cursor only for a real mouse on desktop (same query as CustomCursor.tsx) */
+.custom-cursor-dot {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+  .custom-cursor,
+  .custom-cursor a,
+  .custom-cursor button {
+    cursor: none;
+  }
+
+  .custom-cursor-dot {
+    display: block;
+  }
 }
 
 .dark {
@@ -93,17 +104,18 @@ a {
   }
 }
 
-/* Loading screen animation */
+/* The preloader's styles live inline in index.html so they apply before this file loads */
 
-.slide-up {
-  animation: slide-up 0.5s forwards;
-}
-
-@keyframes slide-up {
-  0% {
-    transform: translateY(0);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
   }
-  100% {
-    transform: translateY(-100%);
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

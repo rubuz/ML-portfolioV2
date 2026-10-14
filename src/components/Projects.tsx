@@ -5,6 +5,7 @@ import ProjectText from "./ProjectText";
 import Button from "./Button";
 
 import { FaArrowLeftLong, FaLock } from "react-icons/fa6";
+import { useReducedMotion } from "framer-motion";
 
 import { colorClasses, projectsInfo, ProjectInfo } from "./projectsInfo";
 
@@ -15,6 +16,8 @@ const Projects = () => {
   const [isMediaHovered, setIsMediaHovered] = useState(false);
   // Hover opens the details on desktop; on touch screens and keyboard they open with this toggle
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+
+  const reduceMotion = useReducedMotion();
 
   const colors = colorClasses[activeProject.color];
 
@@ -31,7 +34,7 @@ const Projects = () => {
     >
       <h2 className="sr-only">My projects</h2>
       <div className="py-4" aria-hidden="true">
-        <Marquee autoFill speed={130}>
+        <Marquee autoFill speed={130} play={!reduceMotion}>
           <MarqueeText />
         </Marquee>
       </div>
@@ -68,7 +71,7 @@ const Projects = () => {
                 className="w-full rounded-2xl object-contain"
               />
             ) : (
-              <div className="flex aspect-video w-full flex-col items-center justify-center gap-4 rounded-2xl bg-black/10 p-6 text-center">
+              <div className="flex min-h-[24rem] w-full flex-col items-center justify-center gap-4 rounded-2xl bg-black/10 p-6 text-center sm:aspect-video sm:min-h-0">
                 <FaLock className="text-3xl sm:text-5xl" />
                 <p className="text-3xl font-semibold tracking-tight sm:text-5xl">
                   {activeProject.title}
@@ -76,9 +79,9 @@ const Projects = () => {
               </div>
             )}
             <div
-              className={`absolute right-0 top-0 z-10 flex h-full w-full items-end overflow-y-auto rounded-2xl bg-black/90 p-4 transition-all duration-300 sm:p-9 lg:group-focus-within:translate-y-0 lg:group-hover:translate-y-0 ${isDetailsOpen ? "translate-y-0" : "translate-y-full"}`}
+              className={`absolute right-0 top-0 z-10 flex h-full w-full flex-col overflow-y-auto rounded-2xl bg-black/90 p-4 pb-16 transition-all duration-300 sm:p-9 sm:pb-20 lg:pb-9 lg:group-focus-within:translate-y-0 lg:group-hover:translate-y-0 ${isDetailsOpen ? "translate-y-0" : "translate-y-full"}`}
             >
-              <div className="flex flex-col gap-2 text-white sm:gap-4">
+              <div className="mt-auto flex flex-col gap-2 text-white sm:gap-4">
                 <p className="text-2xl font-semibold sm:text-6xl">
                   {activeProject.title}
                 </p>

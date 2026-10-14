@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Slide } from "react-awesome-reveal";
+import { useReducedMotion } from "framer-motion";
 
 import Title1 from "../assets/text1.webp";
 import Title2 from "../assets/text2.webp";
@@ -31,15 +32,18 @@ const images = [
 
 const TitleChanger = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const reduceMotion = useReducedMotion();
 
   // Preload images
   useEffect(() => {
+    if (reduceMotion) return;
     images.forEach((image) => {
       new Image().src = image;
     });
-  }, []);
+  }, [reduceMotion]);
 
   useEffect(() => {
+    if (reduceMotion) return;
     const timeout = setTimeout(
       () => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -48,7 +52,7 @@ const TitleChanger = () => {
     );
 
     return () => clearTimeout(timeout);
-  }, [currentImageIndex]);
+  }, [currentImageIndex, reduceMotion]);
 
   return (
     <section className="relative mx-auto block h-[50px] w-full max-w-[1400px] items-center justify-center max-sm:-mb-8 max-sm:mt-8 sm:my-10 sm:h-[200px]">

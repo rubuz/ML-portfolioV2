@@ -4,7 +4,7 @@ import { Slide } from "react-awesome-reveal";
 const Navbar = () => {
   return (
     <nav className="flex w-screen justify-center py-10">
-      <div className="w-1/4 max-w-[1400px] ">
+      <div className="w-fit">
         <ul className="flex h-14 items-center justify-around gap-x-8 text-lg dark:text-white">
           <Slide direction="down" triggerOnce delay={130}>
             <li className="nav-btn group transition-all duration-500 ease-in-out hover:bg-pinky">

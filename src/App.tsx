@@ -15,6 +15,7 @@ import { useScroll, useTransform, motion } from "framer-motion";
 import { Slide } from "react-awesome-reveal";
 import { useMediaQuery } from "react-responsive";
 import MobileNav from "./components/MobileNav";
+import CustomCursor from "./components/CustomCursor";
 import ReactGA from "react-ga4";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
@@ -36,8 +37,8 @@ const getInitialTheme = () => {
 };
 
 function App() {
+  // One breakpoint for both nav and layout (Tailwind's lg)
   const isDesktopOrLaptop = useMediaQuery({ query: "(min-width: 1024px)" });
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 900px)" });
 
   const [isDark, setIsDark] = useState(getInitialTheme);
 
@@ -52,28 +53,6 @@ function App() {
     } catch {
       // Storage blocked, the theme just won't be remembered
     }
-  };
-
-  // Cursor effect
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const onMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener("mousemove", onMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", onMouseMove);
-    };
-  }, []);
-
-  const variants = {
-    default: {
-      x: mousePosition.x - 8,
-      y: mousePosition.y - 8,
-    },
   };
 
   // Scroll animations (desktop). All values are measured against the section's
@@ -128,20 +107,33 @@ function App() {
     ? `calc(55vh + ${cardsLayout.height + cardsLayout.overflow + 200}px)`
     : "190vh";
 
-  //load screen
+  // Load screen: slide it away shortly after mount, then remove it from the DOM
   useEffect(() => {
-    setTimeout(() => {
-      const preloader = document.getElementById("preloader");
-      if (preloader) {
-        preloader.classList.add("slide-up");
-      }
-    }, 1300);
+    const preloader = document.getElementById("preloader");
+    if (!preloader) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      preloader.remove();
+      return;
+    }
+
+    const onAnimationEnd = (e: AnimationEvent) => {
+      // Ignore the text's own animation bubbling up
+      if (e.target === preloader) preloader.remove();
+    };
+    preloader.addEventListener("animationend", onAnimationEnd);
+    const timeout = setTimeout(() => preloader.classList.add("slide-up"), 500);
+
+    return () => {
+      clearTimeout(timeout);
+      preloader.removeEventListener("animationend", onAnimationEnd);
+    };
   }, []);
 
   return (
     <>
-      <div className="font-work lg:cursor-none">
-        {isTabletOrMobile ? <MobileNav /> : <Navbar />}
+      <div className="custom-cursor font-work">
+        {isDesktopOrLaptop ? <Navbar /> : <MobileNav />}
         <TitleChanger />
         {isDesktopOrLaptop && (
           <section
@@ -197,12 +189,7 @@ function App() {
           </a>
         </Slide>
         <Footer />
-        <motion.div
-          variants={variants}
-          animate="default"
-          transition={{ duration: 0.01 }}
-          className="pointer-events-none fixed left-0 top-0 z-[60] h-4 w-4 rounded-full border-[1px] border-white bg-black opacity-70 dark:border-black dark:bg-white dark:opacity-80 max-lg:hidden"
-        />
+        <CustomCursor />
       </div>
       <Analytics />
       <SpeedInsights />
