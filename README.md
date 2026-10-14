@@ -16,7 +16,7 @@ Personal portfolio of a Senior Software Developer building enterprise web and mo
 
 ## Stack
 
-React, TypeScript, Vite, TailwindCSS, Framer Motion, react-awesome-reveal
+React 19, TypeScript, Vite 8, Tailwind CSS 4, react-awesome-reveal
 
 ## Development
 
@@ -28,3 +28,5 @@ npm run build    # type-check and build to dist/
 ```
 
 Optional: set `VITE_GA_ID` in a `.env` file to enable Google Analytics. Without it, analytics is skipped.
+
+TypeScript is held at 5.9: typescript-eslint does not support TypeScript 6+ yet.
