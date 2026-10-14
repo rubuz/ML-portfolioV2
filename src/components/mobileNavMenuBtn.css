@@ -1,11 +1,13 @@
-label {
+/* Scoped to .menu-btn so these don't leak onto every label/span on the page */
+.menu-btn {
   display: flex;
   flex-direction: column;
   width: 30px;
+  padding: 6px 0;
   cursor: pointer;
 }
 
-label span {
+.menu-btn span {
   background: #000;
   border-radius: 999px;
   height: 3px;
@@ -13,43 +15,43 @@ label span {
   transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
-.dark label span {
+.dark .menu-btn span {
   background: #fff;
 }
 
-.checked span {
+.menu-btn.checked span {
   background: #fff;
   transition: 0.5s;
   transition-delay: 50ms;
 }
 
-.dark .checked span {
+.dark .menu-btn.checked span {
   background: #000;
 }
 
-span:nth-of-type(1) {
+.menu-btn span:nth-of-type(1) {
   width: 50%;
 }
 
-span:nth-of-type(2) {
+.menu-btn span:nth-of-type(2) {
   width: 100%;
 }
 
-span:nth-of-type(3) {
+.menu-btn span:nth-of-type(3) {
   width: 75%;
 }
 
-.checked span:nth-of-type(1) {
+.menu-btn.checked span:nth-of-type(1) {
   transform-origin: bottom;
   transform: rotatez(45deg) translate(4px, 0px);
 }
 
-.checked span:nth-of-type(2) {
+.menu-btn.checked span:nth-of-type(2) {
   transform-origin: top;
   transform: rotatez(-45deg);
 }
 
-.checked span:nth-of-type(3) {
+.menu-btn.checked span:nth-of-type(3) {
   transform-origin: bottom;
   width: 50%;
   transform: translate(13px, -5px) rotatez(45deg);

@@ -1,6 +1,8 @@
 import Project1 from "../assets/project1.webp";
 import Project5 from "../assets/project5.webp";
-import Project6 from "../assets/project6.webm";
+import Project6 from "../assets/project6.mp4";
+import Project6Webm from "../assets/project6.webm";
+import Project6Poster from "../assets/project6-poster.jpg";
 import Project7 from "../assets/project7.webp";
 
 export type ProjectColor = "greeny" | "yellowy" | "bluey" | "olivy" | "pinky";
@@ -25,6 +27,9 @@ export type ProjectInfo = {
   url?: string;
   image?: string;
   video?: string;
+  // Fallback for browsers without H.264 (some open-source Chromium builds)
+  videoWebm?: string;
+  poster?: string;
   internal?: boolean;
 };
 
@@ -52,6 +57,8 @@ export const projectsInfo: ProjectInfo[] = [
   {
     id: 3,
     video: Project6,
+    videoWebm: Project6Webm,
+    poster: Project6Poster,
     group: "Utility Android app",
     title: "InventuraOS",
     description:

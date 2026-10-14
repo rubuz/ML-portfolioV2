@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 
-import "./App.css";
 import TextImg from "./assets/text1.webp";
 
 import AboutCards from "./components/AboutCards";
@@ -13,7 +12,7 @@ import Footer from "./components/Footer";
 
 import { useScroll, useTransform, motion } from "framer-motion";
 import { Slide } from "react-awesome-reveal";
-import { useMediaQuery } from "react-responsive";
+import { useMediaQuery } from "./hooks/useMediaQuery";
 import MobileNav from "./components/MobileNav";
 import CustomCursor from "./components/CustomCursor";
 import ReactGA from "react-ga4";
@@ -38,7 +37,7 @@ const getInitialTheme = () => {
 
 function App() {
   // One breakpoint for both nav and layout (Tailwind's lg)
-  const isDesktopOrLaptop = useMediaQuery({ query: "(min-width: 1024px)" });
+  const isDesktopOrLaptop = useMediaQuery("(min-width: 1024px)");
 
   const [isDark, setIsDark] = useState(getInitialTheme);
 

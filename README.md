@@ -1,25 +1,30 @@
 ![Screenshot of page](https://i.postimg.cc/Sx9b0zTQ/Screenshot-2024-03-07-144017.png)
 
-# FrontEnd Engineer Portfolio
+# Matjaž Lovenjak – Portfolio
 
-Introducing to my portfolio! Discover a showcase of my latest projects, demonstrating my expertise in frontend development.
+Personal portfolio of a Senior Software Developer building enterprise web and mobile apps with Angular, React, React Native and TypeScript.
 
-[Lovenjak - Portfolio](https://lovenjak.netlify.app/)
-
+[lovenjak.vercel.app](https://lovenjak.vercel.app/)
 
 ## Features
 
-1.  **Project Showcase**
-2.  **Social Links** 
-3.  **Contact Link**
-4.  **Downloadable CV** 
+1. **About cards** – role, UI/UX, background, CV download, socials and hobbies, with a sideways scroll on desktop
+2. **Project showcase** – selected work with descriptions, tech stack and live links; works with mouse, touch and keyboard
+3. **Contact** – email and social links
+4. **Dark mode** – follows the system setting, remembers your choice
+5. **Accessible motion** – respects `prefers-reduced-motion`
 
-## How it works
+## Stack
 
-Core stack: ReactJS + Tailwind + Typescript + Framer-motion 
+React, TypeScript, Vite, TailwindCSS, Framer Motion, react-awesome-reveal
 
-Dynamic portfolio powered by ReactJS, utilizing Typescript and tailored with TailwindCSS for a seamless user experience. Dive into a captivating showcase of my latest projects, each meticulously crafted to demonstrate my expertise in frontend development. With smooth animations courtesy of Framer Motion, explore a visually stunning gallery featuring detailed project descriptions, accompanied by screenshots and links to live demos or GitHub repositories.
+## Development
 
-Stay connected with me through easily accessible social media links, allowing you to engage with my latest updates and industry insights. Need to get in touch? Look no further than the prominent contact section, equipped with a convenient form or direct email address for potential clients, collaborators, or employers to reach out.
+```bash
+npm install
+npm run dev      # start the dev server
+npm run lint     # lint TypeScript files
+npm run build    # type-check and build to dist/
+```
 
-And for those interested in learning more about my professional journey, download my CV/resume with just a click, providing you with comprehensive insights into my skills, experiences, and qualifications. Explore, connect, and discover the possibilities within my frontend development world.
+Optional: set `VITE_GA_ID` in a `.env` file to enable Google Analytics. Without it, analytics is skipped.

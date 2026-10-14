@@ -12,7 +12,6 @@ import {
   FaDumbbell,
   FaDice,
 } from "react-icons/fa6";
-import CV from "../assets/CV.pdf";
 import { socials } from "./socials";
 
 type CardProps = {
@@ -102,7 +101,7 @@ const AboutCards = () => {
         Find out more about me in my CV.
         <a
           download=""
-          href={CV}
+          href="/CV_Lovenjak.pdf"
           aria-label="Download my CV in pdf format"
           className={linkClass}
         >

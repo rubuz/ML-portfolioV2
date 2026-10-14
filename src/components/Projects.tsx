@@ -49,10 +49,11 @@ const Projects = () => {
             ))}
           </div>
           <div
-            className="group relative w-full overflow-hidden rounded-2xl transition-all duration-1000 lg:hover:scale-[105%]"
+            className="group relative aspect-square max-h-[70vh] w-full overflow-hidden rounded-2xl transition-all duration-1000 lg:hover:scale-[105%]"
             onMouseEnter={() => setIsMediaHovered(true)}
             onMouseLeave={() => setIsMediaHovered(false)}
           >
+            {/* Fixed square frame: media of any shape keeps the same height, so the list doesn't jump */}
             {activeProject.video ? (
               <video
                 key={activeProject.video}
@@ -60,18 +61,22 @@ const Projects = () => {
                 loop
                 muted
                 playsInline
-                className="w-full rounded-2xl object-contain"
+                poster={activeProject.poster}
+                className="h-full w-full rounded-2xl object-contain"
               >
-                <source src={activeProject.video} type="video/webm" />
+                <source src={activeProject.video} type="video/mp4" />
+                {activeProject.videoWebm && (
+                  <source src={activeProject.videoWebm} type="video/webm" />
+                )}
               </video>
             ) : activeProject.image ? (
               <img
                 src={activeProject.image}
                 alt={`Screenshot of ${activeProject.title}`}
-                className="w-full rounded-2xl object-contain"
+                className="h-full w-full rounded-2xl object-contain"
               />
             ) : (
-              <div className="flex min-h-[24rem] w-full flex-col items-center justify-center gap-4 rounded-2xl bg-black/10 p-6 text-center sm:aspect-video sm:min-h-0">
+              <div className="flex h-full w-full flex-col items-center justify-center gap-4 rounded-2xl bg-black/10 p-6 text-center">
                 <FaLock className="text-3xl sm:text-5xl" />
                 <p className="text-3xl font-semibold tracking-tight sm:text-5xl">
                   {activeProject.title}
