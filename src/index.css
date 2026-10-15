@@ -73,9 +73,14 @@ html {
   overflow-x: hidden;
 }
 
+html {
+  transition:
+    background-color 0.6s ease,
+    color 0.6s ease;
+}
+
 .dark {
   background-color: rgb(0 0 0 / 1);
-  transition: background-color 0.3s;
 }
 
 /* Underline that draws in from the left and leaves to the right, in the

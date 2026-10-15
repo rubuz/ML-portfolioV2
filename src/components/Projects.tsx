@@ -159,9 +159,7 @@ const Projects = () => {
                     </a>
                   ) : (
                     project.internal && (
-                      <p
-                        className={`text-base font-semibold sm:text-lg ${colors.text}`}
-                      >
+                      <p className={`text-[19px] font-bold ${colors.text}`}>
                         Internal project · Adria Mobil (Trigano Group)
                       </p>
                     )

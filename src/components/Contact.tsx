@@ -62,12 +62,12 @@ const Contact = () => {
               <h3 className="text-5xl leading-none tracking-[-0.02em] lg:text-6xl">
                 Contact me on socials
               </h3>
-              <div className="flex flex-col gap-2.5 text-2xl">
+              <div className="flex flex-col gap-1 text-2xl">
                 {socials.map((social) => (
                   <a
                     key={social.name}
                     href={social.url}
-                    className="hover__link w-max font-semibold"
+                    className="hover__link inline-flex min-h-11 w-max items-center font-semibold"
                     target="_blank"
                     rel="noreferrer"
                     aria-label={`Link to my ${social.label} profile`}

@@ -82,13 +82,14 @@ const MobileNav = () => {
               isMenuOpen
                 ? "text-white dark:text-black"
                 : "text-black dark:text-white"
-            } transition-colors delay-50 duration-500`}
+            } inline-flex min-h-11 min-w-11 items-center transition-colors delay-50 duration-500`}
             href="#"
             onClick={(e) => {
               e.preventDefault();
               replay();
             }}
             aria-label="Replay intro"
+            data-cursor="replay"
           >
             <span className="text-pinky">M</span>L
           </a>

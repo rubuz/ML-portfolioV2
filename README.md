@@ -12,11 +12,14 @@ Personal portfolio of a Senior Software Developer building enterprise web and mo
 2. **Project showcase** – selected work with descriptions and tech stack; works with mouse, touch and keyboard
 3. **Contact** – email and social links
 4. **Dark mode** – follows the system setting, remembers your choice
-5. **Accessible motion** – respects `prefers-reduced-motion`
+5. **Motion** – intro curtain (click the ML logo to replay it), smooth scrolling, scroll-linked reveals, magnetic buttons and a labelled cursor
+6. **Accessible motion** – with `prefers-reduced-motion` the page is fully static: no intro, no smooth scroll, no parallax
 
 ## Stack
 
-React 19, TypeScript, Vite 8, Tailwind CSS 4, react-awesome-reveal
+React 19, TypeScript, Vite 8, Tailwind CSS 4, [Lenis](https://github.com/darkroomengineering/lenis) for smooth scrolling.
+
+Motion is built in-house in `src/motion/`: one `requestAnimationFrame` loop drives every scroll and pointer effect (written straight to the DOM, so scrolling never re-renders React), and reveals are CSS transitions triggered by an IntersectionObserver. Timings and easings follow the motion handoff; the easing tokens live in `@theme` in `src/index.css`.
 
 ## Development
 

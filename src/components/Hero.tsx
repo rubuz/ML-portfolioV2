@@ -93,7 +93,7 @@ const Hero = ({ isDark, onThemeChange }: HeroProps) => {
               role="switch"
               aria-checked={isDark}
               onClick={() => onThemeChange(!isDark)}
-              className={`${isDark ? "bg-white" : "bg-black"} relative inline-flex h-[26px] w-[53px] shrink-0 items-center rounded-full border-2 border-transparent transition-colors duration-[600ms]`}
+              className={`${isDark ? "bg-white" : "bg-black"} relative inline-flex h-[26px] w-[53px] shrink-0 items-center rounded-full border-2 border-transparent transition-colors duration-[600ms] before:absolute before:-inset-x-1 before:-inset-y-[11px] before:content-[""]`}
             >
               <span className="sr-only">Dark mode</span>
               <IoMdMoon

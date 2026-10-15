@@ -21,6 +21,9 @@ type CardProps = {
   iconColor: string;
   Icon: IconType;
   index: number;
+  // Cards without links need a tab stop of their own, or keyboard users
+  // could never open the details (they show on hover/focus-within)
+  focusable?: boolean;
   children: ReactNode;
 };
 
@@ -31,11 +34,16 @@ const Card = ({
   iconColor,
   Icon,
   index,
+  focusable = true,
   children,
 }: CardProps) => {
   return (
     <RevealUp delay={index * 0.08} className="shrink-0 snap-start">
-      <article className={`about-card ${bgColor}`}>
+      <article
+        className={`about-card ${bgColor}`}
+        tabIndex={focusable ? 0 : undefined}
+        aria-label={focusable ? title : undefined}
+      >
         <h3 className="text-[34px] leading-none tracking-[-0.02em] lg:text-[56px]">
           {title}
         </h3>
@@ -55,7 +63,8 @@ const Card = ({
   );
 };
 
-const linkClass = "hover__link w-max text-xl font-semibold lg:text-2xl";
+const linkClass =
+  "hover__link inline-flex min-h-11 w-max items-center text-xl font-semibold lg:text-2xl";
 
 const hobbies = [
   { label: "Motorcycles", Icon: FaMotorcycle },
@@ -110,6 +119,7 @@ const AboutCards = () => {
 
       <Card
         title="More about me"
+        focusable={false}
         index={3}
         bgColor="bg-olivy"
         iconColor="text-olivy"
@@ -128,6 +138,7 @@ const AboutCards = () => {
 
       <Card
         title="Socials"
+        focusable={false}
         index={4}
         bgColor="bg-yellowy"
         iconColor="text-yellowy"
