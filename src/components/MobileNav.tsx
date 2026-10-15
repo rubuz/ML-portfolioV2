@@ -7,25 +7,12 @@ import { useMotion } from "../motion/motionContext";
 import { useHideOnScroll } from "../motion/useHideOnScroll";
 
 const MobileNav = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { replay } = useMotion();
   const headerRef = useHideOnScroll<HTMLDivElement>(isMenuOpen);
 
   const toggleMenu = () => setIsMenuOpen((open) => !open);
-
-  useEffect(() => {
-    const checkScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-    };
-
-    window.addEventListener("scroll", checkScroll);
-
-    return () => {
-      window.removeEventListener("scroll", checkScroll);
-    };
-  }, []);
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -37,10 +24,7 @@ const MobileNav = () => {
   }, [isMenuOpen]);
 
   return (
-    <div
-      ref={headerRef}
-      className="site-nav sticky top-0 z-50 transition-colors duration-[600ms]"
-    >
+    <div ref={headerRef} className="site-nav frosted sticky top-0 z-50">
       {/* `invisible` keeps the closed menu's links out of the tab order */}
       <div
         id="mobile-menu"
@@ -69,13 +53,7 @@ const MobileNav = () => {
           ))}
         </ul>
       </div>
-      <nav
-        className={`frosted z-30 flex w-full items-center justify-between border-b-2 px-3 py-4 transition-colors duration-300 ${
-          isScrolled
-            ? "border-black dark:border-transparent"
-            : "border-transparent"
-        }`}
-      >
+      <nav className="z-30 flex w-full items-center justify-between px-3 py-4">
         <div className="z-30 text-2xl font-bold tracking-tighter">
           <a
             className={`${

@@ -560,12 +560,32 @@
   }
 }
 
-/* Frosted nav over the ambient background */
-.frosted {
+/* Frosted nav over the ambient background. Transparent at the very top so
+   the blobs flow under it; once scrolled, the frost fades in and its bottom
+   edge fades out over 24px, so there's no hard line across a blob. Lives on
+   a pseudo-element: backdrop-filter on the nav itself would trap the mobile
+   menu's position: fixed overlay. */
+.frosted::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 -24px;
+  z-index: -1;
+  pointer-events: none;
   background-color: rgb(255 255 255 / 0.72);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 calc(100% - 40px),
+    transparent
+  );
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 40px), transparent);
+  opacity: 0;
+  transition: opacity 0.6s ease;
 }
-.dark .frosted {
+.dark .frosted::before {
   background-color: rgb(0 0 0 / 0.6);
+}
+.frosted.is-scrolled::before {
+  opacity: 1;
 }
