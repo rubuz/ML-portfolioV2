@@ -8,10 +8,7 @@ const Navbar = () => {
   const headerRef = useHideOnScroll<HTMLElement>();
 
   return (
-    <header
-      ref={headerRef}
-      className="site-nav sticky top-0 z-50 bg-white transition-colors duration-[600ms] dark:bg-black"
-    >
+    <header ref={headerRef} className="site-nav frosted sticky top-0 z-50">
       <nav
         aria-label="Main"
         className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-6 py-[18px]"

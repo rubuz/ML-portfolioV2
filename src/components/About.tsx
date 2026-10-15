@@ -69,7 +69,7 @@ const PinnedAbout = () => {
     <section
       ref={sectionRef}
       id="about"
-      className="relative"
+      className="relative z-1"
       style={{ height: height ?? "250vh" }}
     >
       <div className="sticky top-0 flex h-screen flex-col justify-center gap-12 overflow-hidden">
@@ -87,7 +87,7 @@ const PinnedAbout = () => {
 
 // Phones, tablets and reduced motion: native horizontal scroll strip
 const StripAbout = () => (
-  <section id="about" className="flex flex-col gap-8 py-10">
+  <section id="about" className="relative z-1 flex flex-col gap-8 py-10">
     <Label />
     <div className="flex snap-x scroll-px-4 gap-3 overflow-x-auto px-4 pt-5 pb-4 sm:scroll-px-6 sm:gap-6 sm:px-6 lg:scroll-px-16 lg:px-16">
       <AboutCards />

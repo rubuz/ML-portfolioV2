@@ -61,7 +61,10 @@ const Hero = ({ isDark, onThemeChange }: HeroProps) => {
   });
 
   return (
-    <section ref={sectionRef} className="px-4 pt-6 pb-24 sm:px-6 lg:pb-36">
+    <section
+      ref={sectionRef}
+      className="relative z-1 px-4 pt-6 pb-24 sm:px-6 lg:pb-36"
+    >
       <h1 className="mb-10 text-center font-mono text-[clamp(64px,15vw,230px)] tracking-[-0.02em] dark:text-white">
         <span className="sr-only">Matjaž Lovenjak</span>
         <SplitChars

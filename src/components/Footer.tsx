@@ -4,7 +4,7 @@ import { SplitChars } from "../motion/Reveal";
 
 const Footer = () => {
   return (
-    <footer className="bg-white px-4 pt-20 pb-8 transition-colors duration-[600ms] sm:px-6 sm:pt-[120px] dark:bg-black dark:text-white">
+    <footer className="relative z-1 px-4 pt-20 pb-8 sm:px-6 sm:pt-[120px] dark:text-white">
       <a
         href="#"
         aria-label="Lovenjak, back to top"

@@ -11,7 +11,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative z-2 -mt-12 rounded-t-4xl bg-white px-4 pt-20 pb-10 transition-colors duration-[600ms] sm:px-6 sm:pt-[120px] dark:bg-black"
+      className="relative z-1 px-4 pt-24 pb-10 sm:px-6 sm:pt-[140px]"
     >
       <div className="mx-auto flex max-w-[1200px] flex-col gap-10 sm:gap-14">
         <RevealLines

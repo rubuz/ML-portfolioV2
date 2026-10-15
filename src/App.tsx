@@ -11,6 +11,8 @@ import { useMediaQuery } from "./hooks/useMediaQuery";
 import MobileNav from "./components/MobileNav";
 import Cursor from "./motion/Cursor";
 import Preloader from "./motion/Preloader";
+import AmbientBackground from "./motion/AmbientBackground";
+import { AMBIENT_BG } from "./motion/tokens";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
@@ -47,6 +49,7 @@ function App() {
     <>
       <div className="custom-cursor font-work">
         <Preloader />
+        {AMBIENT_BG && <AmbientBackground />}
         {isDesktopOrLaptop ? <Navbar /> : <MobileNav />}
         <Hero isDark={isDark} onThemeChange={handleThemeChange} />
         <About />
