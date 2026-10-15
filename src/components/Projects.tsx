@@ -76,7 +76,7 @@ const Projects = () => {
   return (
     <section
       id="work"
-      className="relative z-1 rounded-t-4xl pb-[200px] text-black transition-colors duration-[900ms]"
+      className="relative z-1 overflow-x-clip rounded-t-4xl pb-[200px] text-black transition-colors duration-[900ms]"
       style={{ backgroundColor: bg }}
     >
       <div className="py-7">

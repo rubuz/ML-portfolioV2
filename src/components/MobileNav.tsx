@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 import MobileNavMenuBtn from "./MobileNavMenuBtn";
 import { BsArrowRight } from "react-icons/bs";
-import { Fade } from "react-awesome-reveal";
 import { navLinks } from "./navLinks";
 import { useMotion } from "../motion/motionContext";
 import { useHideOnScroll } from "../motion/useHideOnScroll";
@@ -46,36 +45,35 @@ const MobileNav = () => {
       <div
         id="mobile-menu"
         onClick={() => setIsMenuOpen(false)}
-        className={`fixed top-0 left-0 ${
-          isMenuOpen ? "visible translate-y-0" : "invisible -translate-y-full"
+        className={`mobile-menu fixed top-0 left-0 ${
+          isMenuOpen
+            ? "is-open visible translate-y-0"
+            : "invisible -translate-y-full"
         } flex h-screen w-full flex-col items-end bg-black px-3 pt-24 text-white transition-all duration-500 dark:bg-white dark:text-black`}
       >
         <ul className="flex flex-col gap-10">
           {navLinks.map((link, index) => (
-            <Fade
+            <li
               key={link.label}
-              direction="down"
-              delay={index * 20}
-              duration={700}
+              className="menu-item"
+              style={{ transitionDelay: `${0.15 + index * 0.06}s` }}
             >
-              <li>
-                <a
-                  href={link.href}
-                  className="flex items-center justify-end gap-3 text-3xl"
-                >
-                  {link.label}
-                  <BsArrowRight className="-rotate-45" aria-hidden="true" />
-                </a>
-              </li>
-            </Fade>
+              <a
+                href={link.href}
+                className="flex items-center justify-end gap-3 text-3xl"
+              >
+                {link.label}
+                <BsArrowRight className="-rotate-45" aria-hidden="true" />
+              </a>
+            </li>
           ))}
         </ul>
       </div>
       <nav
-        className={`z-30 flex w-full items-center justify-between bg-white px-3 transition-all duration-300 dark:bg-black ${
+        className={`z-30 flex w-full items-center justify-between border-b-2 bg-white px-3 py-4 transition-colors duration-300 dark:bg-black ${
           isScrolled
-            ? "border-b-2 border-black py-2 dark:border-transparent"
-            : "py-6"
+            ? "border-black dark:border-transparent"
+            : "border-transparent"
         }`}
       >
         <div className="z-30 text-2xl font-bold tracking-tighter">

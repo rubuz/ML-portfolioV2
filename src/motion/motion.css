@@ -489,3 +489,19 @@
     font-size: 60px;
   }
 }
+
+/* Mobile menu links drop in, staggered, when the menu opens */
+.menu-item {
+  opacity: 0;
+  transform: translate3d(0, -24px, 0);
+  transition:
+    opacity 0.5s ease,
+    transform 0.7s var(--ease-expo-out);
+}
+.mobile-menu.is-open .menu-item {
+  opacity: 1;
+  transform: none;
+}
+.mobile-menu:not(.is-open) .menu-item {
+  transition-delay: 0s !important;
+}

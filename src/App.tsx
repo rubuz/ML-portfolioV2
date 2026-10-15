@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-import TextImg from "./assets/text1.webp";
-
 import About from "./components/About";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
@@ -9,7 +7,6 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
-import { Slide } from "react-awesome-reveal";
 import { useMediaQuery } from "./hooks/useMediaQuery";
 import MobileNav from "./components/MobileNav";
 import Cursor from "./motion/Cursor";
@@ -56,19 +53,6 @@ function App() {
 
         <Projects />
         <Contact />
-        <Slide
-          direction="up"
-          triggerOnce
-          className="mx-auto w-2/3 py-14 sm:py-32 lg:w-1/2"
-        >
-          <a href="#">
-            <img
-              src={TextImg}
-              className="white-pic"
-              alt="LOVENJAK, back to top"
-            />
-          </a>
-        </Slide>
         <Footer />
         <Cursor />
       </div>
