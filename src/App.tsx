@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import TextImg from "./assets/text1.webp";
 
-import AboutCards from "./components/AboutCards";
+import About from "./components/About";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
@@ -52,10 +52,7 @@ function App() {
         <Preloader />
         {isDesktopOrLaptop ? <Navbar /> : <MobileNav />}
         <Hero isDark={isDark} onThemeChange={handleThemeChange} />
-        {/* Interim: pinned horizontal About comes with the next commit */}
-        <section id="about" className="my-10 flex gap-3 overflow-x-auto">
-          <AboutCards />
-        </section>
+        <About />
 
         <Projects />
         <Contact />

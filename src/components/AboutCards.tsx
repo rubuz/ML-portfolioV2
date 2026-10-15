@@ -13,36 +13,49 @@ import {
   FaDice,
 } from "react-icons/fa6";
 import { socials } from "./socials";
+import { RevealUp } from "../motion/Reveal";
 
 type CardProps = {
   title: string;
   bgColor: string;
   iconColor: string;
   Icon: IconType;
+  index: number;
   children: ReactNode;
 };
 
-const Card = ({ title, bgColor, iconColor, Icon, children }: CardProps) => {
+// Hover lifts the card and brings in the bottom row (always shown below lg)
+const Card = ({
+  title,
+  bgColor,
+  iconColor,
+  Icon,
+  index,
+  children,
+}: CardProps) => {
   return (
-    <div
-      className={`${bgColor} cards group flex h-[320px] w-[320px] shrink-0 flex-col justify-between overflow-hidden rounded-4xl px-6 py-8 transition-all duration-500 sm:h-[500px] sm:w-[500px] sm:px-12 sm:py-16 lg:hover:-mt-8 lg:hover:h-[532px]`}
-    >
-      <h2 className="text-3xl tracking-tight sm:text-6xl">{title}</h2>
-      <div className="flex shrink-0 flex-row items-end justify-between transition-all duration-500 group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100 sm:items-center lg:translate-y-28 lg:opacity-0">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-black sm:h-24 sm:w-24">
-          <Icon
-            className={`mt-2 animate-bounce text-2xl sm:text-4xl ${iconColor}`}
-          />
+    <RevealUp delay={index * 0.08} className="shrink-0 snap-start">
+      <article className={`about-card ${bgColor}`}>
+        <h3 className="text-[34px] leading-none tracking-[-0.02em] lg:text-[56px]">
+          {title}
+        </h3>
+        <div className="about-more flex items-end justify-between gap-5">
+          <div className="about-icon flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full bg-black lg:h-[84px] lg:w-[84px]">
+            <Icon
+              aria-hidden="true"
+              className={`text-2xl lg:text-4xl ${iconColor}`}
+            />
+          </div>
+          <div className="flex max-w-[250px] flex-col gap-2 text-sm leading-[1.35] lg:text-[17px]">
+            {children}
+          </div>
         </div>
-        <div className="flex w-[70%] flex-col text-base leading-5 sm:w-[60%] sm:text-lg">
-          {children}
-        </div>
-      </div>
-    </div>
+      </article>
+    </RevealUp>
   );
 };
 
-const linkClass = "hover__link mt-2 w-max text-xl font-semibold sm:text-2xl";
+const linkClass = "hover__link w-max text-xl font-semibold lg:text-2xl";
 
 const hobbies = [
   { label: "Motorcycles", Icon: FaMotorcycle },
@@ -57,6 +70,7 @@ const AboutCards = () => {
     <>
       <Card
         title="Senior Software Developer"
+        index={0}
         bgColor="bg-pinky"
         iconColor="text-pinky"
         Icon={FaCode}
@@ -70,6 +84,7 @@ const AboutCards = () => {
 
       <Card
         title="UI/UX Design"
+        index={1}
         bgColor="bg-greeny"
         iconColor="text-greeny"
         Icon={FaRegEye}
@@ -82,6 +97,7 @@ const AboutCards = () => {
 
       <Card
         title="End-to-end view"
+        index={2}
         bgColor="bg-bluey"
         iconColor="text-bluey"
         Icon={FaLaptop}
@@ -94,6 +110,7 @@ const AboutCards = () => {
 
       <Card
         title="More about me"
+        index={3}
         bgColor="bg-olivy"
         iconColor="text-olivy"
         Icon={FaRegRectangleList}
@@ -111,6 +128,7 @@ const AboutCards = () => {
 
       <Card
         title="Socials"
+        index={4}
         bgColor="bg-yellowy"
         iconColor="text-yellowy"
         Icon={FaCircleNodes}
@@ -131,6 +149,7 @@ const AboutCards = () => {
 
       <Card
         title="Off the clock"
+        index={5}
         bgColor="bg-pinky"
         iconColor="text-pinky"
         Icon={FaMugHot}
