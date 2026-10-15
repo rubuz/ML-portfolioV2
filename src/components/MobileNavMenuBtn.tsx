@@ -1,23 +1,24 @@
 import "./mobileNavMenuBtn.css";
 
 type MobileNavMenuBtnProps = {
-  open: () => void;
-  openState: boolean;
+  onToggle: () => void;
+  isOpen: boolean;
 };
 
-const MobileNavMenuBtn = ({ open, openState }: MobileNavMenuBtnProps) => {
-  const handleClick = () => {
-    open();
-  };
-
+const MobileNavMenuBtn = ({ onToggle, isOpen }: MobileNavMenuBtnProps) => {
   return (
-    <div onClick={handleClick}>
-      <label htmlFor="check" className={openState ? "checked" : ""}>
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-    </div>
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-expanded={isOpen}
+      aria-controls="mobile-menu"
+      aria-label={isOpen ? "Close menu" : "Open menu"}
+      className={`menu-btn ${isOpen ? "checked" : ""}`}
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   );
 };
 

@@ -2,105 +2,78 @@ import { useEffect, useState } from "react";
 
 import MobileNavMenuBtn from "./MobileNavMenuBtn";
 import { BsArrowRight } from "react-icons/bs";
-import { Fade } from "react-awesome-reveal";
+import { navLinks } from "./navLinks";
+import { useMotion } from "../motion/motionContext";
+import { useHideOnScroll } from "../motion/useHideOnScroll";
 
 const MobileNav = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleOpenMenu = () => {
-    if (isMenuOpen) setIsMenuOpen(false);
-    else setIsMenuOpen(true);
-  };
+  const { replay } = useMotion();
+  const headerRef = useHideOnScroll<HTMLDivElement>(isMenuOpen);
+
+  const toggleMenu = () => setIsMenuOpen((open) => !open);
 
   useEffect(() => {
-    const checkScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+    if (!isMenuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsMenuOpen(false);
     };
-
-    document.addEventListener("scroll", checkScroll);
-
-    return () => {
-      window.removeEventListener("scroll", checkScroll);
-    };
-  }, []);
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isMenuOpen]);
 
   return (
-    <div className="sticky top-0 z-10">
+    <div ref={headerRef} className="site-nav frosted sticky top-0 z-50">
+      {/* `invisible` keeps the closed menu's links out of the tab order */}
       <div
-        onClick={handleOpenMenu}
-        className={`fixed left-0 top-0 ${
-          isMenuOpen ? "translate-y-0" : "-translate-y-full"
-        } flex h-screen w-full flex-col items-end bg-black px-3 pt-24 text-white transition duration-500 dark:bg-white dark:text-black`}
+        id="mobile-menu"
+        onClick={() => setIsMenuOpen(false)}
+        className={`mobile-menu fixed top-0 left-0 ${
+          isMenuOpen
+            ? "is-open visible translate-y-0"
+            : "invisible -translate-y-full"
+        } flex h-screen w-full flex-col items-end bg-black px-3 pt-24 text-white transition-all duration-500 dark:bg-white dark:text-black`}
       >
         <ul className="flex flex-col gap-10">
-          <Fade direction="down" delay={0} duration={700}>
-            <li>
+          {navLinks.map((link, index) => (
+            <li
+              key={link.label}
+              className="menu-item"
+              style={{ transitionDelay: `${0.15 + index * 0.06}s` }}
+            >
               <a
-                href="#"
+                href={link.href}
                 className="flex items-center justify-end gap-3 text-3xl"
               >
-                home
-                <BsArrowRight className="rotate-[-45deg]" />
+                {link.label}
+                <BsArrowRight className="-rotate-45" aria-hidden="true" />
               </a>
             </li>
-          </Fade>
-          <Fade direction="down" delay={20} duration={700}>
-            <li>
-              <a
-                href="#about"
-                className="flex items-center justify-end gap-3 text-3xl"
-              >
-                about
-                <BsArrowRight className="rotate-[-45deg]" />
-              </a>
-            </li>
-          </Fade>
-          <Fade direction="down" delay={40} duration={700}>
-            <li>
-              <a
-                href="#work"
-                className="flex items-center justify-end gap-3 text-3xl"
-              >
-                work
-                <BsArrowRight className="rotate-[-45deg]" />
-              </a>
-            </li>
-          </Fade>
-          <Fade direction="down" delay={60} duration={700}>
-            <li>
-              <a
-                href="#contact"
-                className="flex items-center justify-end gap-3 text-3xl"
-              >
-                contact
-                <BsArrowRight className="rotate-[-45deg]" />
-              </a>
-            </li>
-          </Fade>
+          ))}
         </ul>
       </div>
-      <nav
-        className={`z-30 flex w-full items-center justify-between bg-white px-3 transition-all duration-300 dark:bg-black ${
-          isScrolled
-            ? "border-b-2 border-black py-2 dark:border-transparent"
-            : "py-6"
-        }`}
-      >
+      <nav className="z-30 flex w-full items-center justify-between px-3 py-4">
         <div className="z-30 text-2xl font-bold tracking-tighter">
           <a
             className={`${
               isMenuOpen
                 ? "text-white dark:text-black"
                 : "text-black dark:text-white"
-            } delay-50 transition-colors duration-500`}
+            } inline-flex min-h-11 min-w-11 items-center transition-colors delay-50 duration-500`}
             href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              replay();
+            }}
+            aria-label="Replay intro"
+            data-cursor="replay"
           >
             <span className="text-pinky">M</span>L
           </a>
         </div>
         <div className="z-30">
-          <MobileNavMenuBtn open={handleOpenMenu} openState={isMenuOpen} />
+          <MobileNavMenuBtn onToggle={toggleMenu} isOpen={isMenuOpen} />
         </div>
       </nav>
     </div>

@@ -1,25 +1,73 @@
-![Screenshot of page](https://i.postimg.cc/Sx9b0zTQ/Screenshot-2024-03-07-144017.png)
+# Matjaž Lovenjak – Portfolio
 
-# FrontEnd Engineer Portfolio
+![Portfolio hero: LOVENJAK wordmark, portrait and intro over soft color blobs](docs/preview.jpg)
 
-Introducing to my portfolio! Discover a showcase of my latest projects, demonstrating my expertise in frontend development.
+Personal portfolio of a Senior Software Developer building enterprise web and mobile apps with Angular, React, React Native and TypeScript.
 
-[Lovenjak - Portfolio](https://lovenjak.netlify.app/)
+**Live:** [lovenjak.vercel.app](https://lovenjak.vercel.app/)
 
+<p>
+  <img src="docs/projects.jpg" alt="Projects section with a device frame showing the After-Sales Portal" width="49%" />
+  <img src="docs/preview-dark.jpg" alt="Hero in dark mode" width="49%" />
+</p>
 
 ## Features
 
-1.  **Project Showcase**
-2.  **Social Links** 
-3.  **Contact Link**
-4.  **Downloadable CV** 
+- **Intro** – the LOVENJAK letters rise and a curtain lifts; click the **ML** logo to replay it
+- **About** – cards that scrub sideways while the section is pinned (a swipe strip on phones), with CV download, socials and hobbies
+- **Projects** – a sticky device frame that follows the project you scroll to; screenshots wipe in and the section color crossfades
+- **Motion** – smooth scrolling, scroll-linked reveals, magnetic buttons, a labelled cursor, a scroll-reactive marquee and an ambient blurred-blob background
+- **Dark mode** – follows the system setting and remembers your choice
+- **Accessible** – keyboard-friendly (visible focus everywhere, details open on focus), 44px touch targets, and with `prefers-reduced-motion` the page is fully static
 
-## How it works
+## Tech stack
 
-Core stack: ReactJS + Tailwind + Typescript + Framer-motion 
+- [React 19](https://react.dev/) + TypeScript
+- [Vite 8](https://vite.dev/)
+- [Tailwind CSS 4](https://tailwindcss.com/)
+- [Lenis](https://github.com/darkroomengineering/lenis) for smooth scrolling
+- Vercel Web Analytics + Speed Insights (cookieless, so no consent banner is needed)
 
-Dynamic portfolio powered by ReactJS, utilizing Typescript and tailored with TailwindCSS for a seamless user experience. Dive into a captivating showcase of my latest projects, each meticulously crafted to demonstrate my expertise in frontend development. With smooth animations courtesy of Framer Motion, explore a visually stunning gallery featuring detailed project descriptions, accompanied by screenshots and links to live demos or GitHub repositories.
+There is no animation library. Motion lives in `src/motion/`:
 
-Stay connected with me through easily accessible social media links, allowing you to engage with my latest updates and industry insights. Need to get in touch? Look no further than the prominent contact section, equipped with a convenient form or direct email address for potential clients, collaborators, or employers to reach out.
+| File                                                | What it does                                                                                                                                |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `MotionProvider.tsx`                                | One `requestAnimationFrame` loop for the whole site (Lenis, scroll velocity, frame subscribers), the intro timeline and anchor-link gliding |
+| `Reveal.tsx`, `useReveal.ts`                        | Line, block, image and per-letter reveals: CSS transitions started by an IntersectionObserver after the intro                               |
+| `AmbientBackground.tsx`                             | The blurred color blobs; toggle with `AMBIENT_BG` in `tokens.ts`                                                                            |
+| `Magnetic.tsx`, `Cursor.tsx`, `VelocityMarquee.tsx` | Pointer and scroll effects                                                                                                                  |
+| `motion.css`                                        | Timings and easings; the easing tokens are in `@theme` in `src/index.css`                                                                   |
 
-And for those interested in learning more about my professional journey, download my CV/resume with just a click, providing you with comprehensive insights into my skills, experiences, and qualifications. Explore, connect, and discover the possibilities within my frontend development world.
+Scroll- and pointer-linked values are written straight to the DOM, so scrolling never re-renders React.
+
+## Getting started
+
+```bash
+npm install
+npm run dev       # start the dev server
+npm run lint      # ESLint (flat config) on the TypeScript sources
+npm run build     # type-check and build to dist/
+npm run preview   # serve the production build locally
+```
+
+Requires Node 20.19+ (Vite 8).
+
+## Project structure
+
+```
+public/            CV, favicon and link-preview image (served as-is)
+src/assets/        portrait, project screenshots and video
+src/components/    page sections (Hero, About, Projects, Contact, Footer, nav)
+src/hooks/         small media-query hooks
+src/motion/        motion system (see above)
+docs/              README screenshots
+```
+
+To update the CV, replace `public/CV_Lovenjak.pdf`; its URL stays the same.
+
+## Notes
+
+- TypeScript is held at 5.9: typescript-eslint does not support TypeScript 6+ yet.
+- Internal company projects are shown with anonymized screenshots and generic names.
+
+See [CHANGELOG.md](CHANGELOG.md) for what changed between versions.

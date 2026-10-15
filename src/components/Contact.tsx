@@ -1,87 +1,85 @@
 import Button from "./Button";
 import { MdAlternateEmail } from "react-icons/md";
 import { LiaAsteriskSolid } from "react-icons/lia";
-import { Slide } from "react-awesome-reveal";
+import { socials } from "./socials";
+import { RevealLines, RevealUp } from "../motion/Reveal";
+
+// Section heading, one entry per revealed line
+const HEADING = ["Say hello —", "let’s talk."];
 
 const Contact = () => {
   return (
     <section
-      className="-mt-12 rounded-t-[2rem] bg-white dark:bg-black"
       id="contact"
+      className="relative z-1 px-4 pt-24 pb-10 sm:px-6 sm:pt-[140px]"
     >
-      <Slide direction="right" triggerOnce>
-        <div className="mx-auto flex max-w-[95%] flex-col gap-3 pt-16 sm:max-w-[85%] sm:gap-6 sm:pt-32 lg:max-w-[75%] lg:flex-row">
-          <div className="contact__mailbox flex flex-col justify-between gap-10 rounded-[2rem] bg-yellowy px-8 py-12 sm:px-12 sm:py-16 lg:max-w-[70%]">
-            <div className="flex">
-              <MdAlternateEmail className="contact__mailbox-icon h-14 w-14 sm:h-20 sm:w-20" />
-            </div>
-            <h2 className="text-5xl tracking-tight lg:text-6xl">
-              Send me an email
-            </h2>
-            <p className="max-w-[80%] text-lg leading-5 lg:max-w-[65%]">
-              Feel free to drop me a message anytime! Whether you have a project
-              in mind, a question, or just want to say hello, I&apos;m just an
-              email away. Reach out to me at{" "}
-              <span className="font-medium">
+      <div className="mx-auto flex max-w-[1200px] flex-col gap-10 sm:gap-14">
+        <RevealLines
+          as="h2"
+          lines={HEADING}
+          className="text-[clamp(56px,9vw,128px)] leading-[0.95] font-medium tracking-[-0.04em] dark:text-white"
+        />
+        <div className="flex flex-col gap-6 lg:flex-row">
+          <RevealUp className="min-w-0 lg:flex-[1.6_1_0]">
+            <div className="contact__mailbox flex h-full flex-col justify-between gap-10 rounded-4xl bg-yellowy px-8 py-12 sm:px-12 sm:py-14">
+              <div className="flex">
+                <MdAlternateEmail className="contact__mailbox-icon h-14 w-14 sm:h-[72px] sm:w-[72px]" />
+              </div>
+              <h3 className="text-5xl leading-none tracking-[-0.02em] lg:text-6xl">
+                Send me an email
+              </h3>
+              <p className="max-w-[520px] text-lg leading-[1.4]">
+                Feel free to drop me a message anytime! Whether you have a
+                project in mind, a question, or just want to say hello, I&apos;m
+                just an email away. Reach out to me at{" "}
                 <a
                   href="mailto:matjaz.lovenjak@gmail.com"
-                  className="hover__link"
+                  className="hover__link font-semibold"
                 >
                   matjaz.lovenjak@gmail.com
-                </a>
-              </span>{" "}
-              and let&apos;s start the conversation!
-            </p>
-            <a href="mailto:matjaz.lovenjak@gmail.com" className="w-fit">
-              <Button
-                text={"Send email"}
-                bgColor={"bg-black"}
-                iconColor={"text-black"}
-                circleColor={"bg-yellowy"}
-                textColor={"text-yellowy"}
-              />
-            </a>
-          </div>
+                </a>{" "}
+                and let&apos;s start the conversation!
+              </p>
+              <div>
+                <Button
+                  href="mailto:matjaz.lovenjak@gmail.com"
+                  text="Send email"
+                  bgColor="bg-black"
+                  iconColor="text-black"
+                  circleColor="bg-yellowy"
+                  textColor="text-yellowy"
+                  cursorLabel="write"
+                />
+              </div>
+            </div>
+          </RevealUp>
 
-          <div className="group flex flex-col justify-between gap-10 rounded-[2rem] bg-bluey px-8 py-12 sm:px-12 sm:py-16">
-            <div>
-              <LiaAsteriskSolid className="h-14 w-14 max-sm:animate-spin-slow sm:h-20 sm:w-20 sm:group-hover:animate-spin-slow" />
+          <RevealUp delay={0.12} className="min-w-0 lg:flex-[1_1_0]">
+            <div className="group flex h-full flex-col justify-between gap-10 rounded-4xl bg-bluey px-8 py-12 sm:px-12 sm:py-14">
+              <div>
+                <LiaAsteriskSolid className="h-14 w-14 max-sm:animate-spin-slow sm:h-[72px] sm:w-[72px] sm:group-hover:animate-spin-slow" />
+              </div>
+              <h3 className="text-5xl leading-none tracking-[-0.02em] lg:text-6xl">
+                Contact me on socials
+              </h3>
+              <div className="flex flex-col gap-1 text-2xl">
+                {socials.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    className="hover__link inline-flex min-h-11 w-max items-center font-semibold"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Link to my ${social.label} profile`}
+                  >
+                    {social.name}
+                  </a>
+                ))}
+              </div>
             </div>
-            <h2 className="text-5xl tracking-tight lg:text-6xl">
-              Contact me on socials
-            </h2>
-            <div className="flex w-[60%] flex-col text-lg leading-5">
-              <a
-                href="https://www.linkedin.com/in/matjaz-lovenjak/"
-                className="hover__link mt-2 w-max text-2xl font-semibold"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Link to my LinkedIn profile"
-              >
-                linkedin
-              </a>
-              <a
-                href="https://www.facebook.com/matjaz.lovenjak"
-                className="hover__link mt-2 w-max text-2xl font-semibold"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Link to my Facebook profile"
-              >
-                facebook
-              </a>
-              <a
-                href="https://www.instagram.com/rubuz88/"
-                className="hover__link mt-2 w-max text-2xl font-semibold"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Link to my Instagram profile"
-              >
-                instagram
-              </a>
-            </div>
-          </div>
+          </RevealUp>
         </div>
-      </Slide>
+      </div>
     </section>
   );
 };

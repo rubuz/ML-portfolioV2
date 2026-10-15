@@ -1,31 +1,46 @@
 import { BsArrowRight } from "react-icons/bs";
+import Magnetic from "../motion/Magnetic";
+import RollText from "../motion/RollText";
 
 type ButtonProps = {
+  href: string;
   text: string;
   textColor: string;
   bgColor: string;
   iconColor: string;
   circleColor: string;
+  // Shown in the custom cursor while hovering
+  cursorLabel?: string;
+  external?: boolean;
 };
 
+// Pill link with rolling label, growing arrow circle and magnetic pull
 const Button = ({
+  href,
   text,
   textColor,
   bgColor,
   iconColor,
   circleColor,
+  cursorLabel,
+  external,
 }: ButtonProps) => {
   return (
-    <div
-      className={`${bgColor} group relative flex items-center justify-center rounded-full py-2 pl-10 pr-8 text-lg sm:py-5 sm:pl-16 sm:pr-12`}
-    >
-      <p className={`flex h-10 items-center ${textColor}`}>{text}</p>
-      <div
-        className={`ml-4 flex h-0 w-0 items-center justify-center ${circleColor} rotate-[-180deg] rounded-full p-0 transition-all duration-500 group-hover:h-8 group-hover:w-8 group-hover:rotate-[-45deg] group-hover:p-1 sm:group-hover:h-10 sm:group-hover:w-10`}
+    <Magnetic>
+      <a
+        href={href}
+        data-cursor={cursorLabel}
+        {...(external && { target: "_blank", rel: "noreferrer" })}
+        className={`btn roll-host ${bgColor} ${textColor}`}
       >
-        <BsArrowRight className={`text-2xl ${iconColor}`} />
-      </div>
-    </div>
+        <span data-magnet-inner className="inline-flex items-center">
+          <RollText text={text} />
+          <span className={`btn-circle ${circleColor}`}>
+            <BsArrowRight className={`text-xl ${iconColor}`} />
+          </span>
+        </span>
+      </a>
+    </Magnetic>
   );
 };
 
