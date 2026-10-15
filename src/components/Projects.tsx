@@ -46,7 +46,7 @@ const Projects = () => {
             ))}
           </div>
           <div
-            className="group relative aspect-square max-h-[70vh] w-full overflow-hidden rounded-2xl transition-all duration-1000 lg:hover:scale-[105%]"
+            className="group relative flex aspect-square max-h-[70vh] w-full items-center justify-center overflow-hidden rounded-2xl transition-all duration-1000 lg:hover:scale-[105%]"
             onMouseEnter={() => setIsMediaHovered(true)}
             onMouseLeave={() => setIsMediaHovered(false)}
           >
@@ -70,7 +70,8 @@ const Projects = () => {
               <img
                 src={activeProject.image}
                 alt={`Screenshot of ${activeProject.title}`}
-                className="h-full w-full rounded-2xl object-contain"
+                // Sized to the image itself, so non-square screenshots get rounded corners too
+                className="max-h-full max-w-full rounded-2xl"
               />
             ) : (
               <div className="flex h-full w-full flex-col items-center justify-center gap-4 rounded-2xl bg-black/10 p-6 text-center">

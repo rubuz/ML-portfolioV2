@@ -9,7 +9,7 @@ Personal portfolio of a Senior Software Developer building enterprise web and mo
 ## Features
 
 1. **About cards** – role, UI/UX, background, CV download, socials and hobbies, with a sideways scroll on desktop
-2. **Project showcase** – selected work with descriptions, tech stack and live links; works with mouse, touch and keyboard
+2. **Project showcase** – selected work with descriptions and tech stack; works with mouse, touch and keyboard
 3. **Contact** – email and social links
 4. **Dark mode** – follows the system setting, remembers your choice
 5. **Accessible motion** – respects `prefers-reduced-motion`

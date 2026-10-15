@@ -1,11 +1,9 @@
 import AfterSalesPortal from "../assets/after-sales-portal.webp";
 import SupplierPortal from "../assets/supplier-portal.webp";
-import Project1 from "../assets/project1.webp";
 import Project5 from "../assets/project5.webp";
 import Project6 from "../assets/project6.mp4";
 import Project6Webm from "../assets/project6.webm";
 import Project6Poster from "../assets/project6-poster.jpg";
-import Project7 from "../assets/project7.webp";
 
 export type ProjectColor = "greeny" | "yellowy" | "bluey" | "olivy" | "pinky";
 
@@ -81,27 +79,5 @@ export const projectsInfo: ProjectInfo[] = [
     tech: "ReactJS, TailwindCSS, REST API, React Router",
     color: "olivy",
     internal: true,
-  },
-  {
-    id: 5,
-    image: Project7,
-    group: "Web page",
-    title: "cEnergija",
-    url: "https://cenergija.vercel.app/",
-    description:
-      "A web page that visualizes electrical energy price changes in 2024. A dynamic doughnut chart shows price variations by date and time, helping users find cost-effective periods.",
-    tech: "ReactJS, TailwindCSS, Typescript, DaisyUI",
-    color: "pinky",
-  },
-  {
-    id: 6,
-    image: Project1,
-    group: "Web page",
-    title: "Moto Lander",
-    url: "https://ltmoto.si/",
-    description:
-      "A landing page for a small company that sells motorcycles. Built with ReactJS and TailwindCSS, with a contact form backed by PHP scripts on the server.",
-    tech: "ReactJS, TailwindCSS, PHP",
-    color: "greeny",
   },
 ];
