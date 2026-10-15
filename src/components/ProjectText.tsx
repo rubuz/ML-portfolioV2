@@ -1,11 +1,13 @@
 type ProjectTextProps = {
+  number: number;
   title: string;
   group: string;
   isActive: boolean;
-  onSelect: () => void;
+  onSelect: (time: number) => void;
 };
 
 const ProjectText = ({
+  number,
   title,
   group,
   isActive,
@@ -14,21 +16,18 @@ const ProjectText = ({
   return (
     <button
       type="button"
-      className="group flex flex-col gap-2 text-left select-none sm:gap-4"
-      onMouseEnter={onSelect}
-      onFocus={onSelect}
-      onClick={onSelect}
+      data-project-item
+      className={`project-item ${isActive ? "is-active" : ""}`}
+      onMouseEnter={(e) => onSelect(e.timeStamp)}
+      onFocus={(e) => onSelect(e.timeStamp)}
+      onClick={(e) => onSelect(e.timeStamp)}
       aria-pressed={isActive}
     >
-      <p className="text-lg sm:text-2xl">{group}</p>
-      <h3 className="text-3xl font-medium tracking-tight sm:text-6xl">
-        {title}
-      </h3>
-      <div className="relative h-1 w-full bg-black/30">
-        <div
-          className={`h-1 bg-black transition-all duration-500 group-hover:w-full ${isActive ? "w-full" : "w-0"}`}
-        ></div>
-      </div>
+      <span className="text-base font-semibold opacity-75">
+        {String(number).padStart(2, "0")} — {group}
+      </span>
+      <span className="project-title">{title}</span>
+      <span className="project-bar" aria-hidden="true" />
     </button>
   );
 };

@@ -17,6 +17,15 @@ export const colorClasses: Record<ProjectColor, { bg: string; text: string }> =
     pinky: { bg: "bg-pinky", text: "text-pinky" },
   };
 
+// Section background crossfades between these (inline style, so no class lookup)
+export const colorHex: Record<ProjectColor, string> = {
+  greeny: "#70c1b3",
+  yellowy: "#f3ffbd",
+  bluey: "#247ba0",
+  olivy: "#b2dbbf",
+  pinky: "#ff5c8f",
+};
+
 export type ProjectInfo = {
   id: number;
   group: string;
