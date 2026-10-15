@@ -13,7 +13,7 @@ import Footer from "./components/Footer";
 import { Slide } from "react-awesome-reveal";
 import { useMediaQuery } from "./hooks/useMediaQuery";
 import MobileNav from "./components/MobileNav";
-import CustomCursor from "./components/CustomCursor";
+import Cursor from "./motion/Cursor";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
@@ -198,7 +198,7 @@ function App() {
           </a>
         </Slide>
         <Footer />
-        <CustomCursor />
+        <Cursor />
       </div>
       <Analytics />
       <SpeedInsights />

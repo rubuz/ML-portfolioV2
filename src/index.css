@@ -1,9 +1,16 @@
 @import "tailwindcss";
+@import "./motion/motion.css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
   --font-work: Work Sans, sans-serif;
+  /* Wordmark only (preloader, hero title, footer) */
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Motion tokens */
+  --ease-expo-out: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-expo-in-out: cubic-bezier(0.77, 0, 0.18, 1);
 
   --color-pinky: #ff5c8f;
   --color-bluey: #247ba0;
@@ -79,26 +86,8 @@
 }
 
 html {
-  scroll-behavior: smooth !important;
   scroll-padding-top: 4rem;
   overflow-x: hidden;
-}
-
-/* Custom cursor only for a real mouse on desktop (same query as CustomCursor.tsx) */
-.custom-cursor-dot {
-  display: none;
-}
-
-@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
-  .custom-cursor,
-  .custom-cursor a,
-  .custom-cursor button {
-    cursor: none;
-  }
-
-  .custom-cursor-dot {
-    display: block;
-  }
 }
 
 .dark {
@@ -173,10 +162,6 @@ html {
 /* The preloader's styles live inline in index.html so they apply before this file loads */
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto !important;
-  }
-
   *,
   *::before,
   *::after {
