@@ -33,15 +33,17 @@ const Contact = () => {
               </span>{" "}
               and let&apos;s start the conversation!
             </p>
-            <a href="mailto:matjaz.lovenjak@gmail.com" className="w-fit">
+            <div>
               <Button
-                text={"Send email"}
-                bgColor={"bg-black"}
-                iconColor={"text-black"}
-                circleColor={"bg-yellowy"}
-                textColor={"text-yellowy"}
+                href="mailto:matjaz.lovenjak@gmail.com"
+                text="Send email"
+                bgColor="bg-black"
+                iconColor="text-black"
+                circleColor="bg-yellowy"
+                textColor="text-yellowy"
+                cursorLabel="write"
               />
-            </a>
+            </div>
           </div>
 
           <div className="group flex flex-col justify-between gap-10 rounded-4xl bg-bluey px-8 py-12 sm:px-12 sm:py-16">

@@ -51,15 +51,15 @@ const Hero = ({ isDark, onThemeChange }: HeroProps) => {
           </h1>
           <BsArrowRight className="absolute bottom-0 -left-10 rotate-135 text-4xl max-sm:hidden sm:-left-20 sm:text-6xl" />
         </div>
-        <a href="#contact">
-          <Button
-            text={"Say Hello"}
-            bgColor={"bg-pinky"}
-            iconColor={"text-pinky"}
-            circleColor={"bg-black"}
-            textColor={"text-black"}
-          />
-        </a>
+        <Button
+          href="#contact"
+          text="Say Hello"
+          bgColor="bg-pinky"
+          iconColor="text-pinky"
+          circleColor="bg-black"
+          textColor="text-black"
+          cursorLabel="hi"
+        />
       </div>
     </div>
   );

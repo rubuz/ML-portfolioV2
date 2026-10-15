@@ -136,15 +136,16 @@ const Projects = () => {
             />
           ))}
           <div className="w-fit">
-            <a href="https://github.com/rubuz" target="_blank" rel="noreferrer">
-              <Button
-                text={"View all"}
-                bgColor={"bg-black"}
-                iconColor={"text-black"}
-                circleColor={colors.bg}
-                textColor={colors.text}
-              />
-            </a>
+            <Button
+              href="https://github.com/rubuz"
+              external
+              text="View all"
+              bgColor="bg-black"
+              iconColor="text-black"
+              circleColor={colors.bg}
+              textColor={colors.text}
+              cursorLabel="github"
+            />
           </div>
         </div>
       </div>
