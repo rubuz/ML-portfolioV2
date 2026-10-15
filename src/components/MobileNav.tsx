@@ -4,10 +4,15 @@ import MobileNavMenuBtn from "./MobileNavMenuBtn";
 import { BsArrowRight } from "react-icons/bs";
 import { Fade } from "react-awesome-reveal";
 import { navLinks } from "./navLinks";
+import { useMotion } from "../motion/motionContext";
+import { useHideOnScroll } from "../motion/useHideOnScroll";
 
 const MobileNav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { replay } = useMotion();
+  const headerRef = useHideOnScroll<HTMLDivElement>(isMenuOpen);
 
   const toggleMenu = () => setIsMenuOpen((open) => !open);
 
@@ -33,7 +38,10 @@ const MobileNav = () => {
   }, [isMenuOpen]);
 
   return (
-    <div className="sticky top-0 z-10">
+    <div
+      ref={headerRef}
+      className="site-nav sticky top-0 z-50 transition-colors duration-[600ms]"
+    >
       {/* `invisible` keeps the closed menu's links out of the tab order */}
       <div
         id="mobile-menu"
@@ -78,7 +86,11 @@ const MobileNav = () => {
                 : "text-black dark:text-white"
             } transition-colors delay-50 duration-500`}
             href="#"
-            aria-label="Lovenjak, back to top"
+            onClick={(e) => {
+              e.preventDefault();
+              replay();
+            }}
+            aria-label="Replay intro"
           >
             <span className="text-pinky">M</span>L
           </a>

@@ -1,26 +1,49 @@
-import { FaArrowRight } from "react-icons/fa";
-import { Slide } from "react-awesome-reveal";
 import { navLinks } from "./navLinks";
+import { useMotion } from "../motion/motionContext";
+import { useHideOnScroll } from "../motion/useHideOnScroll";
+import RollText from "../motion/RollText";
 
 const Navbar = () => {
+  const { loaded, replay } = useMotion();
+  const headerRef = useHideOnScroll<HTMLElement>();
+
   return (
-    <nav className="flex w-full justify-center py-10">
-      <ul className="flex h-14 items-center justify-around gap-x-8 text-lg dark:text-white">
-        {navLinks.map((link, index) => (
-          <Slide
-            key={link.label}
-            direction="down"
-            triggerOnce
-            delay={130 + index * 15}
-          >
-            <li className="group nav-btn transition-all duration-500 ease-in-out hover:bg-pinky">
-              <a href={link.href}>{link.label}</a>
-              <FaArrowRight className="nav-icon" aria-hidden="true" />
+    <header
+      ref={headerRef}
+      className="site-nav sticky top-0 z-50 bg-white transition-colors duration-[600ms] dark:bg-black"
+    >
+      <nav
+        aria-label="Main"
+        className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-6 py-[18px]"
+      >
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            replay();
+          }}
+          aria-label="Replay intro"
+          data-cursor="replay"
+          className={`nav-item ${loaded ? "in" : ""} inline-flex min-h-11 min-w-11 items-center font-mono text-[22px] dark:text-white`}
+        >
+          <span className="text-pinky">M</span>L
+        </a>
+        <ul className="flex items-center gap-3 text-lg dark:text-white">
+          {navLinks.map((link, index) => (
+            <li
+              key={link.label}
+              className={`nav-item ${loaded ? "in" : ""}`}
+              style={{ transitionDelay: `${0.13 + index * 0.015}s` }}
+            >
+              <a href={link.href} className="pill roll-host">
+                <RollText text={link.label} />
+              </a>
             </li>
-          </Slide>
-        ))}
-      </ul>
-    </nav>
+          ))}
+        </ul>
+        <div className="w-11" aria-hidden="true" />
+      </nav>
+    </header>
   );
 };
 

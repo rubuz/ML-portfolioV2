@@ -39,7 +39,8 @@
   transition: clip-path 1.5s var(--ease-expo-in-out) var(--rv-delay, 0s);
 }
 .rv-img.in {
-  clip-path: inset(0 0 0 0);
+  /* Past the edges, so content that moves (the blob bobs 8%) isn't cut off */
+  clip-path: inset(-20% -20% -20% -20%);
 }
 .rv-img .rv-zoom {
   transform: scale(1.3);
@@ -204,4 +205,109 @@
   height: 36px;
   margin-left: 14px;
   transform: rotate(-45deg);
+}
+
+/* Preloader: letters rise, exit up; curtain lifts (stages from MotionProvider) */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  background: #000;
+  color: #fff;
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1.1s var(--ease-expo-in-out) 0.25s;
+}
+.loader.is-idle,
+.loader.is-idle .loader-letter > span {
+  /* Snap back instantly on replay */
+  transition: none;
+}
+.loader.is-loaded {
+  clip-path: inset(0 0 100% 0);
+  pointer-events: none;
+}
+.loader-word {
+  display: flex;
+  font-size: 40px;
+  letter-spacing: 0.15em;
+}
+.loader-letter {
+  display: block;
+  overflow: hidden;
+}
+.loader-letter > span {
+  display: block;
+  transform: translate3d(0, 110%, 0);
+  transition: transform 0.9s var(--ease-expo-out);
+}
+.loader.is-letters .loader-letter > span {
+  transform: none;
+}
+.loader.is-loaded .loader-letter > span {
+  transform: translate3d(0, -110%, 0);
+  transition: transform 0.7s var(--ease-expo-in-out);
+}
+
+/* Nav: hides on scroll down. No transform while shown, so the mobile
+   menu's position: fixed overlay isn't trapped inside it. */
+.site-nav {
+  transition:
+    transform 0.7s var(--ease-expo-out),
+    background-color 0.6s ease;
+}
+.site-nav.is-hidden {
+  transform: translate3d(0, -110%, 0);
+}
+.nav-item {
+  opacity: 0;
+  transform: translate3d(0, -100%, 0);
+  transition:
+    opacity 0.6s ease,
+    transform 0.9s var(--ease-expo-out);
+}
+.nav-item.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Nav pill: pink fill grows in, label rolls, text turns black */
+.pill {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 22px;
+  border-radius: 999px;
+}
+.pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--color-pinky);
+  transform: scale(0.5);
+  opacity: 0;
+  transition:
+    transform 0.5s var(--ease-expo-out),
+    opacity 0.3s ease;
+}
+.pill:hover::before,
+.pill:focus-visible::before {
+  transform: scale(1);
+  opacity: 1;
+}
+.pill:hover,
+.pill:focus-visible {
+  color: #000;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-item {
+    opacity: 1;
+    transform: none;
+  }
 }
