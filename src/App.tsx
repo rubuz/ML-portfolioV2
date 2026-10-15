@@ -14,15 +14,8 @@ import { Slide } from "react-awesome-reveal";
 import { useMediaQuery } from "./hooks/useMediaQuery";
 import MobileNav from "./components/MobileNav";
 import CustomCursor from "./components/CustomCursor";
-import ReactGA from "react-ga4";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-
-// Without the ID (e.g. local dev without .env) initialize() throws and the app never mounts
-const gaId = import.meta.env.VITE_GA_ID;
-if (gaId) {
-  ReactGA.initialize(gaId);
-}
 
 const getInitialTheme = () => {
   try {

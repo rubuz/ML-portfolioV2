@@ -27,6 +27,6 @@ npm run lint     # lint TypeScript files
 npm run build    # type-check and build to dist/
 ```
 
-Optional: set `VITE_GA_ID` in a `.env` file to enable Google Analytics. Without it, analytics is skipped.
+Analytics: Vercel Web Analytics and Speed Insights (cookieless, so no consent banner is needed).
 
 TypeScript is held at 5.9: typescript-eslint does not support TypeScript 6+ yet.
