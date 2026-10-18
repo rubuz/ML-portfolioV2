@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { IoMdMoon, IoMdSunny } from "react-icons/io";
 import "./Hero.css";
@@ -11,6 +11,7 @@ import {
   SplitChars,
 } from "../motion/Reveal";
 import { useFrame, useMotion } from "../motion/motionContext";
+import { damp } from "../motion/spring";
 
 type HeroProps = {
   isDark: boolean;
@@ -26,10 +27,29 @@ const Hero = ({ isDark, onThemeChange }: HeroProps) => {
   const portraitRef = useRef<HTMLDivElement>(null);
   const letters = useRef<(HTMLSpanElement | null)[]>([]);
   const progress = useRef(0);
+  // Section top (page coordinates) and height, cached so the frame loop
+  // never reads layout
+  const bounds = useRef({ top: 0, height: 1 });
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const measure = () => {
+      const rect = section.getBoundingClientRect();
+      bounds.current = {
+        top: rect.top + window.scrollY,
+        height: Math.max(1, rect.height),
+      };
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(document.body);
+    return () => observer.disconnect();
+  }, []);
 
   // As the hero scrolls out, letters drift up at different speeds and the
   // body sinks, shrinks and fades. Written to the DOM, never to React state.
-  useFrame(() => {
+  useFrame(({ y, dt }) => {
     const section = sectionRef.current;
     const body = bodyRef.current;
     if (!section || !body) return;
@@ -42,11 +62,11 @@ const Hero = ({ isDark, onThemeChange }: HeroProps) => {
       }
       return;
     }
-    const rect = section.getBoundingClientRect();
-    const target = clamp01(-rect.top / Math.max(1, rect.height));
+    const { top, height } = bounds.current;
+    const target = clamp01((y - top) / height);
     const p = progress.current;
     if (Math.abs(target - p) < 0.0005) return;
-    const next = p + (target - p) * 0.1;
+    const next = p + (target - p) * damp(0.1, dt);
     progress.current = next;
     body.style.transform = `translate3d(0, ${(next * 160).toFixed(2)}px, 0) scale(${(1 - next * 0.12).toFixed(4)})`;
     body.style.opacity = String(clamp01(1 - next * 1.3));

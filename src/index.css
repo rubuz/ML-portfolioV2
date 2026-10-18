@@ -11,6 +11,7 @@
   /* Motion tokens */
   --ease-expo-out: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-expo-in-out: cubic-bezier(0.77, 0, 0.18, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 
   --color-pinky: #ff5c8f;
   --color-bluey: #247ba0;
@@ -101,41 +102,56 @@ html {
   background: currentColor;
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 0.5s var(--ease-expo-out);
+  transition: transform 0.3s var(--ease-expo-out);
 }
 
-.hover__link:hover::after,
 .hover__link:focus-visible::after {
   transform: scaleX(1);
   transform-origin: left;
 }
-
-.contact__mailbox:hover .contact__mailbox-icon {
-  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-@keyframes ping {
-  75%,
-  100% {
-    transform: scale(1.2);
-    opacity: 0;
+@media (hover: hover) and (pointer: fine) {
+  .hover__link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
   }
 }
 
-@media screen and (max-width: 640px) {
-  .contact__mailbox-icon {
-    animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+/* A copy of the icon pings behind it, so the real icon never fades out */
+.contact__mailbox-ping {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform-origin: center;
+}
+@media (hover: hover) and (pointer: fine) {
+  .contact__mailbox:hover .contact__mailbox-ping {
+    animation: mail-ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+}
+
+@keyframes mail-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  75%,
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
   }
 }
 
 /* The preloader's styles live inline in index.html so they apply before this file loads */
 
+/* Reduced motion: no movement, but colors and opacity still fade gently */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-property: opacity, color, background-color, border-color !important;
+    transition-duration: 150ms !important;
+    transition-delay: 0s !important;
   }
 }

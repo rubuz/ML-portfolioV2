@@ -91,7 +91,6 @@ const AmbientBackground = () => {
   const progress = useRef(createSpring());
   const pointerX = useRef(createSpring());
   const pointerY = useRef(createSpring());
-  const lastTime = useRef<number | null>(null);
 
   // Page scroll range, cached (reading scrollHeight every frame forces layout)
   useEffect(() => {
@@ -111,22 +110,15 @@ const AmbientBackground = () => {
     };
   }, []);
 
-  useFrame(({ y, vw, vh }) => {
+  useFrame(({ y, vw, vh, dt }) => {
     if (reduced) {
       wrappers.current.forEach((el) => {
         if (el && el.style.transform) {
           el.style.transform = el.style.opacity = "";
         }
       });
-      lastTime.current = null;
       return;
     }
-    const now = performance.now();
-    const dt = Math.min(
-      (now - (lastTime.current ?? now - 16.7)) / 1000,
-      1 / 30,
-    );
-    lastTime.current = now;
 
     const p = stepSpring(
       progress.current,

@@ -3,13 +3,10 @@ import { useEffect, useState } from "react";
 import MobileNavMenuBtn from "./MobileNavMenuBtn";
 import { BsArrowRight } from "react-icons/bs";
 import { navLinks } from "./navLinks";
-import { useMotion } from "../motion/motionContext";
 import { useHideOnScroll } from "../motion/useHideOnScroll";
 
 const MobileNav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const { replay } = useMotion();
   const headerRef = useHideOnScroll<HTMLDivElement>(isMenuOpen);
 
   const toggleMenu = () => setIsMenuOpen((open) => !open);
@@ -25,22 +22,20 @@ const MobileNav = () => {
 
   return (
     <div ref={headerRef} className="site-nav frosted sticky top-0 z-50">
-      {/* `invisible` keeps the closed menu's links out of the tab order */}
+      {/* .mobile-menu hides the closed menu (visibility), keeping its links out of the tab order */}
       <div
         id="mobile-menu"
         onClick={() => setIsMenuOpen(false)}
         className={`mobile-menu fixed top-0 left-0 ${
-          isMenuOpen
-            ? "is-open visible translate-y-0"
-            : "invisible -translate-y-full"
-        } flex h-screen w-full flex-col items-end bg-black px-3 pt-24 text-white transition-all duration-500 dark:bg-white dark:text-black`}
+          isMenuOpen ? "is-open" : ""
+        } flex h-screen w-full flex-col items-end bg-black px-3 pt-24 text-white dark:bg-white dark:text-black`}
       >
         <ul className="flex flex-col gap-10">
           {navLinks.map((link, index) => (
             <li
               key={link.label}
               className="menu-item"
-              style={{ transitionDelay: `${0.15 + index * 0.06}s` }}
+              style={{ transitionDelay: `${0.1 + index * 0.05}s` }}
             >
               <a
                 href={link.href}
@@ -60,14 +55,10 @@ const MobileNav = () => {
               isMenuOpen
                 ? "text-white dark:text-black"
                 : "text-black dark:text-white"
-            } inline-flex min-h-11 min-w-11 items-center transition-colors delay-50 duration-500`}
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              replay();
-            }}
-            aria-label="Replay intro"
-            data-cursor="replay"
+            } inline-flex min-h-11 min-w-11 items-center transition-colors delay-100 duration-200`}
+            href="#top"
+            onClick={() => setIsMenuOpen(false)}
+            aria-label="Back to top"
           >
             <span className="text-pinky">M</span>L
           </a>

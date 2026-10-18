@@ -6,6 +6,8 @@ export type Frame = {
   vel: number;
   vw: number;
   vh: number;
+  // Seconds since the previous frame, capped so a background tab can't jump
+  dt: number;
 };
 export type FrameCallback = (frame: Frame) => void;
 
@@ -20,9 +22,6 @@ export type MotionContextValue = {
   reduced: boolean;
   stage: IntroStage;
   loaded: boolean;
-  // Bumps on every intro replay, so reveals know to reset
-  replayKey: number;
-  replay: () => void;
   scrollTo: (target: number | HTMLElement) => void;
   subscribe: (callback: FrameCallback) => () => void;
   pointer: React.RefObject<Pointer>;

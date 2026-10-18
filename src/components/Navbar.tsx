@@ -4,7 +4,7 @@ import { useHideOnScroll } from "../motion/useHideOnScroll";
 import RollText from "../motion/RollText";
 
 const Navbar = () => {
-  const { loaded, replay } = useMotion();
+  const { loaded } = useMotion();
   const headerRef = useHideOnScroll<HTMLElement>();
 
   return (
@@ -14,13 +14,8 @@ const Navbar = () => {
         className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-6 py-[18px]"
       >
         <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            replay();
-          }}
-          aria-label="Replay intro"
-          data-cursor="replay"
+          href="#top"
+          aria-label="Back to top"
           className={`nav-item ${loaded ? "in" : ""} inline-flex min-h-11 min-w-11 items-center font-mono text-[22px] dark:text-white`}
         >
           <span className="text-pinky">M</span>L
@@ -30,7 +25,7 @@ const Navbar = () => {
             <li
               key={link.label}
               className={`nav-item ${loaded ? "in" : ""}`}
-              style={{ transitionDelay: `${0.13 + index * 0.015}s` }}
+              style={{ transitionDelay: `${0.13 + index * 0.04}s` }}
             >
               <a href={link.href} className="pill roll-host">
                 <RollText text={link.label} />

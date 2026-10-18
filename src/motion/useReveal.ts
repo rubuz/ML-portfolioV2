@@ -2,13 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { useMotion } from "./motionContext";
 
 // True once the element's top has crossed 90% of the viewport, after the intro.
-// Fires once per intro: replaying the intro resets it.
+// Fires once.
 export const useReveal = <T extends Element>() => {
   const ref = useRef<T>(null);
-  const { loaded, reduced, replayKey } = useMotion();
-  // Which intro run this element was revealed in
-  const [revealedIn, setRevealedIn] = useState<number | null>(null);
-  const inView = reduced || revealedIn === replayKey;
+  const { loaded, reduced } = useMotion();
+  const [revealed, setRevealed] = useState(false);
+  const inView = reduced || revealed;
 
   useEffect(() => {
     const el = ref.current;
@@ -17,7 +16,7 @@ export const useReveal = <T extends Element>() => {
       ([entry]) => {
         // Also counts elements already scrolled past, not only intersecting ones
         if (entry.boundingClientRect.top < window.innerHeight * 0.9) {
-          setRevealedIn(replayKey);
+          setRevealed(true);
           observer.disconnect();
         }
       },
@@ -25,7 +24,7 @@ export const useReveal = <T extends Element>() => {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [loaded, inView, replayKey]);
+  }, [loaded, inView]);
 
   return [ref, inView] as const;
 };

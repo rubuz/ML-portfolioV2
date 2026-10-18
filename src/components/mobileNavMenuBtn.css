@@ -16,7 +16,9 @@
   border-radius: 999px;
   height: 3px;
   margin: 3px 0;
-  transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  transition:
+    transform 0.3s var(--ease-expo-out),
+    background-color 0.2s ease;
 }
 
 .dark .menu-btn span {
@@ -25,8 +27,10 @@
 
 .menu-btn.checked span {
   background: #fff;
-  transition: 0.5s;
-  transition-delay: 50ms;
+  /* Turns white once the menu has slid in behind it */
+  transition:
+    transform 0.3s var(--ease-expo-out),
+    background-color 0.2s ease 0.1s;
 }
 
 .dark .menu-btn.checked span {
@@ -55,8 +59,10 @@
   transform: rotatez(-45deg);
 }
 
+/* Same end pose as shrinking it to 50% wide and rotating about its bottom
+   centre, but done with scaleX so width never animates */
 .menu-btn.checked span:nth-of-type(3) {
-  transform-origin: bottom;
-  width: 50%;
-  transform: translate(13px, -5px) rotatez(45deg);
+  transform-origin: 0 100%;
+  transform: translate(20.5px, -5px) rotatez(45deg) translateX(-7.5px)
+    scaleX(0.6667);
 }
