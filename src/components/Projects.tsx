@@ -21,6 +21,21 @@ const Projects = () => {
   const listRef = useRef<HTMLDivElement>(null);
   const screenRef = useRef<HTMLDivElement>(null);
   const lastHover = useRef({ time: -Infinity, y: 0 });
+  const sectionRef = useRef<HTMLElement>(null);
+  const onScreen = useRef(false);
+  // Scroll position of the last measurement; the active item can only
+  // change when this does
+  const checkedY = useRef(NaN);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      onScreen.current = entry.isIntersecting;
+    });
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   const project = projectsInfo[active];
   const colors = colorClasses[project.color];
@@ -39,11 +54,14 @@ const Projects = () => {
   useFrame(({ y, vh, vw }) => {
     const hover = lastHover.current;
     if (
+      !onScreen.current ||
+      y === checkedY.current ||
       performance.now() - hover.time < HOVER_PRIORITY_MS ||
       Math.abs(y - hover.y) < HOVER_RELEASE_PX ||
       !listRef.current
     )
       return;
+    checkedY.current = y;
     const target = vw < 1024 ? vh * 0.75 : vh * 0.5;
     let best = -1;
     let bestDistance = Infinity;
@@ -75,8 +93,9 @@ const Projects = () => {
 
   return (
     <section
+      ref={sectionRef}
       id="work"
-      className="relative z-1 overflow-x-clip rounded-4xl pb-[200px] text-black transition-colors duration-[900ms]"
+      className="relative z-1 overflow-x-clip rounded-4xl pb-[200px] text-black transition-colors duration-[400ms]"
       style={{ backgroundColor: bg }}
     >
       <div className="py-7">
@@ -92,7 +111,7 @@ const Projects = () => {
       <div className="mx-auto grid max-w-[1240px] grid-cols-1 items-start gap-10 px-4 sm:px-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-[72px]">
         {/* Sticky frame; its background matches the section so the list scrolls under it on mobile */}
         <div
-          className="sticky top-16 z-4 transition-colors duration-[900ms] lg:top-[120px]"
+          className="sticky top-16 z-4 transition-colors duration-[400ms] lg:top-[120px]"
           style={{ backgroundColor: bg }}
         >
           <RevealUp>

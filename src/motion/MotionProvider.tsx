@@ -19,11 +19,24 @@ import {
 const LETTERS_AT = 60;
 const LOADED_AT = 1450;
 const NAV_OFFSET = -64;
+// Set once the intro has played; the intro then skips for the rest of the
+// visit (index.html reads the same key to skip its black panel)
+const INTRO_SEEN_KEY = "intro-seen";
+
+const hasSeenIntro = () => {
+  try {
+    return sessionStorage.getItem(INTRO_SEEN_KEY) === "1";
+  } catch {
+    return false;
+  }
+};
 
 export const MotionProvider = ({ children }: { children: ReactNode }) => {
   const reduced = useReducedMotion();
-  const [stage, setStage] = useState<IntroStage>(reduced ? "loaded" : "idle");
-  const [replayKey, setReplayKey] = useState(0);
+  const [skipIntro] = useState(hasSeenIntro);
+  const [stage, setStage] = useState<IntroStage>(
+    reduced || skipIntro ? "loaded" : "idle",
+  );
   const lenisRef = useRef<Lenis | null>(null);
   const callbacks = useRef(new Set<FrameCallback>());
   const pointer = useRef<Pointer>({ x: 0, y: 0, active: false });
@@ -52,12 +65,21 @@ export const MotionProvider = ({ children }: { children: ReactNode }) => {
     let frameId = 0;
     let lastY = window.scrollY;
     let vel = 0;
+    let lastTime: number | null = null;
     const tick = (time: number) => {
       lenisRef.current?.raf(time);
+      const dt = Math.min((time - (lastTime ?? time - 1000 / 60)) / 1000, 1 / 30);
+      lastTime = time;
       const y = window.scrollY;
       vel += (y - lastY - vel) * 0.15;
       lastY = y;
-      const frame = { y, vel, vw: window.innerWidth, vh: window.innerHeight };
+      const frame = {
+        y,
+        vel,
+        vw: window.innerWidth,
+        vh: window.innerHeight,
+        dt,
+      };
       callbacks.current.forEach((callback) => callback(frame));
       frameId = requestAnimationFrame(tick);
     };
@@ -81,22 +103,27 @@ export const MotionProvider = ({ children }: { children: ReactNode }) => {
     };
   }, []);
 
-  // Intro timeline; replayKey restarts it
+  // Intro timeline, once per visit
   useEffect(() => {
-    if (reduced) return;
+    if (reduced || skipIntro) return;
     const lenis = lenisRef.current;
     lenis?.stop();
     const toLetters = setTimeout(() => setStage("letters"), LETTERS_AT);
     const toLoaded = setTimeout(() => {
       setStage("loaded");
       lenis?.start();
+      try {
+        sessionStorage.setItem(INTRO_SEEN_KEY, "1");
+      } catch {
+        // Storage blocked: the intro just plays again next load
+      }
     }, LOADED_AT);
     return () => {
       clearTimeout(toLetters);
       clearTimeout(toLoaded);
       lenis?.start();
     };
-  }, [reduced, replayKey]);
+  }, [reduced, skipIntro]);
 
   const scrollTo = useCallback((target: number | HTMLElement) => {
     // Resolve elements against the real scroll position, so a stale Lenis
@@ -107,7 +134,7 @@ export const MotionProvider = ({ children }: { children: ReactNode }) => {
         : target.getBoundingClientRect().top + window.scrollY + NAV_OFFSET;
     const lenis = lenisRef.current;
     if (lenis) {
-      lenis.scrollTo(top, { duration: 1.4, force: true });
+      lenis.scrollTo(top, { duration: 0.8, force: true });
     } else {
       window.scrollTo({ top });
     }
@@ -133,14 +160,6 @@ export const MotionProvider = ({ children }: { children: ReactNode }) => {
     return () => document.removeEventListener("click", onClick);
   }, [scrollTo]);
 
-  const replay = useCallback(() => {
-    if (reduced) return;
-    lenisRef.current?.scrollTo(0, { immediate: true, force: true });
-    window.scrollTo({ top: 0, behavior: "instant" });
-    setStage("idle");
-    setReplayKey((key) => key + 1);
-  }, [reduced]);
-
   const effectiveStage = reduced ? "loaded" : stage;
 
   const value = useMemo(
@@ -148,13 +167,11 @@ export const MotionProvider = ({ children }: { children: ReactNode }) => {
       reduced,
       stage: effectiveStage,
       loaded: effectiveStage === "loaded",
-      replayKey,
-      replay,
       scrollTo,
       subscribe,
       pointer,
     }),
-    [reduced, effectiveStage, replayKey, replay, scrollTo, subscribe],
+    [reduced, effectiveStage, scrollTo, subscribe],
   );
 
   return (

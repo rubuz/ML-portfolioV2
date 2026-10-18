@@ -6,16 +6,20 @@ import { useFrame, useMotion } from "./motionContext";
 const Cursor = () => {
   const ref = useRef<HTMLDivElement>(null);
   const position = useRef<{ x: number; y: number } | null>(null);
-  const { reduced, pointer } = useMotion();
+  const { pointer } = useMotion();
   // Only changes when the hovered label changes, never per mouse move
   const [label, setLabel] = useState("");
+  // Last non-empty label, kept on screen while it fades out
+  const [text, setText] = useState("");
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const onMove = (e: PointerEvent) => {
       if (e.pointerType !== "mouse") return;
       const target = (e.target as Element).closest?.("[data-cursor]");
-      setLabel(target?.getAttribute("data-cursor") ?? "");
+      const next = target?.getAttribute("data-cursor") ?? "";
+      setLabel(next);
+      if (next) setText(next);
       setVisible(true);
     };
     const onLeave = () => setVisible(false);
@@ -27,17 +31,16 @@ const Cursor = () => {
     };
   }, []);
 
+  // It replaces the system cursor, so it tracks the mouse exactly: any lag
+  // makes aiming feel imprecise. Only the grow/label animate (motion.css).
   useFrame(() => {
     const el = ref.current;
     const { x, y, active } = pointer.current;
     if (!el || !active) return;
-    if (!position.current) position.current = { x, y };
     const p = position.current;
-    const follow = reduced ? 1 : 0.2;
-    if (Math.abs(x - p.x) < 0.05 && Math.abs(y - p.y) < 0.05) return;
-    p.x += (x - p.x) * follow;
-    p.y += (y - p.y) * follow;
-    el.style.transform = `translate3d(${p.x.toFixed(2)}px, ${p.y.toFixed(2)}px, 0)`;
+    if (p && p.x === x && p.y === y) return;
+    position.current = { x, y };
+    el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
   });
 
   return (
@@ -46,7 +49,9 @@ const Cursor = () => {
       aria-hidden="true"
       className={`cursor ${visible ? "is-visible" : ""} ${label ? "is-big" : ""}`}
     >
-      <div className="cursor-dot">{label}</div>
+      <div className="cursor-dot">
+        <span className="cursor-label">{text}</span>
+      </div>
     </div>
   );
 };

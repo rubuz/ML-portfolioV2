@@ -22,8 +22,12 @@ const Contact = () => {
         <div className="flex flex-col gap-6 lg:flex-row">
           <RevealUp className="min-w-0 lg:flex-[1.6_1_0]">
             <div className="contact__mailbox flex h-full flex-col justify-between gap-10 rounded-4xl bg-yellowy px-8 py-12 sm:px-12 sm:py-14">
-              <div className="flex">
-                <MdAlternateEmail className="contact__mailbox-icon h-14 w-14 sm:h-[72px] sm:w-[72px]" />
+              <div className="relative flex self-start">
+                <MdAlternateEmail
+                  aria-hidden="true"
+                  className="contact__mailbox-ping h-14 w-14 sm:h-[72px] sm:w-[72px]"
+                />
+                <MdAlternateEmail className="relative h-14 w-14 sm:h-[72px] sm:w-[72px]" />
               </div>
               <h3 className="text-5xl leading-none tracking-[-0.02em] lg:text-6xl">
                 Send me an email

@@ -1,6 +1,7 @@
-import { ReactNode, useRef } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import { useFrame, useMotion } from "./motionContext";
 import { useMediaQuery } from "../hooks/useMediaQuery";
+import { damp } from "./spring";
 
 type MagneticProps = {
   children: ReactNode;
@@ -16,20 +17,36 @@ const INNER = 0.35;
 // Pulls its child towards the mouse while the pointer is near
 const Magnetic = ({ children, className = "" }: MagneticProps) => {
   const ref = useRef<HTMLSpanElement>(null);
+  const inner = useRef<HTMLElement | null>(null);
+  const onScreen = useRef(false);
   const offset = useRef({ x: 0, y: 0 });
   const { reduced, pointer } = useMotion();
   const canHover = useMediaQuery("(hover: hover) and (pointer: fine)");
   const enabled = canHover && !reduced;
 
-  useFrame(() => {
+  useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const inner = el.querySelector<HTMLElement>("[data-magnet-inner]");
+    inner.current = el.querySelector<HTMLElement>("[data-magnet-inner]");
+    const observer = new IntersectionObserver(([entry]) => {
+      onScreen.current = entry.isIntersecting;
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useFrame(({ dt }) => {
+    const el = ref.current;
+    if (!el) return;
+    const o = offset.current;
+    const settled = o.x === 0 && o.y === 0;
+    // Nothing to pull and nothing to settle: skip the layout read entirely
+    if (settled && (!onScreen.current || !pointer.current.active)) return;
     if (!enabled) {
       if (offset.current.x || offset.current.y) {
         offset.current = { x: 0, y: 0 };
         el.style.transform = "";
-        if (inner) inner.style.transform = "";
+        if (inner.current) inner.current.style.transform = "";
       }
       return;
     }
@@ -47,13 +64,21 @@ const Magnetic = ({ children, className = "" }: MagneticProps) => {
       tx = (px - (rect.left + rect.width / 2)) * STRENGTH;
       ty = (py - (rect.top + rect.height / 2)) * STRENGTH;
     }
-    const o = offset.current;
-    if (Math.abs(tx - o.x) < 0.01 && Math.abs(ty - o.y) < 0.01) return;
-    o.x += (tx - o.x) * FOLLOW;
-    o.y += (ty - o.y) * FOLLOW;
+    if (Math.abs(tx - o.x) < 0.01 && Math.abs(ty - o.y) < 0.01) {
+      // Snap the last fraction so `settled` above becomes true again
+      if (tx === 0 && ty === 0 && !settled) {
+        offset.current = { x: 0, y: 0 };
+        el.style.transform = "";
+        if (inner.current) inner.current.style.transform = "";
+      }
+      return;
+    }
+    const follow = damp(FOLLOW, dt);
+    o.x += (tx - o.x) * follow;
+    o.y += (ty - o.y) * follow;
     el.style.transform = `translate3d(${o.x.toFixed(2)}px, ${o.y.toFixed(2)}px, 0)`;
-    if (inner) {
-      inner.style.transform = `translate3d(${(o.x * INNER).toFixed(2)}px, ${(o.y * INNER).toFixed(2)}px, 0)`;
+    if (inner.current) {
+      inner.current.style.transform = `translate3d(${(o.x * INNER).toFixed(2)}px, ${(o.y * INNER).toFixed(2)}px, 0)`;
     }
   });
 

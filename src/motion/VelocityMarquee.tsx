@@ -1,4 +1,4 @@
-import { ReactNode, useRef } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import { useFrame, useMotion } from "./motionContext";
 
 type VelocityMarqueeProps = {
@@ -12,15 +12,38 @@ const VelocityMarquee = ({ children, copies = 6 }: VelocityMarqueeProps) => {
   const trackRef = useRef<HTMLDivElement>(null);
   const x = useRef(0);
   const direction = useRef(1);
+  // Half the track's width (cached: reading scrollWidth every frame forces
+  // layout) and whether it's on screen at all
+  const halfWidth = useRef(0);
+  const onScreen = useRef(false);
   const { reduced } = useMotion();
 
-  useFrame(({ vel }) => {
+  useEffect(() => {
     const track = trackRef.current;
-    if (!track || reduced) return;
+    if (!track) return;
+    const resizeObserver = new ResizeObserver(() => {
+      halfWidth.current = track.scrollWidth / 2;
+    });
+    resizeObserver.observe(track);
+    const intersectionObserver = new IntersectionObserver(([entry]) => {
+      onScreen.current = entry.isIntersecting;
+    });
+    intersectionObserver.observe(track);
+    return () => {
+      resizeObserver.disconnect();
+      intersectionObserver.disconnect();
+    };
+  }, []);
+
+  useFrame(({ vel, dt }) => {
+    const track = trackRef.current;
+    if (!track || reduced || !onScreen.current) return;
     if (vel > 0.4) direction.current = 1;
     else if (vel < -0.4) direction.current = -1;
-    x.current -= (1.1 + Math.min(Math.abs(vel), 40) * 0.55) * direction.current;
-    const half = track.scrollWidth / 2;
+    // Speeds are tuned in px per 60fps frame
+    x.current -=
+      (1.1 + Math.min(Math.abs(vel), 40) * 0.55) * direction.current * dt * 60;
+    const half = halfWidth.current;
     if (half > 0) {
       while (x.current <= -half) x.current += half;
       while (x.current > 0) x.current -= half;
